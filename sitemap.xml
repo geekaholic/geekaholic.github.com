@@ -1,11 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://yoursite.com/blog/archives/</loc>
-        <lastmod>2011-09-02T01:13:51+05:30</lastmod>
+        <loc>http://geekaholic.github.com/blog/2011/09/02/getting-down-with-markdown/</loc>
+        <lastmod>2011-09-02T13:14:37+05:30</lastmod>
     </url>
     <url>
-        <loc>http://yoursite.com/</loc>
-        <lastmod>2011-09-02T01:13:51+05:30</lastmod>
+        <loc>http://geekaholic.github.com/blog/archives/</loc>
+        <lastmod>2011-09-02T13:14:37+05:30</lastmod>
+    </url>
+    <url>
+        <loc>http://geekaholic.github.com/</loc>
+        <lastmod>2011-09-02T13:14:37+05:30</lastmod>
     </url>
 </urlset>

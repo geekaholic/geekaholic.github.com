@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title>My Octopress Blog</title>
-  <link href="http://yoursite.com/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
-  <updated>2011-09-02T01:33:49+05:30</updated>
-  <id>http://yoursite.com/</id>
+  <title>Geekaholic adventures</title>
+  <link href="http://geekaholic.github.com/atom.xml" rel="self"/>
+  <link href="http://geekaholic.github.com/"/>
+  <updated>2011-09-02T13:35:07+05:30</updated>
+  <id>http://geekaholic.github.com/</id>
   <author>
-    <name>Your Name</name>
+    <name>Bud</name>
     
   </author>
 
+  
+  <entry>
+    <title>Getting Down With Markdown</title>
+    <link href="http://geekaholic.github.com/blog/2011/09/02/getting-down-with-markdown/"/>
+    <updated>2011-09-02T10:46:00+05:30</updated>
+    <id>http://geekaholic.github.com/blog/2011/09/02/getting-down-with-markdown</id>
+    <content type="html">&lt;p&gt;Well recently I've been looking for an alternative &lt;a href=&quot;docbook.org&quot;&gt;docbook&lt;/a&gt; which I used to use for creating handout notes and developer documentation. At first I thought of trying out &lt;a href=&quot;latex-project.org&quot;&gt;Latex&lt;/a&gt; since it provides many desktop publishing quality markup and can easily be compiled to a variety of formats such as html, pdf or odt.&lt;/p&gt;
+
+&lt;p&gt;Just as I was about to dive into Latex, &lt;a href=&quot;twitter.com/chanux&quot;&gt;Chanux&lt;/a&gt; pointed me to &lt;a href=&quot;daringfireball.net/projects/markdown&quot;&gt;Markdown&lt;/a&gt;. Hmm, Markdown, I even liked the sound of it. It turns out its even bettter!, its a cutdown version of what resembles wiki syntax. I've always endorsed the &lt;a href=&quot;en.wikipedia.org/wiki/KISS_principle&quot;&gt;KISS&lt;/a&gt; philosophy. After briefly going through the syntax, I relaized I had already used it without actually thinking much about it. That was at &lt;a href=&quot;github.com&quot;&gt;github&lt;/a&gt; for writing a README.markdown file. Everything about Markdown was all good and the whole &lt;a href=&quot;http://www.zdnet.com/blog/violetblue/when-software-offends-the-pantyshot-package-controversy/509&quot;&gt;controversy&lt;/a&gt; around the Markdown to html compiler was exactly what the celebrity gossip it needed!&lt;/p&gt;
+</content>
+  </entry>
   
 </feed>
