@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<!--
+  Copyright 2010 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  Original slides: Marcin Wichary (mwichary@google.com)
+  Modifications: Ernest Delgado (ernestd@google.com)
+                 Alex Russell (slightlyoff@chromium.org)
+
+  landslide modifications: Adam Zapletal (adamzap@gmail.com)
+                           Nicolas Perriault (nperriault@gmail.com)
+-->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Scaling Apache for LAMP</title>
+    <!-- Styles -->
+    
+    <link rel="stylesheet" media="print" href="themes/default/css/print.css">
+    <link rel="stylesheet" media="screen, projection" href="themes/tango/css/screen.css">
+    
+    
+    <!-- /Styles -->
+    <!-- Javascripts -->
+    
+    <script type="text/javascript" src="themes/default/js/slides.js"></script>
+    
+    
+    <!-- /Javascripts -->
+</head>
+<body>
+  <div id="blank"></div>
+  <div class="presentation">
+    <div id="current_presenter_notes">
+      <div id="presenter_note"></div>
+    </div>
+    <div class="slides">
+      
+      <!-- slide source: ./0apache_scale.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Scaling Apache for LAMP</h1></header>
+            
+            
+            <section><p><center>
+<img alt="Apache Feather" src="./images/apache-logo.gif" /><br />
+</p>
+<h2>Buddhika Siddhisena</h2>
+<h3>(Co-Founder &amp; CTO of THINKCube Systems)</h3>
+<p>bud@thinkcube.com | twitter @geekaholic
+</center></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./0apache_scale.markdown">./0apache_scale.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              1/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./0apache_scale.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>What is Apache</h2></header>
+            
+            
+            <section><p>The folk story is that Apache was named after "A-patchy-server", which was the result of NCSA httpd server being patched a lot. The project was started by <a href="http://en.wikipedia.org/wiki/Brian_Behlendorf">Brian Behlendorf</a></p>
+<p><img alt="Alt Brian and I" src="./images/brian_geekaholic.jpg" /> </p>
+<p>Today, Apache is still the <em>most popular</em> web server out there running more than half of the websites on the net.
+It is actively developed by the <a href="http://www.apache.org">Apache Software Foundation</a> along with many other software projects.</p>
+<p>Besides its primary function of being a website, Apache can also be configured as a <em>reverse proxy</em> for load balancing.<br />
+</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./0apache_scale.markdown">./0apache_scale.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              2/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./0apache_scale.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_notes">
+          <div class="inner">
+            
+            <header><h2>Installing Apache</h2></header>
+            
+            
+            <section><p class="notes">We assume your working on Ubuntu. Translate to your favorite distro accordingly. </p>
+<p>The easiest method of installing Apache along with PHP and MySQL <em>(aka LAMP)</em> is to use the <code>tasksel</code> command.</p>
+<blockquote>
+<p>tasksel</p>
+</blockquote>
+<p>Alternatively install each package manually:</p>
+<blockquote>
+<p>apt-get install apache2 libapache2-mod-php5 mysql-server</p>
+</blockquote>
+<h3>Installing a sample LAMP app - Drupal</h3>
+<p>In order to test out Apache performance as we tune it, it is good to setup a real world full fledged CMS such as Drupal.</p>
+<ul>
+<li>Download the latest version of Drupal from <a href="http://drupal.org">drupal.org</a></li>
+<li>Follow the <a href="http://drupal.org/documentation/install/developers">Drupl setup guide</a></li>
+<li>Install the <a href="http://drupal.org/project/devel">Devel module</a> into Drupal <em>modules directory</em></li>
+<li>Login to Drupal as admin and using the devel plugin, populate Drupal with sample data for testing<br />
+(Configuration -&gt; Development -&gt; Generate Content)</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./0apache_scale.markdown">./0apache_scale.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              3/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./0apache_scale.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>Setting up Benchmarking tools</h2></header>
+            
+            
+            <section><h3>Setup Autobench</h3>
+<p>Autobench is a handy script to stress test a webserver by sending an increasing number of requests. It works by calling the <a href="http://www.hpl.hp.com/research/linux/httperf">httperf</a> tool iteratively with increasing parameters. </p>
+<p><a href="http://www.xenoclast.org/autobench">Download autobench</a> and follow directions to compile.</p>
+<p>In order to plot graphs, you need to install <code>gnuplot</code> via apt. As of this writing, the script used to plot the graph has a bug calling the current version of gnuplot and requires the following minor modification.</p>
+<blockquote>
+<p>$ sudo vi <code>which bench2graph</code></p>
+</blockquote>
+<p>line ~78 should be</p>
+<blockquote>
+<p><code>echo set style data linespoints &gt;&gt; gnuplot.cmd</code></p>
+</blockquote></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./0apache_scale.markdown">./0apache_scale.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              4/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./0apache_scale.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>Baseline benchmark with Autobench</h2></header>
+            
+            
+            <section><p>Lets benchmark our standard Apache setup to get an idea of default performance.</p>
+<pre><code>autobench --single_host --host1 localhost --uri1 /drupal --quiet     \
+       --low_rate 20 --high_rate 200 --rate_step 20 --num_call 10 \
+       --num_conn 5000 --timeout 5 --file results.tsv
+</code></pre>
+<p>Basically the above will test a single host, localhost/drupal by sending it 20 connections per second, each having 10 requests up to 200 connections per second incrementing by 20. The total number of connections are capped at 5000 while any request that takes more than 5 seconds to respond is considered unsuccessful.</p>
+<h3>Plotting the results</h3>
+<p>Using the result.tsv file and the included bench2graph utility, you can plot a graph into a postscript file.</p>
+<pre><code>bench2graph results.tsv results.ps
+</code></pre>
+<p><img alt="Sample graph image" src="./images/autobench_results.gif" /></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./0apache_scale.markdown">./0apache_scale.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              5/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./0apache_scale.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>Tuning Apache - Enable GZip</h2></header>
+            
+            
+            <section><p>You can decrease network overhead and make pages load faster, there by reducing the amount of time a client is connected by compressing pages using gzip. All modern browser support rendering compressed files.</p>
+<p>In order to benchmark its effect, you can install a tool such as <a href="http://getfirebug.com/">Firebug</a> on the client side.</p>
+<p><img alt="Firebug screenshot" src="./images/firebug_net.png" /></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./0apache_scale.markdown">./0apache_scale.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./0apache_scale.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2>Tuning Apache - Enable GZip</h2></header>
+            
+            
+            <section><p>Enable the <a href="http://httpd.apache.org/docs/2.0/mod/mod_deflate.html"><code>mod_deflate</code></a> module. On Ubuntu :</p>
+<blockquote>
+<p>a2enmod deflate &amp;&amp; a2enmod headers</p>
+</blockquote>
+<p>Then we'll configure deflate to compress everything  except images.</p>
+<blockquote>
+<p>sudo vi /etc/apache2/modules-enabled/deflate.conf</p>
+</blockquote>
+<div class="highlight"><pre><span class="lineno"> 1</span> <span class="nt">&lt;Location</span> <span class="s">/</span><span class="nt">&gt;</span>  
+<span class="lineno"> 2</span>     <span class="c"># Insert filter </span>
+<span class="lineno"> 3</span>     <span class="nb">SetOutputFilter</span> DEFLATE
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span>     <span class="c"># Don&#39;t compress images  </span>
+<span class="lineno"> 6</span>     <span class="nb">SetEnvIfNoCase</span> Request_URI  .(?:gif|jpe?g|png)$ no-gzip dont-vary
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span>     <span class="c"># Make sure proxies don&#39;t deliver the wrong content</span>
+<span class="lineno"> 9</span>     <span class="nb">Header</span> append Vary <span class="k">User</span>-Agent env=!dont-vary
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="nt">&lt;/Location&gt;</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./0apache_scale.markdown">./0apache_scale.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              7/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./0apache_scale.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>Apache configuration tuning</h2></header>
+            
+            
+            <section><p>There are a few key parameters that can be tuned:</p>
+<ul>
+<li>KeepAlive - By default its set to ON which is good. Clients will make all requests in one shot via http 1.1.</li>
+<li>KeepAliveTimeout - Better to keep it low. Defaults to 15 sec. Make sure thats enough. Rule is 1.5 to 2 times your page load speed.</li>
+<li>TimeOut - The default is 5 minutes which might be long to allow for one process. Adjust accordingly.</li>
+<li>StartServers, MinSpareServers, MaxSpareServers - Generally even on a busy site you may not need to tweak. Apache can self regulate.</li>
+<li>MaxClients - The maximum number of clients (threads) Apache will handle simultaneously. </li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./0apache_scale.markdown">./0apache_scale.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              8/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./0apache_scale.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h3>Calculating MaxClients</h3></header>
+            
+            
+            <section><blockquote>
+<p>ps -eafly |grep apache2|awk '{print $8}'|sort -n</p>
+</blockquote>
+<p>Use free to figure out how much memory is available. Cache is also considered free memory but you might want to leave some and not assume all cache will be used.</p>
+<blockquote>
+<p>free</p>
+</blockquote>
+<p>By deviding free memory by the average memory used by an Apache thread, you can estimate the number of MaxClients.</p>
+<h4>e.g: Assuming Apache memory usage and free memory are as follows</h4>
+<pre>
+$ ps -eafly |grep apache2|awk '{print $8}'|sort -n
+
+816
+3896
+3896
+3896
+3896
+20844
+
+$ free
+             total       used       free     shared    buffers     cached
+Mem:        508904     447344      61560          0     141136     213468
+-/+ buffers/cache:      92740     416164
+Swap:       407544       4364     403180
+</pre>
+
+<p><em>Memory avail ~= 60000 (free) + 100000 (cached) ~= 160 MB</em> and <em>Memory per thread ~= 4 MB</em>
+Then a safe value for MaxClients = 40</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./0apache_scale.markdown">./0apache_scale.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              9/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./0apache_scale.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>Improving PHP performance</h2></header>
+            
+            
+            <section><p>We can improve PHP performance by</p>
+<ol>
+<li>Caching pages (useful if dynamic content doesn't change often)</li>
+<li>PHP Opcode optimizations (pre-compile php)</li>
+</ol>
+<p>Fortunately we can get the benefit of both using <a href="http://www.php.net/manual/en/apc.configuration.php">PHP APC</a>, which is a PHP accellerator!</p>
+<blockquote>
+<p>apt-get install php-apc</p>
+</blockquote>
+<p>You can verify installation by loading a php page having phpinfo(); and searching for apc.
+ Or if you have php5-cli installed:</p>
+<blockquote>
+<p>php -r "phpinfo();" | grep apc</p>
+</blockquote>
+<h3>Using memcached</h3>
+<p><a href="http://memcached.org/">Memcached</a> is a distributed cache for storing key-value pairs in memory for faster access with reduced trips to the database. Some popular PHP apps can use memcache if available. memcached does not instantly accellerate PHP!</p>
+<blockquote>
+<p>apt-get install memcached php5-memcache</p>
+<p>service memcached start</p>
+</blockquote></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./0apache_scale.markdown">./0apache_scale.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              10/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./0apache_scale.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>More Tips for improving performance</h2></header>
+            
+            
+            <section><ul>
+<li>Keep <code>DirectoryIndex</code> file list as short as possible.</li>
+<li>Whenever possible disable <code>.htaccess</code> via <code>AllowOverride none</code></li>
+<li>Use <code>Options FollowSymLinks</code> to simplify file access process in Apache</li>
+<li>Minimize the use of <code>mod_rewrite</code> or at least complex regexs</li>
+<li>If logs are unnecessary disable them or log to another server via syslog.</li>
+<li>For Deny/Allow rules use IPs rather then domains. (prevents superfluous DNS lookups).</li>
+<li>Do not enable HostnameLookups (DNS is slow).</li>
+<li>For dynamic sites see if you can separate dynamic vs static content into two servers</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./0apache_scale.markdown">./0apache_scale.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              11/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./1scalable_architectures.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Scaling Architectures</h1></header>
+            
+            
+            <section><p><center>
+<img alt="Apache Feather" src="./images/apache-logo.gif" /><br />
+</p>
+<h2>Buddhika Siddhisena</h2>
+<h3>(Co-Founder &amp; CTO of THINKCube Systems)</h3>
+<p>bud@thinkcube.com | twitter @geekaholic
+</center></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./1scalable_architectures.markdown">./1scalable_architectures.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              12/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./1scalable_architectures.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>Architecture overview</h2></header>
+            
+            
+            <section><p>In terms of scaling the web server there are few options.</p>
+<h3>1. Single machine (Scale vertically)</h3>
+<p>Basically the easiest to setup. Scaling is a matter of buying a better server or upgrading it! </p>
+<p><img alt="1-tier architecture" src="./images/basic.jpg" /> </p>
+<h3>2. App-DB machines (2-Tier)</h3>
+<p>Separate DB from App, as a result each can be scaled separately. </p>
+<p><img alt="2-tier architecture" src="images/dedicatedDataServer.jpg" /> </p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./1scalable_architectures.markdown">./1scalable_architectures.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              13/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./1scalable_architectures.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>Architecture overview contd...</h2></header>
+            
+            
+            <section><h3>3. Load balancer + App-DB machines (3-Tier)</h3>
+<p>Load balancer <em>(aka reverse proxy)</em> will route requests betwen multiple backend HTTP servers while caching results.</p>
+<p><img alt="3-tier architecture" src="./images/basicClustered.jpg" /> </p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./1scalable_architectures.markdown">./1scalable_architectures.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              14/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./1scalable_architectures.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_notes">
+          <div class="inner">
+            
+            <header><h2>Data Independence</h2></header>
+            
+            
+            <section><p class="notes">Data scalability is beyond the scope of this presentation.</p>
+<p>It is good to isolate the data from the app by hosting it on a separate server. This was the two aspects can be scaled independantly. Some methods to consider:</p>
+<ul>
+<li>Store DB data on MYSQL running on a separate server</li>
+<li>Enable file sharing to share data files using NFS, rsync</li>
+<li>Clustering MYSQL across multiple servers using <a href="http://www.mysql.com/products/database/cluster/">mysqlcluster</a></li>
+<li>Cluster file system via <a href="http://www.drbd.org">DRDB</a>, GFS2 or as Facebook does using Bittorrent</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./1scalable_architectures.markdown">./1scalable_architectures.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              15/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./1scalable_architectures.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Setting up an HTTP accellerator using Apache</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./1scalable_architectures.markdown">./1scalable_architectures.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              16/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./1scalable_architectures.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2>Apache as a reverse proxy</h2></header>
+            
+            
+            <section><p>In this setup, the reverse server is what the user will contact while the <em>real webserver</em> can be hidden behind a private network. </p>
+<h3>1. On the reverse proxy server :</h3>
+<p>Enable required modules for caching reverse proxy.</p>
+<blockquote>
+<p><code>a2enmod proxy</code></p>
+<p><code>a2enmod proxy_connect</code></p>
+<p><code>a2enmod proxy_http</code></p>
+<p><code>a2enmod cache</code></p>
+</blockquote>
+<h3>2. Configure proxy module</h3>
+<blockquote>
+<p>vi /etc/apache2/modules-enabled/proxy.conf</p>
+</blockquote>
+<div class="highlight"><pre><span class="lineno">1</span> <span class="nt">&lt;Proxy</span> <span class="s">*</span><span class="nt">&gt;</span>
+<span class="lineno">2</span>         <span class="nb">AddDefaultCharset</span> <span class="k">off</span>
+<span class="lineno">3</span>         <span class="nb">Order</span> deny,allow
+<span class="lineno">4</span>         <span class="nb">Deny</span> from <span class="k">all</span>
+<span class="lineno">5</span>         <span class="nb">Allow</span> from <span class="k">all</span>
+<span class="lineno">6</span> <span class="nt">&lt;/Proxy&gt;</span>
+<span class="lineno">7</span> <span class="nb">ProxyVia</span> <span class="k">On</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./1scalable_architectures.markdown">./1scalable_architectures.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              17/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./1scalable_architectures.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2>Apache as a reverse proxy contd...</h2></header>
+            
+            
+            <section><h3>3. Setup (public) virtual host</h3>
+<p>Next we configure an empty virtual host that is configured to the public site. But instead of showing the document root we do a reverse proxy.</p>
+<blockquote>
+<p>vi /etc/apache2/sites-available/public-domain.com</p>
+</blockquote>
+<div class="highlight"><pre><span class="lineno"> 1</span> <span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span>     <span class="nb">ServerName</span> your-public-domain.com
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span>     <span class="nt">&lt;Proxy</span> <span class="s">*</span><span class="nt">&gt;</span>
+<span class="lineno"> 6</span>         <span class="nb">Order</span> deny,allow
+<span class="lineno"> 7</span>         <span class="nb">Allow</span> from <span class="k">all</span>
+<span class="lineno"> 8</span>     <span class="nt">&lt;/Proxy&gt;</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span>     <span class="nb">ProxyPass</span> / http://your-private-domain.com/
+<span class="lineno">11</span>     <span class="nb">ProxyPassReverse</span> / http://your-private-domain.com/
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="nt">&lt;/VirtualHost&gt;</span>
+</pre></div>
+
+<blockquote>
+<p>a2ensite public-domain.com  <br />
+service apache2 reload</p>
+</blockquote></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./1scalable_architectures.markdown">./1scalable_architectures.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              18/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./1scalable_architectures.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Using Nginx</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./1scalable_architectures.markdown">./1scalable_architectures.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              19/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./1scalable_architectures.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>What is Nginx?</h2></header>
+            
+            
+            <section><p><img alt="Nginx logo" src="./images/nginx-logo.png" /></p>
+<ul>
+<li>Nginx was designed as a reverse proxy first, and an HTTP server second</li>
+<li>Unlike Apache, Nginx uses a non blocking process model</li>
+</ul>
+<h3>Two modes of operation for Nginx:</h3>
+<ol>
+<li>Use Nginx for the static content and Apache for PHP</li>
+<li>Use FastCGI to embed PHP</li>
+</ol></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./1scalable_architectures.markdown">./1scalable_architectures.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              20/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./1scalable_architectures.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>Nginx process model in a nutshell</h2></header>
+            
+            
+            <section><ul>
+<li>Receive request, trigger events in a process</li>
+<li>The process handles all the events and returns the output</li>
+<li>Process handles events  in parallel</li>
+<li><em>Limitation</em> is PHP can no longer be embedded (<code>mod_php</code>) inside process as PHP is not asynchronous</li>
+<li>Unlike Apache, Nginx doesn't not have an .htaccess equivelant. You need to reload server after making any chage, making it difficult to use for shared hosting</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./1scalable_architectures.markdown">./1scalable_architectures.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              21/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./1scalable_architectures.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>Using Nginx and Apache side-by-side</h2></header>
+            
+            
+            <section><p>In this setup we put Nginx as the frontend http accellerator and Apache as the backend app server. If you want to run this on the same physical server you'll need to either change the Apache port from 80 to another value or bind and Nginx to their own IP addresses with the same server.</p>
+<blockquote>
+<p>Listen 8080 <br />
+</p>
+</blockquote>
+<p>or using the ip address<br />
+</p>
+<blockquote>
+<p>Listen 127.0.0.1:8080</p>
+</blockquote>
+<p>Now we're ready to install Nginx</p>
+<blockquote>
+<p>sudo apt-get install nginx</p>
+</blockquote></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./1scalable_architectures.markdown">./1scalable_architectures.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              22/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./1scalable_architectures.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h3>Apache style virtual host in Nginx</h3></header>
+            
+            
+            <section><p>Nginx uses a different format for defining virtual hosts than Apahche.</p>
+<div class="highlight"><pre><span class="lineno">1</span> <span class="nt">&lt;VirtualHost&gt;</span>
+<span class="lineno">2</span>       <span class="nb">DocumentRoot</span> <span class="s2">&quot;/usr/local/www/mydomain.com&quot;</span>
+<span class="lineno">3</span>       <span class="nb">ServerName</span> mydomain.com
+<span class="lineno">4</span>       <span class="nb">ServerAlias</span> www.mydomain.com
+<span class="lineno">5</span>       <span class="nb">CustomLog</span> <span class="sx">/var/log/httpd/mydomain_access.log</span> common
+<span class="lineno">6</span>       <span class="nb">ErrorLog</span> <span class="sx">/var/log/httpd/mydomain_error.log</span>
+<span class="lineno">7</span>       ...
+<span class="lineno">8</span> <span class="nt">&lt;/VirtualHost&gt;</span>
+</pre></div>
+
+<p>becomes...</p>
+<div class="highlight"><pre><span class="lineno"> 1</span> <span class="k">server</span> <span class="p">{</span>
+<span class="lineno"> 2</span>       <span class="kn">root</span> <span class="s">/usr/local/www/mydomain.com</span><span class="p">;</span>
+<span class="lineno"> 3</span>       <span class="kn">server_name</span> <span class="s">mydomain.com</span> <span class="s">www.mydomain.com</span><span class="p">;</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span>       <span class="c1"># by default logs are stored in nginx&#39;s log folder</span>
+<span class="lineno"> 6</span>       <span class="c1"># it can be changed to a full path such as /var/log/...</span>
+<span class="lineno"> 7</span>       <span class="kn">access_log</span> <span class="s">logs/mydomain_access.log</span><span class="p">;</span>
+<span class="lineno"> 8</span>       <span class="kn">error_log</span> <span class="s">logs/mydomain_error.log</span><span class="p">;</span>
+<span class="lineno"> 9</span>       <span class="kn">...</span>
+<span class="lineno">10</span> <span class="err">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./1scalable_architectures.markdown">./1scalable_architectures.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              23/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./1scalable_architectures.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h3>Redirecting all PHP requests to Apache</h3></header>
+            
+            
+            <section><p>The following example will server all static content via nginx while redirect dynamic content (php) to Apache</p>
+<div class="highlight"><pre><span class="lineno"> 1</span> <span class="k">server</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="kn">listen</span>   <span class="mi">80</span> <span class="s">default</span><span class="p">;</span>
+<span class="lineno"> 3</span>     <span class="kn">server_name</span>  <span class="s">localhost</span><span class="p">;</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span>     <span class="kn">access_log</span>  <span class="s">/var/log/nginx/localhost.access.log</span><span class="p">;</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span>     <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+<span class="lineno"> 8</span>         <span class="kn">root</span>   <span class="s">/var/www</span><span class="p">;</span>
+<span class="lineno"> 9</span>         <span class="kn">index</span>  <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+<span class="lineno">10</span>     <span class="p">}</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span>      <span class="c1">## Parse all .php file in the /var/www directory</span>
+<span class="lineno">13</span>      <span class="kn">location</span> <span class="p">~</span> <span class="sr">.php$</span> <span class="p">{</span>
+<span class="lineno">14</span>         <span class="c1"># these two lines tell Apache the actual IP of the client being forwarded</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span>         <span class="kn">proxy_set_header</span> <span class="s">X-Real-IP</span>  <span class="nv">$remote_addr</span><span class="p">;</span>
+<span class="lineno">17</span>         <span class="kn">proxy_set_header</span> <span class="s">X-Forwarded-For</span> <span class="nv">$remote_addr</span><span class="p">;</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span>         <span class="c1"># this next line adds the Host header so that apache knows which vHost to serve</span>
+<span class="lineno">20</span> 
+<span class="lineno">21</span>         <span class="kn">proxy_set_header</span> <span class="s">Host</span> <span class="nv">$host</span><span class="p">;</span>
+<span class="lineno">22</span> 
+<span class="lineno">23</span>         <span class="c1"># And now we pass back to apache</span>
+<span class="lineno">24</span>         <span class="kn">proxy_pass</span> <span class="s">http://127.0.0.1:8080</span><span class="p">;</span>
+<span class="lineno">25</span> 
+<span class="lineno">26</span>     <span class="p">}</span>
+<span class="lineno">27</span> <span class="p">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./1scalable_architectures.markdown">./1scalable_architectures.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              24/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./90reference.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>References</h1></header>
+            
+            
+            <section><ul>
+<li><a href="http://www.bootstrappingindependence.com/technology/how-to-improve-website-performance-with-drupal-php-mysql-and-apache/">How To Improve Website Performance (With Drupal, LAMP)</a></li>
+<li><a href="http://talks.php.net/show/perf_tunning">PHP Performance tuning</a></li>
+<li><a href="https://github.com/facebook/hiphop-php">HipHop compiler by Facebook</a></li>
+<li><a href="http://www.phpbench.com">How the code you write affects PHP benchmarks</a></li>
+<li><a href="http://archive.fosdem.org/2010/schedule/events/scalingfacebook">Scaling Facebook with OpenSource tools</a></li>
+<li><a href="http://www.johnandcailin.com/blog/john/scaling-drupal-open-source-infrastructure-high-traffic-drupal-sites">Scaling drupal</a></li>
+<li><a href="http://www.drbd.org/">DRBD for HA distributed file system</a></li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./90reference.markdown">./90reference.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              25/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ./99thankyou.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide thankyou">
+          <div class="inner">
+            
+            <header><h1>Thank you</h1></header>
+            
+            
+            <section><p><img alt="Apache Feather" src="./images/thinkcube-logo.png" /><br />
+</p>
+<p>bud@thinkcube.com | twitter @geekaholic</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="./99thankyou.markdown">./99thankyou.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              26/26
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div id="toc" class="sidebar hidden">
+    <h2>Table of Contents</h2>
+    <table>
+      <caption>Table of Contents</caption>
+      
+      <tr id="toc-row-1">
+        <th><a href="#slide1">Scaling Apache for LAMP</a></th>
+        <td><a href="#slide1">1</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-2" class="sub">
+          <th><a href="#slide2">What is Apache</a></th>
+          <td><a href="#slide2">2</a></td>
+        </tr>
+        
+        <tr id="toc-row-3" class="sub">
+          <th><a href="#slide3">Installing Apache</a></th>
+          <td><a href="#slide3">3</a></td>
+        </tr>
+        
+        <tr id="toc-row-4" class="sub">
+          <th><a href="#slide4">Setting up Benchmarking tools</a></th>
+          <td><a href="#slide4">4</a></td>
+        </tr>
+        
+        <tr id="toc-row-5" class="sub">
+          <th><a href="#slide5">Baseline benchmark with Autobench</a></th>
+          <td><a href="#slide5">5</a></td>
+        </tr>
+        
+        <tr id="toc-row-6" class="sub">
+          <th><a href="#slide6">Tuning Apache - Enable GZip</a></th>
+          <td><a href="#slide6">6</a></td>
+        </tr>
+        
+        <tr id="toc-row-7" class="sub">
+          <th><a href="#slide7">Tuning Apache - Enable GZip</a></th>
+          <td><a href="#slide7">7</a></td>
+        </tr>
+        
+        <tr id="toc-row-8" class="sub">
+          <th><a href="#slide8">Apache configuration tuning</a></th>
+          <td><a href="#slide8">8</a></td>
+        </tr>
+        
+        <tr id="toc-row-10" class="sub">
+          <th><a href="#slide10">Improving PHP performance</a></th>
+          <td><a href="#slide10">10</a></td>
+        </tr>
+        
+        <tr id="toc-row-11" class="sub">
+          <th><a href="#slide11">More Tips for improving performance</a></th>
+          <td><a href="#slide11">11</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-12">
+        <th><a href="#slide12">Scaling Architectures</a></th>
+        <td><a href="#slide12">12</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-13" class="sub">
+          <th><a href="#slide13">Architecture overview</a></th>
+          <td><a href="#slide13">13</a></td>
+        </tr>
+        
+        <tr id="toc-row-14" class="sub">
+          <th><a href="#slide14">Architecture overview contd...</a></th>
+          <td><a href="#slide14">14</a></td>
+        </tr>
+        
+        <tr id="toc-row-15" class="sub">
+          <th><a href="#slide15">Data Independence</a></th>
+          <td><a href="#slide15">15</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-16">
+        <th><a href="#slide16">Setting up an HTTP accellerator using Apache</a></th>
+        <td><a href="#slide16">16</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-17" class="sub">
+          <th><a href="#slide17">Apache as a reverse proxy</a></th>
+          <td><a href="#slide17">17</a></td>
+        </tr>
+        
+        <tr id="toc-row-18" class="sub">
+          <th><a href="#slide18">Apache as a reverse proxy contd...</a></th>
+          <td><a href="#slide18">18</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-19">
+        <th><a href="#slide19">Using Nginx</a></th>
+        <td><a href="#slide19">19</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-20" class="sub">
+          <th><a href="#slide20">What is Nginx?</a></th>
+          <td><a href="#slide20">20</a></td>
+        </tr>
+        
+        <tr id="toc-row-21" class="sub">
+          <th><a href="#slide21">Nginx process model in a nutshell</a></th>
+          <td><a href="#slide21">21</a></td>
+        </tr>
+        
+        <tr id="toc-row-22" class="sub">
+          <th><a href="#slide22">Using Nginx and Apache side-by-side</a></th>
+          <td><a href="#slide22">22</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-25">
+        <th><a href="#slide25">References</a></th>
+        <td><a href="#slide25">25</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-26">
+        <th><a href="#slide26">Thank you</a></th>
+        <td><a href="#slide26">26</a></td>
+      </tr>
+      
+      
+    </table>
+  </div>
+  
+  <div id="help" class="sidebar hidden">
+    <h2>Help</h2>
+    <table>
+      <caption>Help</caption>
+      <tr>
+        <th>Table of Contents</th>
+        <td>t</td>
+      </tr>
+      <tr>
+        <th>Exposé</th>
+        <td>ESC</td>
+      </tr>
+      <tr>
+        <th>Full screen slides</th>
+        <td>e</td>
+      </tr>
+      <tr>
+        <th>Presenter View</th>
+        <td>p</td>
+      </tr>
+      <tr>
+        <th>Source Files</th>
+        <td>s</td>
+      </tr>
+      <tr>
+        <th>Slide Numbers</th>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Toggle screen blanking</th>
+        <td>b</td>
+      </tr>
+      <tr>
+        <th>Show/hide slide context</th>
+        <td>c</td>
+      </tr>
+      <tr>
+        <th>Notes</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Help</th>
+        <td>h</td>
+      </tr>
+    </table>
+  </div>
+  <script>main()</script>
+</body>
+</html>

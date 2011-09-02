@@ -1,0 +1,246 @@
+<html>
+<head>
+<link href="css/markdown.css" rel="stylesheet"></link>
+</head>
+<body>
+
+<h1>Scaling Architectures</h1>
+
+<p><center>
+<img src="images/apache-logo.gif" alt="Apache Feather" />  </p>
+
+<h2>Buddhika Siddhisena</h2>
+
+<h3>(Co-Founder &amp; CTO of THINKCube Systems)</h3>
+
+<p>bud@thinkcube.com | twitter @geekaholic
+</center></p>
+
+<hr />
+
+<h2>Architecture overview</h2>
+
+<p>In terms of scaling the web server there are few options.</p>
+
+<h3>1. Single machine (Scale vertically)</h3>
+
+<p>Basically the easiest to setup. Scaling is a matter of buying a better server or upgrading it! </p>
+
+<p><img src="images/basic.jpg" alt="1-tier architecture" /> </p>
+
+<h3>2. App-DB machines (2-Tier)</h3>
+
+<p>Separate DB from App, as a result each can be scaled separately. </p>
+
+<p><img src="images/dedicatedDataServer.jpg" alt="2-tier architecture" /> </p>
+
+<hr />
+
+<h2>Architecture overview contd...</h2>
+
+<h3>3. Load balancer + App-DB machines (3-Tier)</h3>
+
+<p>Load balancer <em>(aka reverse proxy)</em> will route requests betwen multiple backend HTTP servers while caching results.</p>
+
+<p><img src="images/basicClustered.jpg" alt="3-tier architecture" /> </p>
+
+<hr />
+
+<h2>Data Independence</h2>
+
+<p>.notes: Data scalability is beyond the scope of this presentation.</p>
+
+<p>It is good to isolate the data from the app by hosting it on a separate server. This was the two aspects can be scaled independantly. Some methods to consider:</p>
+
+<ul>
+<li>Store DB data on MYSQL running on a separate server</li>
+<li>Enable file sharing to share data files using NFS, rsync</li>
+<li>Clustering MYSQL across multiple servers using <a href="http://www.mysql.com/products/database/cluster/">mysqlcluster</a></li>
+<li>Cluster file system via <a href="http://www.drbd.org">DRDB</a>, GFS2 or as Facebook does using Bittorrent</li>
+</ul>
+
+<hr />
+
+<h1>Setting up an HTTP accellerator using Apache</h1>
+
+<hr />
+
+<h2>Apache as a reverse proxy</h2>
+
+<p>In this setup, the reverse server is what the user will contact while the <em>real webserver</em> can be hidden behind a private network. </p>
+
+<h3>1. On the reverse proxy server :</h3>
+
+<p>Enable required modules for caching reverse proxy.</p>
+<blockquote>
+<p><code>a2enmod proxy</code></p>
+
+<p><code>a2enmod proxy_connect</code></p>
+
+<p><code>a2enmod proxy_http</code></p>
+
+<p><code>a2enmod cache</code></p>
+</blockquote>
+<h3>2. Configure proxy module</h3>
+<blockquote>
+<p>vi /etc/apache2/modules-enabled/proxy.conf</p>
+</blockquote>
+<pre><code>!apache
+&lt;Proxy *&gt;
+        AddDefaultCharset off
+        Order deny,allow
+        Deny from all
+        Allow from all
+&lt;/Proxy&gt;
+ProxyVia On
+</code></pre>
+
+<hr />
+
+<h2>Apache as a reverse proxy contd...</h2>
+
+<h3>3. Setup (public) virtual host</h3>
+
+<p>Next we configure an empty virtual host that is configured to the public site. But instead of showing the document root we do a reverse proxy.</p>
+<blockquote>
+<p>vi /etc/apache2/sites-available/public-domain.com</p>
+</blockquote>
+<pre><code>!apache
+&lt;VirtualHost *:80&gt;
+
+    ServerName your-public-domain.com
+
+    &lt;Proxy *&gt;
+        Order deny,allow
+        Allow from all
+    &lt;/Proxy&gt;
+
+    ProxyPass / http://your-private-domain.com/
+    ProxyPassReverse / http://your-private-domain.com/
+
+&lt;/VirtualHost&gt;
+</code></pre>
+<blockquote>
+<p>a2ensite public-domain.com<br />
+service apache2 reload</p>
+</blockquote>
+<hr />
+
+<h1>Using Nginx</h1>
+
+<hr />
+
+<h2>What is Nginx?</h2>
+
+<p><img src="images/nginx-logo.png" alt="Nginx logo" /></p>
+
+<ul>
+<li>Nginx was designed as a reverse proxy first, and an HTTP server second</li>
+<li>Unlike Apache, Nginx uses a non blocking process model</li>
+</ul>
+
+<h3>Two modes of operation for Nginx:</h3>
+
+<ol>
+<li>Use Nginx for the static content and Apache for PHP</li>
+<li>Use FastCGI to embed PHP</li>
+</ol>
+
+<hr />
+
+<h2>Nginx process model in a nutshell</h2>
+
+<ul>
+<li>Receive request, trigger events in a process</li>
+<li>The process handles all the events and returns the output</li>
+<li>Process handles events  in parallel</li>
+<li><em>Limitation</em> is PHP can no longer be embedded (<code>mod_php</code>) inside process as PHP is not asynchronous</li>
+<li>Unlike Apache, Nginx doesn't not have an .htaccess equivelant. You need to reload server after making any chage, making it difficult to use for shared hosting</li>
+</ul>
+
+<hr />
+
+<h2>Using Nginx and Apache side-by-side</h2>
+
+<p>In this setup we put Nginx as the frontend http accellerator and Apache as the backend app server. If you want to run this on the same physical server you'll need to either change the Apache port from 80 to another value or bind and Nginx to their own IP addresses with the same server.</p>
+<blockquote>
+<p>Listen 8080   </p>
+</blockquote>
+<p>or using the ip address  </p>
+<blockquote>
+<p>Listen 127.0.0.1:8080</p>
+</blockquote>
+<p>Now we're ready to install Nginx</p>
+<blockquote>
+<p>sudo apt-get install nginx</p>
+</blockquote>
+<hr />
+
+<h3>Apache style virtual host in Nginx</h3>
+
+<p>Nginx uses a different format for defining virtual hosts than Apahche.</p>
+
+<pre><code>!apache
+&lt;VirtualHost&gt;
+      DocumentRoot &quot;/usr/local/www/mydomain.com&quot;
+      ServerName mydomain.com
+      ServerAlias www.mydomain.com
+      CustomLog /var/log/httpd/mydomain_access.log common
+      ErrorLog /var/log/httpd/mydomain_error.log
+      ...
+&lt;/VirtualHost&gt;
+</code></pre>
+
+<p>becomes...</p>
+
+<pre><code>!nginx
+server {
+      root /usr/local/www/mydomain.com;
+      server_name mydomain.com www.mydomain.com;
+
+      # by default logs are stored in nginx's log folder
+      # it can be changed to a full path such as /var/log/...
+      access_log logs/mydomain_access.log;
+      error_log logs/mydomain_error.log;
+      ...
+}
+</code></pre>
+
+<hr />
+
+<h3>Redirecting all PHP requests to Apache</h3>
+
+<p>The following example will server all static content via nginx while redirect dynamic content (php) to Apache</p>
+
+<pre><code>!nginx
+server {
+    listen   80 default;
+    server_name  localhost;
+
+    access_log  /var/log/nginx/localhost.access.log;
+
+    location / {
+        root   /var/www;
+        index  index.html index.htm;
+    }
+
+     ## Parse all .php file in the /var/www directory
+     location ~ .php$ {
+        # these two lines tell Apache the actual IP of the client being forwarded
+
+        proxy_set_header X-Real-IP  $remote_addr;
+        proxy_set_header X-Forwarded-For $remote_addr;
+
+        # this next line adds the Host header so that apache knows which vHost to serve
+
+        proxy_set_header Host $host;
+
+        # And now we pass back to apache
+        proxy_pass http://127.0.0.1:8080;
+
+    }
+}
+</code></pre>
+
+</body>
+</html>

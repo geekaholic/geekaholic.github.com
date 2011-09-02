@@ -1,0 +1,226 @@
+<html>
+<head>
+<link href="css/markdown.css" rel="stylesheet"></link>
+</head>
+<body>
+
+<h1>Scaling Apache for LAMP</h1>
+
+<p><center>
+<img src="images/apache-logo.gif" alt="Apache Feather" />  </p>
+
+<h2>Buddhika Siddhisena</h2>
+
+<h3>(Co-Founder &amp; CTO of THINKCube Systems)</h3>
+
+<p>bud@thinkcube.com | twitter @geekaholic
+</center></p>
+
+<hr />
+
+<h2>What is Apache</h2>
+
+<p>The folk story is that Apache was named after &quot;A-patchy-server&quot;, which was the result of NCSA httpd server being patched a lot. The project was started by <a href="http://en.wikipedia.org/wiki/Brian_Behlendorf">Brian Behlendorf</a></p>
+
+<p><img src="images/brian_geekaholic.jpg" alt="Alt Brian and I" /> </p>
+
+<p>Today, Apache is still the <em>most popular</em> web server out there running more than half of the websites on the net.
+It is actively developed by the <a href="http://www.apache.org">Apache Software Foundation</a> along with many other software projects.</p>
+
+<p>Besides its primary function of being a website, Apache can also be configured as a <em>reverse proxy</em> for load balancing.  </p>
+
+<hr />
+
+<h2>Installing Apache</h2>
+
+<p>.notes: We assume your working on Ubuntu. Translate to your favorite distro accordingly. </p>
+
+<p>The easiest method of installing Apache along with PHP and MySQL <em>(aka LAMP)</em> is to use the <code>tasksel</code> command.</p>
+<blockquote>
+<p>tasksel</p>
+</blockquote>
+<p>Alternatively install each package manually:</p>
+<blockquote>
+<p>apt-get install apache2 libapache2-mod-php5 mysql-server</p>
+</blockquote>
+<h3>Installing a sample LAMP app - Drupal</h3>
+
+<p>In order to test out Apache performance as we tune it, it is good to setup a real world full fledged CMS such as Drupal.</p>
+
+<ul>
+<li>Download the latest version of Drupal from <a href="http://drupal.org">drupal.org</a></li>
+<li>Follow the <a href="http://drupal.org/documentation/install/developers">Drupl setup guide</a></li>
+<li>Install the <a href="http://drupal.org/project/devel">Devel module</a> into Drupal <em>modules directory</em></li>
+<li>Login to Drupal as admin and using the devel plugin, populate Drupal with sample data for testing<br />
+(Configuration -&gt; Development -&gt; Generate Content)</li>
+</ul>
+
+<hr />
+
+<h2>Setting up Benchmarking tools</h2>
+
+<h3>Setup Autobench</h3>
+
+<p>Autobench is a handy script to stress test a webserver by sending an increasing number of requests. It works by calling the <a href="http://www.hpl.hp.com/research/linux/httperf">httperf</a> tool iteratively with increasing parameters. </p>
+
+<p><a href="http://www.xenoclast.org/autobench">Download autobench</a> and follow directions to compile.</p>
+
+<p>In order to plot graphs, you need to install <code>gnuplot</code> via apt. As of this writing, the script used to plot the graph has a bug calling the current version of gnuplot and requires the following minor modification.</p>
+<blockquote>
+<p>$ sudo vi <code>which bench2graph</code></p>
+</blockquote>
+<p>line ~78 should be</p>
+<blockquote>
+<p><code>echo set style data linespoints &gt;&gt; gnuplot.cmd</code></p>
+</blockquote>
+<hr />
+
+<h2>Baseline benchmark with Autobench</h2>
+
+<p>Lets benchmark our standard Apache setup to get an idea of default performance.</p>
+
+<pre><code>autobench --single_host --host1 localhost --uri1 /drupal --quiet     \
+       --low_rate 20 --high_rate 200 --rate_step 20 --num_call 10 \
+       --num_conn 5000 --timeout 5 --file results.tsv
+</code></pre>
+
+<p>Basically the above will test a single host, localhost/drupal by sending it 20 connections per second, each having 10 requests up to 200 connections per second incrementing by 20. The total number of connections are capped at 5000 while any request that takes more than 5 seconds to respond is considered unsuccessful.</p>
+
+<h3>Plotting the results</h3>
+
+<p>Using the result.tsv file and the included bench2graph utility, you can plot a graph into a postscript file.</p>
+
+<pre><code>bench2graph results.tsv results.ps
+</code></pre>
+
+<p><img src="images/autobench_results.gif" alt="Sample graph image" /></p>
+
+<hr />
+
+<h2>Tuning Apache - Enable GZip</h2>
+
+<p>You can decrease network overhead and make pages load faster, there by reducing the amount of time a client is connected by compressing pages using gzip. All modern browser support rendering compressed files.</p>
+
+<p>In order to benchmark its effect, you can install a tool such as <a href="http://getfirebug.com/">Firebug</a> on the client side.</p>
+
+<p><img src="images/firebug_net.png" alt="Firebug screenshot" /></p>
+
+<hr />
+
+<h2>Tuning Apache - Enable GZip</h2>
+
+<p>Enable the <a href="http://httpd.apache.org/docs/2.0/mod/mod_deflate.html"><code>mod_deflate</code></a> module. On Ubuntu :</p>
+<blockquote>
+<p>a2enmod deflate &amp;&amp; a2enmod headers</p>
+</blockquote>
+<p>Then we'll configure deflate to compress everything  except images.</p>
+<blockquote>
+<p>sudo vi /etc/apache2/modules-enabled/deflate.conf</p>
+</blockquote>
+<pre><code>!apache
+&lt;Location /&gt;  
+    # Insert filter 
+    SetOutputFilter DEFLATE 
+
+    # Don't compress images  
+    SetEnvIfNoCase Request_URI  .(?:gif|jpe?g|png)$ no-gzip dont-vary
+
+    # Make sure proxies don't deliver the wrong content
+    Header append Vary User-Agent env=!dont-vary
+
+&lt;/Location&gt;
+</code></pre>
+
+<hr />
+
+<h2>Apache configuration tuning</h2>
+
+<p>There are a few key parameters that can be tuned:</p>
+
+<ul>
+<li>KeepAlive - By default its set to ON which is good. Clients will make all requests in one shot via http 1.1.</li>
+<li>KeepAliveTimeout - Better to keep it low. Defaults to 15 sec. Make sure thats enough. Rule is 1.5 to 2 times your page load speed.</li>
+<li>TimeOut - The default is 5 minutes which might be long to allow for one process. Adjust accordingly.</li>
+<li>StartServers, MinSpareServers, MaxSpareServers - Generally even on a busy site you may not need to tweak. Apache can self regulate.</li>
+<li>MaxClients - The maximum number of clients (threads) Apache will handle simultaneously. </li>
+</ul>
+
+<hr />
+
+<h3>Calculating MaxClients</h3>
+<blockquote>
+<p>ps -eafly |grep apache2|awk '{print $8}'|sort -n</p>
+</blockquote>
+<p>Use free to figure out how much memory is available. Cache is also considered free memory but you might want to leave some and not assume all cache will be used.</p>
+<blockquote>
+<p>free</p>
+</blockquote>
+<p>By deviding free memory by the average memory used by an Apache thread, you can estimate the number of MaxClients.</p>
+
+<h4>e.g: Assuming Apache memory usage and free memory are as follows</h4>
+
+<pre>
+$ ps -eafly |grep apache2|awk '{print $8}'|sort -n
+
+816
+3896
+3896
+3896
+3896
+20844
+
+$ free
+             total       used       free     shared    buffers     cached
+Mem:        508904     447344      61560          0     141136     213468
+-/+ buffers/cache:      92740     416164
+Swap:       407544       4364     403180
+</pre>
+
+<p><em>Memory avail ~= 60000 (free) + 100000 (cached) ~= 160 MB</em> and <em>Memory per thread ~= 4 MB</em>
+Then a safe value for MaxClients = 40</p>
+
+<hr />
+
+<h2>Improving PHP performance</h2>
+
+<p>We can improve PHP performance by</p>
+
+<ol>
+<li>Caching pages (useful if dynamic content doesn't change often)</li>
+<li>PHP Opcode optimizations (pre-compile php)</li>
+</ol>
+
+<p>Fortunately we can get the benefit of both using <a href="http://www.php.net/manual/en/apc.configuration.php">PHP APC</a>, which is a PHP accellerator!</p>
+<blockquote>
+<p>apt-get install php-apc</p>
+</blockquote>
+<p>You can verify installation by loading a php page having phpinfo(); and searching for apc.
+ Or if you have php5-cli installed:</p>
+<blockquote>
+<p>php -r &quot;phpinfo();&quot; | grep apc</p>
+</blockquote>
+<h3>Using memcached</h3>
+
+<p><a href="http://memcached.org/">Memcached</a> is a distributed cache for storing key-value pairs in memory for faster access with reduced trips to the database. Some popular PHP apps can use memcache if available. memcached does not instantly accellerate PHP!</p>
+<blockquote>
+<p>apt-get install memcached php5-memcache</p>
+
+<p>service memcached start</p>
+</blockquote>
+<hr />
+
+<h2>More Tips for improving performance</h2>
+
+<ul>
+<li>Keep <code>DirectoryIndex</code> file list as short as possible.</li>
+<li>Whenever possible disable <code>.htaccess</code> via <code>AllowOverride none</code></li>
+<li>Use <code>Options FollowSymLinks</code> to simplify file access process in Apache</li>
+<li>Minimize the use of <code>mod_rewrite</code> or at least complex regexs</li>
+<li>If logs are unnecessary disable them or log to another server via syslog.</li>
+<li>For Deny/Allow rules use IPs rather then domains. (prevents superfluous DNS lookups).</li>
+<li>Do not enable HostnameLookups (DNS is slow).</li>
+<li>For dynamic sites see if you can separate dynamic vs static content into two servers</li>
+</ul>
+
+</body>
+</html>
