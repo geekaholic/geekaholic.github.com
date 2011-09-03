@@ -44,7 +44,7 @@ Alternatively install each package manually:
 In order to test out Apache performance as we tune it, it is good to setup a real world full fledged CMS such as Drupal.
 
 * Download the latest version of Drupal from [drupal.org](http://drupal.org)
-* Follow the [Drupl setup guide](http://drupal.org/documentation/install/developers)
+* Follow the [Drupal setup guide](http://drupal.org/documentation/install/developers)
 * Install the [Devel module](http://drupal.org/project/devel) into Drupal *modules directory*
 * Login to Drupal as admin and using the devel plugin, populate Drupal with sample data for testing  
 (Configuration -> Development -> Generate Content)
@@ -144,7 +144,7 @@ Use free to figure out how much memory is available. Cache is also considered fr
 
 > free
 
-By deviding free memory by the average memory used by an Apache thread, you can estimate the number of MaxClients.
+By dividing free memory by the average memory used by an Apache thread, you can estimate the number of MaxClients.
 
 #### e.g: Assuming Apache memory usage and free memory are as follows 
 
@@ -177,7 +177,7 @@ We can improve PHP performance by
 1. Caching pages (useful if dynamic content doesn't change often)
 2. PHP Opcode optimizations (pre-compile php)
 
-Fortunately we can get the benefit of both using [PHP APC](http://www.php.net/manual/en/apc.configuration.php), which is a PHP accellerator!
+Fortunately we can get the benefit of both using [PHP APC](http://www.php.net/manual/en/apc.configuration.php), which is a PHP accelerator!
 
 > apt-get install php-apc
 
@@ -188,7 +188,7 @@ You can verify installation by loading a php page having phpinfo(); and searchin
 
 ### Using memcached
 
-[Memcached](http://memcached.org/) is a distributed cache for storing key-value pairs in memory for faster access with reduced trips to the database. Some popular PHP apps can use memcache if available. memcached does not instantly accellerate PHP!
+[Memcached](http://memcached.org/) is a distributed cache for storing key-value pairs in memory for faster access with reduced trips to the database. Some popular PHP apps can use memcache if available. memcached does not instantly accelerate PHP!
 
 > apt-get install memcached php5-memcache
 

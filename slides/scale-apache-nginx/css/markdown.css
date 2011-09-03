@@ -255,3 +255,8 @@ button::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
+
+/* hide headers from continued slides*/
+.slide-continued h1,h2,h3 {
+    visibility: hidden;
+}

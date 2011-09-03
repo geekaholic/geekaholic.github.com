@@ -1,5 +1,5 @@
 
-# Scaling Architectures 
+# Simple Scalable Architectures 
 
 
 <center>
@@ -35,9 +35,11 @@ Separate DB from App, as a result each can be scaled separately.
 
 ## Architecture overview contd...
 
+<!--.fx: slide-continued-->
+
 ### 3. Load balancer + App-DB machines (3-Tier)
 
-Load balancer *(aka reverse proxy)* will route requests betwen multiple backend HTTP servers while caching results.
+Load balancer *(aka reverse proxy)* will route requests between multiple backend HTTP servers while caching results.
 
 ![3-tier architecture](images/basicClustered.jpg) 
 
@@ -47,7 +49,7 @@ Load balancer *(aka reverse proxy)* will route requests betwen multiple backend 
 
 .notes: Data scalability is beyond the scope of this presentation.
 
-It is good to isolate the data from the app by hosting it on a separate server. This was the two aspects can be scaled independantly. Some methods to consider:
+It is good to isolate the data from the app by hosting it on a separate server. This was the two aspects can be scaled independently. Some methods to consider:
 
 * Store DB data on MYSQL running on a separate server
 * Enable file sharing to share data files using NFS, rsync
@@ -56,7 +58,7 @@ It is good to isolate the data from the app by hosting it on a separate server. 
 
 ---
 
-# Setting up an HTTP accellerator using Apache
+# Setting up an HTTP accelerator using Apache
 
 ---
 
@@ -149,7 +151,7 @@ Next we configure an empty virtual host that is configured to the public site. B
 
 ## Using Nginx and Apache side-by-side
 
-In this setup we put Nginx as the frontend http accellerator and Apache as the backend app server. If you want to run this on the same physical server you'll need to either change the Apache port from 80 to another value or bind and Nginx to their own IP addresses with the same server.
+In this setup we put Nginx as the frontend http accelerator and Apache as the backend app server. If you want to run this on the same physical server you'll need to either change the Apache port from 80 to another value or bind and Nginx to their own IP addresses with the same server.
 
 >	Listen 8080   
 
@@ -206,24 +208,73 @@ The following example will server all static content via nginx while redirect dy
 
 		location / {
 			root   /var/www;
-			index  index.html index.htm;
+			index  index.php index.html index.htm;
 		}
 
 		 ## Parse all .php file in the /var/www directory
 		 location ~ .php$ {
 		    # these two lines tell Apache the actual IP of the client being forwarded
-
 		    proxy_set_header X-Real-IP  $remote_addr;
 		    proxy_set_header X-Forwarded-For $remote_addr;
 
 		    # this next line adds the Host header so that apache knows which vHost to serve
-
 		    proxy_set_header Host $host;
 
 		    # And now we pass back to apache
 		    proxy_pass http://127.0.0.1:8080;
-
 		}
 	}
 		
+---
+
+## Using Nginx all the way
+
+There is some debate as to whether using nginx with php via FastCGI is actually faster than redirecting to Apache. In any case lets see how we can setup a pure nginx based model.
+
+### Install PHP-FPM
+
+Unlike Apache, Nginx has has a hands off approach to managing php processes and therefore requires manual intervention. Fortunately as of PHP 5.3.3, there is a built in Front Process Manager (FPM), which looks after the php processes.
+
+> apt-get install php5-fpm
+
+If your on Ubuntu 10.04LTS then you'll need to add a special repository before you can install php5-fpm. 
+
+> add-apt-repository ppa:brianmercer/php && apt-get update
+
+Next start the php5-fpm process
+
+> service php5-fpm restart
+
+---
+
+### Install PHP-FPM contd...
+
+<!--.fx: slide-continued-->
+
+Finally modify nginx configuration to use fast-cgi to redirect all files having the php extension.
+
+> vi /etc/nginx/sites-available/defaul
+
+	!nginx
+	server {
+		listen   80 default;
+		server_name  localhost;
+
+		access_log  /var/log/nginx/localhost.access.log;
+
+		location / {
+			root   /var/www;
+			index index.php index.html index.htm;
+		}
+
+		 ## Parse all .php file in the /var/www directory
+		 location ~ .php$ {
+			fastcgi_pass   127.0.0.1:9000;
+			fastcgi_index  index.php;
+			fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+			includefastcgi_params;
+		}
+	}
+
+
 
