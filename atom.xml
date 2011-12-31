@@ -4,13 +4,248 @@
   <title>Geekaholic adventures</title>
   <link href="http://geekaholic.github.com/atom.xml" rel="self"/>
   <link href="http://geekaholic.github.com/"/>
-  <updated>2011-09-05T11:37:16+05:30</updated>
+  <updated>2011-12-31T21:31:19+05:30</updated>
   <id>http://geekaholic.github.com/</id>
   <author>
     <name>Bud</name>
     
   </author>
 
+  
+  <entry>
+    <title>Track your New Year Resolutions with ii.do</title>
+    <link href="http://geekaholic.github.com/blog/2011/12/31/new-year-resolution-iido/"/>
+    <updated>2011-12-31T21:30:00+05:30</updated>
+    <id>http://geekaholic.github.com/blog/2011/12/31/new-year-resolution-iido</id>
+    <content type="html">&lt;p&gt;I know, I know, it's a bit of a cheesy title to promote my Open Source project but here me out - it really does work. Though I didn't really write it to track my new year resolutions (I've never found them effective beyond a week), I did write it out of constant frustration with not finding a TODO productivity tool that stuck.&lt;/p&gt;
+
+&lt;p&gt;Let me explain... I've tried EVERYTHING!&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Google Calendar &amp;amp; tasks&lt;/li&gt;
+&lt;li&gt;Sending myself Emails&lt;/li&gt;
+&lt;li&gt;Wiki (Dokuwiki, Mediwiki, Twiki etc.)&lt;/li&gt;
+&lt;li&gt;Tomboy&lt;/li&gt;
+&lt;li&gt;Tomboy with UbuntuOne &amp;amp; Android App&lt;/li&gt;
+&lt;li&gt;EverNote&lt;/li&gt;
+&lt;li&gt;Remember the Milk&lt;/li&gt;
+&lt;li&gt;Gedit notes on my desktop&lt;/li&gt;
+&lt;li&gt;Post-it notes widget&lt;/li&gt;
+&lt;li&gt;Actual Post-it notes&lt;/li&gt;
+&lt;li&gt;Old-skool diary&lt;/li&gt;
+&lt;li&gt;Pieces of paper including backs of payment receipts&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;From the above list, if anything came remotely to sticking as a habit, then it'd be the sticky notes &amp;amp; pieces of paper. I'm not suggesting the other methods suck, but I wouldn't use it beyond a couple of weeks.&lt;/p&gt;
+
+&lt;p&gt;Why was it that despite me spending hours on a computer, the best thing that had a chance of remotely working was old-skool pen &amp;amp; paper? And then it hit me. A good todo App should be:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;In your face!&lt;/li&gt;
+&lt;li&gt;Really simple to use (like pen &amp;amp; paper)&lt;/li&gt;
+&lt;li&gt;Did I mention in your face?&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;Now my solution isn't for everyone. At this moment, it is intended ONLY for fellow geeks who spent a lot of time in the command line (GNU &amp;amp; UNIX only), and I call it ii.do.&lt;/p&gt;
+
+&lt;h2&gt;What is ii.do&lt;/h2&gt;
+
+&lt;p&gt;ii.do, pronounced &quot;I do&quot;, but really a roman play on 2.do, is a command line todo list manager that uses a simple text file and simple MarkDown syntax to track your todo tasks. The beauty of using MarkDown syntax is in it's resemblance to the natural way we jolt down text on a piece of paper.&lt;/p&gt;
+
+&lt;p&gt;ii.do is optimized around querying tasks as opposed to updating tasks. For entering and updating tasks, it uses a plain old vim text editor, which has syntax highlighting for Markdown built-in. If vi is not your thing, then it's relatively easy to configure another editor by exporting the shell $EDITOR variable.&lt;/p&gt;
+
+&lt;p&gt;The other main design goal I had was to make it into a standalone shell script which could stand (mostly) on its own. Except for standard shell commands like sed, grep and bash itself, it doesn't demand much.&lt;/p&gt;
+
+&lt;p&gt;But the main power of ii.do comes ONLY (and I repeat ONLY), if you modify your shell to :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Define an easy alias (such as t) which can be used to summon ii.do from anywhere within the shell&lt;/li&gt;
+&lt;li&gt;You modify your PS1 shell prompt to update it with the pending number of tasks (this is the in your face bit)&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;The second one point above is &lt;em&gt;important&lt;/em&gt;, if you plan on actually using it productively, for there is nothing like an App stalking you with a reminder of how many things you have left todo.&lt;/p&gt;
+
+&lt;h2&gt;Installing ii.do&lt;/h2&gt;
+
+&lt;p&gt;You can download a tarbar ball of ii.do from &lt;a href=&quot;https://github.com/geekaholic/ii.do/downloads&quot;&gt;github&lt;/a&gt;. Then just extract it to your home directory, make the shell script executable (just in case) and finally copy the sample todo.markdown to your $HOME&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; $ tar zxf geekaholic-ii.do-iido-xxx.tgz
+ mv geekaholic-ii.do-\* ~/ii.do
+ chmod +x ~/ii.do/ii.do
+ cp ~/ii.do/todo.markdown ~
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Though ii.do is now usable, you should create an alias in order to make it more accessible and add it to ~/.bash_profile or ~/.bashrc&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; echo &quot;alias t='$HOME/ii.do'&quot; &amp;amp;gt;&amp;amp;gt; ~/.bashrc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Finally the &lt;em&gt;most important&lt;/em&gt; step of adding a counter to your SHELL prompt is semi-automated via ii.do!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; ~/ii.do/ii.do -S &quot;$PS1&quot; &amp;amp;gt;&amp;amp;gt; ~/.bashrc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Your all set! You might want to logout and login or do a source ~/.bashrc&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; if you would rather relocate the todo.markdown, for instance in your Dropbox folder then use the -f option.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; echo &quot;alias t='$HOME/ii.do -f $HOME/Dropbox/todo.markdown'&quot; &amp;amp;gt;&amp;amp;gt; ~/.bashrc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2&gt;Using ii.do&lt;/h2&gt;
+
+&lt;p&gt;Now the fun begins! Lets start with the most basic.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; t -h
+
+    Version: 0.6.1
+
+    Usage: ii.do [-f todo_file.markdown] [-T topic_number] [options]
+
+    Options :
+     -e          Open TODO file using $EDITOR
+     -n          Count number of pending tasks. Can be filtered using -x, -X etc.
+     -X          Filter to show only pending tasks
+     -x          Filter to show only completed tasks
+     -i          Filter to show only important tasks
+     -t          Filter to show only topics with topic_number
+     -C          Don't colorize output (useful for piping)
+     -H          HTMLize the output
+     -S &quot;$PS1&quot;   Will return modified PS1 prompt to contain pending task count
+     -h          Show this help screen
+
+    By default, we expect a ~/todo.markdown to be in your $HOME if not overridden 
+    by the -f option. Refer to http://github.com/geekaholic/ii.do for examples of 
+    creating this file.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;To edit a file using vi or $EDITOR&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; t -e
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Using markdown syntax to maintain todo.markdown is simple. You start out with a main heading called a topic.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  # Weekly Activities
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;or using the alternate style&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Weekly Activities
+=================
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next you start your list of tasks as a bullet &lt;code&gt;*&lt;/code&gt; list&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;* Come up with a BIG idea
+* Implement BIG idea and be awesome
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You could further break up your topic into subtopics as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Weekly Activities
+
+## Entertainment
+
+* Watch a Movie
+* Go bowling
+
+Excercise
+---------
+
+* Go to gym at least 3 days a week
+* Play some wii sports
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you might have guessed the &lt;code&gt;---&lt;/code&gt; are the alternate form for a sub level topic. This way you have have multiple top level topics followed by sublevel topics, having tasks at each level.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Now we got the data entry part sorted, lets see how we can query the task list.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; t
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://farm8.staticflickr.com/7008/6606634025_e29d008501.jpg&quot; alt=&quot;ii.do output&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Will show all your tasks using terminal colors.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;To filter tasks to show &lt;code&gt;only pending&lt;/code&gt; or &lt;code&gt;only completed&lt;/code&gt; ones:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; t -X
+ t -x
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To filter by topic, so that it only shows tasks belonging to one topic including it's sub topic:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;t -t
+
+1: # Weekly Activities
+2: ## Entertainment
+3: ## Excercise
+4: # Home Work
+
+t -T 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The above will show everything up to topic 4 (Home Work)&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;To count the number of pending and competed tasks&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; t -X -n
+ t -x -n
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;To update the task to mark it as complete, place an x in front of the task&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;* x Take out the trash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To mark a task as important, place an &lt;code&gt;! mark&lt;/code&gt; in front of it&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;* ! Go to gym at least 3 days a week
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To mark a task with a high priority, place the priority number in front of the task&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;* (1) Finish history essay
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Finally, ii.do has two options that customize the output. The first option is to turn off color which is handy when you want to pipe the output of ii.do with more unix commands.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;t -C | grep '^*'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The other option is to export the todo list as html&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;t -H &amp;gt; ~/todo.html
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://farm8.staticflickr.com/7145/6606925889_c86b0fc9a8.jpg&quot; alt=&quot;ii.do html output&quot; /&gt;&lt;/p&gt;
+
+&lt;h2&gt;Other Uses&lt;/h2&gt;
+
+&lt;p&gt;Besides tracking my todo list on a daily basis, I've recently found another use for ii.do - track my bookmarks. I know, your probably thinking of delicious or firefox/chrome bookmark syncing but for me those solutions just don't cut it. For one, I use about 3 browsers and finding old bookmarks can be a real pain. So now I just use an alias with a custom bookmarks.mdown&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;alias bm=&quot;$HOME/ii.do/ii.do -f $HOME/Dropbox/bookmarks.mdown&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Another use was to keep track of lecture topics by marking them off as I taught them over a period of two months. I also use it to keep track of some interesting quotes I come across, just for inspiration.&lt;/p&gt;
+</content>
+  </entry>
   
   <entry>
     <title>Getting Down With Markdown</title>
