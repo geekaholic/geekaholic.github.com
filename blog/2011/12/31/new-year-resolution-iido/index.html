@@ -165,19 +165,19 @@
 
 <p>Though ii.do is now usable, you should create an alias in order to make it more accessible and add it to ~/.bash_profile or ~/.bashrc</p>
 
-<pre><code> echo "alias t='$HOME/ii.do'" &amp;gt;&amp;gt; ~/.bashrc
+<pre><code> echo "alias t='$HOME/ii.do'" &gt;&gt; ~/.bashrc
 </code></pre>
 
 <p>Finally the <em>most important</em> step of adding a counter to your SHELL prompt is semi-automated via ii.do!</p>
 
-<pre><code> ~/ii.do/ii.do -S "$PS1" &amp;gt;&amp;gt; ~/.bashrc
+<pre><code> ~/ii.do/ii.do -S "$PS1" &gt;&gt; ~/.bashrc
 </code></pre>
 
 <p>Your all set! You might want to logout and login or do a source ~/.bashrc</p>
 
 <p><em>Note:</em> if you would rather relocate the todo.markdown, for instance in your Dropbox folder then use the -f option.</p>
 
-<pre><code> echo "alias t='$HOME/ii.do -f $HOME/Dropbox/todo.markdown'" &amp;gt;&amp;gt; ~/.bashrc
+<pre><code> echo "alias t='$HOME/ii.do -f $HOME/Dropbox/todo.markdown'" &gt;&gt; ~/.bashrc
 </code></pre>
 
 <h2>Using ii.do</h2>

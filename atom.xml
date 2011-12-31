@@ -4,7 +4,7 @@
   <title>Geekaholic adventures</title>
   <link href="http://geekaholic.github.com/atom.xml" rel="self"/>
   <link href="http://geekaholic.github.com/"/>
-  <updated>2011-12-31T23:20:53+05:30</updated>
+  <updated>2011-12-31T23:23:28+05:30</updated>
   <id>http://geekaholic.github.com/</id>
   <author>
     <name>Bud</name>
@@ -80,19 +80,19 @@
 
 &lt;p&gt;Though ii.do is now usable, you should create an alias in order to make it more accessible and add it to ~/.bash_profile or ~/.bashrc&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt; echo &quot;alias t='$HOME/ii.do'&quot; &amp;amp;gt;&amp;amp;gt; ~/.bashrc
+&lt;pre&gt;&lt;code&gt; echo &quot;alias t='$HOME/ii.do'&quot; &amp;gt;&amp;gt; ~/.bashrc
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Finally the &lt;em&gt;most important&lt;/em&gt; step of adding a counter to your SHELL prompt is semi-automated via ii.do!&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt; ~/ii.do/ii.do -S &quot;$PS1&quot; &amp;amp;gt;&amp;amp;gt; ~/.bashrc
+&lt;pre&gt;&lt;code&gt; ~/ii.do/ii.do -S &quot;$PS1&quot; &amp;gt;&amp;gt; ~/.bashrc
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Your all set! You might want to logout and login or do a source ~/.bashrc&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; if you would rather relocate the todo.markdown, for instance in your Dropbox folder then use the -f option.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt; echo &quot;alias t='$HOME/ii.do -f $HOME/Dropbox/todo.markdown'&quot; &amp;amp;gt;&amp;amp;gt; ~/.bashrc
+&lt;pre&gt;&lt;code&gt; echo &quot;alias t='$HOME/ii.do -f $HOME/Dropbox/todo.markdown'&quot; &amp;gt;&amp;gt; ~/.bashrc
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2&gt;Using ii.do&lt;/h2&gt;
