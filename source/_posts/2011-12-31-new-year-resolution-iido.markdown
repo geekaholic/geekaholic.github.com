@@ -208,4 +208,11 @@ Besides tracking my todo list on a daily basis, I've recently found another use 
 
 Another use was to keep track of lecture topics by marking them off as I taught them over a period of two months. I also use it to keep track of some interesting quotes I come across, just for inspiration. 
 
+----
+
+## See also
+
+Watch a talk I gave to introduce ii.do at [RefreshColombo](http://www.refreshcolombo.org)
+
+<iframe width="300" height="315" src="http://www.youtube.com/embed/9GrFj5gUMAI" frameborder="0" allowfullscreen></iframe>
 
