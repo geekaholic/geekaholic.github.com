@@ -4,7 +4,7 @@
   <title>Geekaholic adventures</title>
   <link href="http://geekaholic.github.com/atom.xml" rel="self"/>
   <link href="http://geekaholic.github.com/"/>
-  <updated>2011-12-31T22:59:15+05:30</updated>
+  <updated>2011-12-31T23:20:53+05:30</updated>
   <id>http://geekaholic.github.com/</id>
   <author>
     <name>Bud</name>
@@ -17,7 +17,7 @@
     <link href="http://geekaholic.github.com/blog/2011/12/31/new-year-resolution-iido/"/>
     <updated>2011-12-31T21:30:00+05:30</updated>
     <id>http://geekaholic.github.com/blog/2011/12/31/new-year-resolution-iido</id>
-    <content type="html">&lt;p&gt;I know, I know, it's a bit of a cheesy title to promote my Open Source project but here me out - it really does work. Though I didn't really write it to track my new year resolutions (I've never found them effective beyond a week), I did write it out of constant frustration with not finding a TODO productivity tool that stuck.&lt;/p&gt;
+    <content type="html">&lt;p&gt;I know, I know, it's a bit of a cheesy title to promote my Open Source project but here me out - it really does work. Though I didn't really write it to track my new year resolutions (I've never found them effective beyond a week), I did write it out of constant frustration with not finding a TODO productivity tool that stuck with me.&lt;/p&gt;
 
 &lt;p&gt;Let me explain... I've tried EVERYTHING!&lt;/p&gt;
 
@@ -33,7 +33,7 @@
 &lt;li&gt;Post-it notes widget&lt;/li&gt;
 &lt;li&gt;Actual Post-it notes&lt;/li&gt;
 &lt;li&gt;Old-skool diary&lt;/li&gt;
-&lt;li&gt;Pieces of paper including backs of payment receipts&lt;/li&gt;
+&lt;li&gt;Pieces of left over paper from payment receipts&lt;/li&gt;
 &lt;/ul&gt;
 
 
@@ -52,7 +52,7 @@
 
 &lt;h2&gt;What is ii.do&lt;/h2&gt;
 
-&lt;p&gt;ii.do, pronounced &quot;I do&quot;, but really a roman play on 2.do, is a command line todo list manager that uses a simple text file and simple MarkDown syntax to track your todo tasks. The beauty of using MarkDown syntax is in it's resemblance to the natural way we jolt down text on a piece of paper.&lt;/p&gt;
+&lt;p&gt;ii.do, pronounced &quot;I do&quot;, but really a roman play on 2.do, is a command line todo list manager that uses a simple text file and simple &lt;a href=&quot;http://daringfireball.net/projects/markdown/syntax&quot;&gt;MarkDown syntax&lt;/a&gt; to track your todo tasks. The beauty of using MarkDown syntax is in it's resemblance to the natural way we jolt down text on a piece of paper.&lt;/p&gt;
 
 &lt;p&gt;ii.do is optimized around querying tasks as opposed to updating tasks. For entering and updating tasks, it uses a plain old vim text editor, which has syntax highlighting for Markdown built-in. If vi is not your thing, then it's relatively easy to configure another editor by exporting the shell $EDITOR variable.&lt;/p&gt;
 
@@ -62,11 +62,11 @@
 
 &lt;ol&gt;
 &lt;li&gt;Define an easy alias (such as t) which can be used to summon ii.do from anywhere within the shell&lt;/li&gt;
-&lt;li&gt;You modify your PS1 shell prompt to update it with the pending number of tasks (this is the in your face bit)&lt;/li&gt;
+&lt;li&gt;Modify your $PS1 shell prompt to update it with the number of pending tasks (this is the in your face bit)&lt;/li&gt;
 &lt;/ol&gt;
 
 
-&lt;p&gt;The second one point above is &lt;em&gt;important&lt;/em&gt;, if you plan on actually using it productively, for there is nothing like an App stalking you with a reminder of how many things you have left todo.&lt;/p&gt;
+&lt;p&gt;The second point above is &lt;em&gt;really important&lt;/em&gt;, if you actually plan on using it productively, for there is nothing like an App stalking you with a reminder of how many things you have left todo.&lt;/p&gt;
 
 &lt;h2&gt;Installing ii.do&lt;/h2&gt;
 
