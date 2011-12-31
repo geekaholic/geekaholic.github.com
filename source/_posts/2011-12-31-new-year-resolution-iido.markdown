@@ -8,7 +8,7 @@ published: true
 categories: 
 ---
 
-I know, I know, it's a bit of a cheesy title to promote my Open Source project but here me out - it really does work. Though I didn't really write it to track my new year resolutions (I've never found them effective beyond a week), I did write it out of constant frustration with not finding a TODO productivity tool that stuck.
+I know, I know, it's a bit of a cheesy title to promote my Open Source project but here me out - it really does work. Though I didn't really write it to track my new year resolutions (I've never found them effective beyond a week), I did write it out of constant frustration with not finding a TODO productivity tool that stuck with me.
 
 Let me explain... I've tried EVERYTHING!
 
@@ -23,7 +23,7 @@ Let me explain... I've tried EVERYTHING!
 * Post-it notes widget
 * Actual Post-it notes
 * Old-skool diary
-* Pieces of paper including backs of payment receipts
+* Pieces of left over paper from payment receipts
 
 From the above list, if anything came remotely to sticking as a habit, then it'd be the sticky notes & pieces of paper. I'm not suggesting the other methods suck, but I wouldn't use it beyond a couple of weeks.
 
@@ -37,7 +37,7 @@ Now my solution isn't for everyone. At this moment, it is intended ONLY for fell
 
 ## What is ii.do
 
-ii.do, pronounced "I do", but really a roman play on 2.do, is a command line todo list manager that uses a simple text file and simple MarkDown syntax to track your todo tasks. The beauty of using MarkDown syntax is in it's resemblance to the natural way we jolt down text on a piece of paper.
+ii.do, pronounced "I do", but really a roman play on 2.do, is a command line todo list manager that uses a simple text file and simple [MarkDown syntax](http://daringfireball.net/projects/markdown/syntax) to track your todo tasks. The beauty of using MarkDown syntax is in it's resemblance to the natural way we jolt down text on a piece of paper.
 
 ii.do is optimized around querying tasks as opposed to updating tasks. For entering and updating tasks, it uses a plain old vim text editor, which has syntax highlighting for Markdown built-in. If vi is not your thing, then it's relatively easy to configure another editor by exporting the shell $EDITOR variable.
 
@@ -46,9 +46,9 @@ The other main design goal I had was to make it into a standalone shell script w
 But the main power of ii.do comes ONLY (and I repeat ONLY), if you modify your shell to :
 
 1. Define an easy alias (such as t) which can be used to summon ii.do from anywhere within the shell
-2. You modify your PS1 shell prompt to update it with the pending number of tasks (this is the in your face bit)
+2. Modify your $PS1 shell prompt to update it with the number of pending tasks (this is the in your face bit)
 
-The second one point above is *important*, if you plan on actually using it productively, for there is nothing like an App stalking you with a reminder of how many things you have left todo.
+The second point above is _really important_, if you actually plan on using it productively, for there is nothing like an App stalking you with a reminder of how many things you have left todo.
 
 ## Installing ii.do
 
@@ -61,17 +61,17 @@ You can download a tarbar ball of ii.do from [github](https://github.com/geekaho
 
 Though ii.do is now usable, you should create an alias in order to make it more accessible and add it to ~/.bash\_profile or ~/.bashrc
 
-	 echo "alias t='$HOME/ii.do'" &gt;&gt; ~/.bashrc
+	 echo "alias t='$HOME/ii.do'" >> ~/.bashrc
 
 Finally the *most important* step of adding a counter to your SHELL prompt is semi-automated via ii.do!
 
-	 ~/ii.do/ii.do -S "$PS1" &gt;&gt; ~/.bashrc
+	 ~/ii.do/ii.do -S "$PS1" >> ~/.bashrc
 
 Your all set! You might want to logout and login or do a source ~/.bashrc
 
 *Note:* if you would rather relocate the todo.markdown, for instance in your Dropbox folder then use the -f option.
 
-	 echo "alias t='$HOME/ii.do -f $HOME/Dropbox/todo.markdown'" &gt;&gt; ~/.bashrc
+	 echo "alias t='$HOME/ii.do -f $HOME/Dropbox/todo.markdown'" >> ~/.bashrc
 
 ## Using ii.do
 
