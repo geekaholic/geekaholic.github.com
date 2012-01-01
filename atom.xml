@@ -4,13 +4,130 @@
   <title>Geekaholic adventures</title>
   <link href="http://geekaholic.github.com/atom.xml" rel="self"/>
   <link href="http://geekaholic.github.com/"/>
-  <updated>2011-12-31T23:23:28+05:30</updated>
+  <updated>2012-01-01T15:02:51+05:30</updated>
   <id>http://geekaholic.github.com/</id>
   <author>
     <name>Bud</name>
     
   </author>
 
+  
+  <entry>
+    <title>A new desktop for a new year</title>
+    <link href="http://geekaholic.github.com/blog/2012/01/01/a-new-desktop-for-new-year/"/>
+    <updated>2012-01-01T11:50:00+05:30</updated>
+    <id>http://geekaholic.github.com/blog/2012/01/01/a-new-desktop-for-new-year</id>
+    <content type="html">&lt;div id=&quot;slides&quot;&gt;
+  &lt;img src=&quot;http://farm8.staticflickr.com/7011/6610804679_62d58a3e30.jpg&quot; alt=&quot;Simple, minimilistic Mint desktop&quot; /&gt;
+  &lt;img src=&quot;http://farm8.staticflickr.com/7142/6610808595_cce80f4911.jpg&quot; alt=&quot;Applications list&quot; /&gt;
+  &lt;img src=&quot;http://farm8.staticflickr.com/7034/6610807425_909f80bff3.jpg&quot; alt=&quot;Window select&quot; /&gt;
+  &lt;img src=&quot;http://farm8.staticflickr.com/7013/6610806003_c4c8b40cfe.jpg&quot; alt=&quot;Global Menu&quot; /&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;Compared to other new years where I would spend some time cleaning up my room or &lt;a href=&quot;http://www.geekaholic.org/2007/12/christmas-came-early-for-me-this-year.html&quot;&gt;upgrading my gear&lt;/a&gt;, this year I did none of that! Instead I invested some time cleaning up my online space starting with a brand new distro. I'm a &lt;a href=&quot;http://www.geekaholic.org/2011/08/theres-something-about-lion.html&quot;&gt;big fan of MacOSX's Lion desktop&lt;/a&gt; and wanted to bring some of that minimilistic simplicity to the Linux desktop. So if the above screenshot looks appealing, then read on to see how you too can get a modern desktop that is simple and elegant. Unlike some of my previous desktop customization article, I'll keep this one to the bare minimum so that you can implement it fairly quickly.&lt;/p&gt;
+
+&lt;h2&gt;Installing the base OS&lt;/h2&gt;
+
+&lt;p&gt;IMHO, Gnome 3 is the best next thing when it comes to being a modern desktop. I realize this is a controversial statement, given news of &lt;a href=&quot;http://linux.slashdot.org/story/11/08/04/0115232/linus-torvalds-ditches-gnome-3-for-xfce&quot;&gt;some ditching&lt;/a&gt; and some &lt;a href=&quot;http://www.zdnet.com/blog/open-source/linux-mints-cinnamon-a-gnome-3x-shell-fork&quot;&gt;forking&lt;/a&gt; the project. But IMHO when you have a project that can polarize a community that was once united, it means you've got true innovation - not just incremental tweaks.&lt;/p&gt;
+
+&lt;p&gt;Having said all that, I've started with Linux &lt;a href=&quot;http://blog.linuxmint.com/?p=1889&quot;&gt;Mint 12&lt;/a&gt;, as the base distro to build my minimilistic desktop even though Mint has many of the traditional Windows like UI elements. Now, I'm sure you could do this with Ubuntu 11.10, the base for Mint 12, but I like Mint due to their focus on usability where most of what I need work out of the box!&lt;/p&gt;
+
+&lt;h2&gt;Let the tweaking begin!&lt;/h2&gt;
+
+&lt;p&gt;Don't worry I'll keep it to a minimum! The first thing I did was to get rid of the bottom taskbar completely, because its soo Windows 95 like! Fortunately, Gnome 3 comes with an &quot;Advanced Settings App&quot; (&lt;code&gt;gnome-tweak-tool&lt;/code&gt; in CMD line) which uses the same iPhone like on-off toggles to do the job.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://farm8.staticflickr.com/7160/6610969247_67299031a2_m.jpg&quot; alt=&quot;Gnome 3 Advanced Settings App aka Gnome tweak tool&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;Goto Desktop section within Advanced Settings App.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;Have file manager handle the desktop -&amp;gt; ON
+Computer icon visible on desktop -&amp;gt; OFF
+Home icon visible on desktop -&amp;gt; OFF
+Network Servers icon visible on desktop -&amp;gt; OFF
+Trash icon visible on desktop -&amp;gt; ON
+Show mounted volumes on the desktop -&amp;gt; ON
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;From the above list if you decide you want to see the Computer and Home icons or perhaps not have any icons then go right ahead. I have my reasons for the above :)&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;Goto Shell section and make sure every toggle is OFF&lt;/p&gt;
+
+&lt;p&gt;Goto Shell Extensions&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;This is where we do most of the customizations. We will come back to this but for now:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Menu Extension -&amp;gt; OFF
+Media Player Extension -&amp;gt; ON
+Smart Overview Extension -&amp;gt; ON
+Monitor Status Extension -&amp;gt; OFF
+Bottom Panel Extension -&amp;gt; OFF
+User Themes Extension -&amp;gt; ON
+noa11y Extension -&amp;gt; ON
+Alt Tab Extension -&amp;gt; ON
+Notification Extension -&amp;gt; ON
+Shutdown Menu Extension -&amp;gt; ON
+Window List Extension -&amp;gt; OFF
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;&lt;p&gt;Goto Theme section and select Mint-Z-Dark as the Shell theme&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;h2&gt;Installing tweaks&lt;/h2&gt;
+
+&lt;p&gt;As I'm running this distro on a 10&quot; netbook, I wanted all the screen real-estate I can get. Besides running apps in full screen mode is all the rage these days! The other tweak that comes from the same repository, is to overlay an icon when viewing all open windows in the &lt;a href=&quot;http://en.wikipedia.org/wiki/Exposé_(Mac_OS_X)&quot;&gt;Exposé view&lt;/a&gt;. This makes it a lot easier to figure out which window preview is for which App.&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;Install PPA repository and plugins&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:webupd8team/gnome3
+sudo apt-get update
+sudo apt-get install gnome-shell-extensions-autohidetopbar
+sudo apt-get install gnome-shell-extensions-windowoverlay-icons
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After logging out and back logging back in (or Alt+F2 followed by r), head over to the &quot;Advanced Settings App&quot;&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;Next to the &quot;Shell Extensions&quot; section you should find new toggles&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;Smart Overview Extension -&amp;gt; ON
+Auto Hide Top Panel Extension -&amp;gt; ON
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In order to get more space and simplify the window, I wanted to get rid of the menubar by integrating it as a global menubar. Unlike MacOSX's global menubar which is horizontal, this one is vertical and works perfectly with my limited screen width.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install gnome3-globalmenu
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;&lt;p&gt;Next I wanted get rid of the scrollbar, similar to how it is with Ubuntu. I used an updated verion of it from another PPA.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:ayatana-scrollbar-team/release
+sudo apt-get update
+sudo apt-get install overlay-scrollbar  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ok almost done. The final step I did was to install a nifty applet that is great for laptops to manage power settings and screen resolutions, especially when you want to project. It adds itself right to the top menubar for easy access.&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;Install Jupiter&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:webupd8team/jupiter
+sudo apt-get update
+sudo apt-get install jupiter
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And we're done! Enjoy your new desktop this holiday season and Happy 2012!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1&gt;References&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.webupd8.org/2011/11/autohide-top-bar-extension-finally.html&quot;&gt;Gnome 3 auto hide top bar&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.omgubuntu.co.uk/2011/12/ubuntus-overlay-scrollbar-gets-updated-heres-how-to-upgrade/&quot;&gt;Ubuntu's Overlay Scrollbar Get Updated&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.webupd8.org/2011/09/jupiter-applet-finally-available-for.html&quot;&gt;Jupiter Applet finally available for Ubuntu 11.10&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.flickr.com/photos/babytux/tags/screenshots/&quot;&gt;High-Res screenshots over at flickr&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+  </entry>
   
   <entry>
     <title>Track your New Year Resolutions with ii.do</title>

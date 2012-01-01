@@ -50,6 +50,14 @@
   <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
 <link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script src="/javascripts/responsiveslides.min.js"></script>
+<script>
+  $(function () {
+	$("#slides").responsiveSlides({maxwidth:500});
+  });
+</script>
+
 
 </head>
 
@@ -83,6 +91,143 @@
     <div id="content">
       <div class="blog-index">
 
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/01/01/a-new-desktop-for-new-year/">A New Desktop for a New Year</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2012-01-01 11:50:00 +0530" pubdate  updated >Jan 1<span>st</span>, 2012</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><div id="slides">
+  <img src="http://farm8.staticflickr.com/7011/6610804679_62d58a3e30.jpg" alt="Simple, minimilistic Mint desktop" />
+  <img src="http://farm8.staticflickr.com/7142/6610808595_cce80f4911.jpg" alt="Applications list" />
+  <img src="http://farm8.staticflickr.com/7034/6610807425_909f80bff3.jpg" alt="Window select" />
+  <img src="http://farm8.staticflickr.com/7013/6610806003_c4c8b40cfe.jpg" alt="Global Menu" />
+</div>
+
+
+<p>Compared to other new years where I would spend some time cleaning up my room or <a href="http://www.geekaholic.org/2007/12/christmas-came-early-for-me-this-year.html">upgrading my gear</a>, this year I did none of that! Instead I invested some time cleaning up my online space starting with a brand new distro. I&#8217;m a <a href="http://www.geekaholic.org/2011/08/theres-something-about-lion.html">big fan of MacOSX&#8217;s Lion desktop</a> and wanted to bring some of that minimilistic simplicity to the Linux desktop. So if the above screenshot looks appealing, then read on to see how you too can get a modern desktop that is simple and elegant. Unlike some of my previous desktop customization article, I&#8217;ll keep this one to the bare minimum so that you can implement it fairly quickly.</p>
+
+<h2>Installing the base OS</h2>
+
+<p>IMHO, Gnome 3 is the best next thing when it comes to being a modern desktop. I realize this is a controversial statement, given news of <a href="http://linux.slashdot.org/story/11/08/04/0115232/linus-torvalds-ditches-gnome-3-for-xfce">some ditching</a> and some <a href="http://www.zdnet.com/blog/open-source/linux-mints-cinnamon-a-gnome-3x-shell-fork">forking</a> the project. But IMHO when you have a project that can polarize a community that was once united, it means you&#8217;ve got true innovation - not just incremental tweaks.</p>
+
+<p>Having said all that, I&#8217;ve started with Linux <a href="http://blog.linuxmint.com/?p=1889">Mint 12</a>, as the base distro to build my minimilistic desktop even though Mint has many of the traditional Windows like UI elements. Now, I&#8217;m sure you could do this with Ubuntu 11.10, the base for Mint 12, but I like Mint due to their focus on usability where most of what I need work out of the box!</p>
+
+<h2>Let the tweaking begin!</h2>
+
+<p>Don&#8217;t worry I&#8217;ll keep it to a minimum! The first thing I did was to get rid of the bottom taskbar completely, because its soo Windows 95 like! Fortunately, Gnome 3 comes with an &#8220;Advanced Settings App&#8221; (<code>gnome-tweak-tool</code> in CMD line) which uses the same iPhone like on-off toggles to do the job.</p>
+
+<p><img src="http://farm8.staticflickr.com/7160/6610969247_67299031a2_m.jpg" alt="Gnome 3 Advanced Settings App aka Gnome tweak tool" /></p>
+
+<blockquote><p>Goto Desktop section within Advanced Settings App.</p></blockquote>
+
+<pre><code>Have file manager handle the desktop -&gt; ON
+Computer icon visible on desktop -&gt; OFF
+Home icon visible on desktop -&gt; OFF
+Network Servers icon visible on desktop -&gt; OFF
+Trash icon visible on desktop -&gt; ON
+Show mounted volumes on the desktop -&gt; ON
+</code></pre>
+
+<p>From the above list if you decide you want to see the Computer and Home icons or perhaps not have any icons then go right ahead. I have my reasons for the above :)</p>
+
+<blockquote><p>Goto Shell section and make sure every toggle is OFF</p>
+
+<p>Goto Shell Extensions</p></blockquote>
+
+<p>This is where we do most of the customizations. We will come back to this but for now:</p>
+
+<pre><code>Menu Extension -&gt; OFF
+Media Player Extension -&gt; ON
+Smart Overview Extension -&gt; ON
+Monitor Status Extension -&gt; OFF
+Bottom Panel Extension -&gt; OFF
+User Themes Extension -&gt; ON
+noa11y Extension -&gt; ON
+Alt Tab Extension -&gt; ON
+Notification Extension -&gt; ON
+Shutdown Menu Extension -&gt; ON
+Window List Extension -&gt; OFF
+</code></pre>
+
+<blockquote><p>Goto Theme section and select Mint-Z-Dark as the Shell theme</p></blockquote>
+
+<h2>Installing tweaks</h2>
+
+<p>As I&#8217;m running this distro on a 10&#8221; netbook, I wanted all the screen real-estate I can get. Besides running apps in full screen mode is all the rage these days! The other tweak that comes from the same repository, is to overlay an icon when viewing all open windows in the <a href="http://en.wikipedia.org/wiki/Exposé_(Mac_OS_X)">Exposé view</a>. This makes it a lot easier to figure out which window preview is for which App.</p>
+
+<blockquote><p>Install PPA repository and plugins</p></blockquote>
+
+<pre><code>sudo add-apt-repository ppa:webupd8team/gnome3
+sudo apt-get update
+sudo apt-get install gnome-shell-extensions-autohidetopbar
+sudo apt-get install gnome-shell-extensions-windowoverlay-icons
+</code></pre>
+
+<p>After logging out and back logging back in (or Alt+F2 followed by r), head over to the &#8220;Advanced Settings App&#8221;</p>
+
+<blockquote><p>Next to the &#8220;Shell Extensions&#8221; section you should find new toggles</p></blockquote>
+
+<pre><code>Smart Overview Extension -&gt; ON
+Auto Hide Top Panel Extension -&gt; ON
+</code></pre>
+
+<p>In order to get more space and simplify the window, I wanted to get rid of the menubar by integrating it as a global menubar. Unlike MacOSX&#8217;s global menubar which is horizontal, this one is vertical and works perfectly with my limited screen width.</p>
+
+<pre><code>sudo apt-get install gnome3-globalmenu
+</code></pre>
+
+<blockquote><p>Next I wanted get rid of the scrollbar, similar to how it is with Ubuntu. I used an updated verion of it from another PPA.</p></blockquote>
+
+<pre><code>sudo add-apt-repository ppa:ayatana-scrollbar-team/release
+sudo apt-get update
+sudo apt-get install overlay-scrollbar  
+</code></pre>
+
+<p>Ok almost done. The final step I did was to install a nifty applet that is great for laptops to manage power settings and screen resolutions, especially when you want to project. It adds itself right to the top menubar for easy access.</p>
+
+<blockquote><p>Install Jupiter</p></blockquote>
+
+<pre><code>sudo add-apt-repository ppa:webupd8team/jupiter
+sudo apt-get update
+sudo apt-get install jupiter
+</code></pre>
+
+<p>And we&#8217;re done! Enjoy your new desktop this holiday season and Happy 2012!</p>
+
+<hr />
+
+<h1>References</h1>
+
+<ul>
+<li><a href="http://www.webupd8.org/2011/11/autohide-top-bar-extension-finally.html">Gnome 3 auto hide top bar</a></li>
+<li><a href="http://www.omgubuntu.co.uk/2011/12/ubuntus-overlay-scrollbar-gets-updated-heres-how-to-upgrade/">Ubuntu&#8217;s Overlay Scrollbar Get Updated</a></li>
+<li><a href="http://www.webupd8.org/2011/09/jupiter-applet-finally-available-for.html">Jupiter Applet finally available for Ubuntu 11.10</a></li>
+<li><a href="http://www.flickr.com/photos/babytux/tags/screenshots/">High-Res screenshots over at flickr</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+  </article>
 
 
   <article>
@@ -413,6 +558,10 @@ t -T 1
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/01/01/a-new-desktop-for-new-year/">A new desktop for a new year</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2011/12/31/new-year-resolution-iido/">Track your New Year Resolutions with ii.do</a>
       </li>
     
@@ -448,7 +597,7 @@ t -T 1
     </div>
   </div>
   <footer><p>
-  Copyright &copy; 2011 - Bud -
+  Copyright &copy; 2012 - Bud -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
