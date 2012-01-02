@@ -20,7 +20,7 @@ Compared to other new years where I would spend some time cleaning up my room or
 
 ## Installing the base OS
 
-IMHO, Gnome 3 is the best next thing when it comes to being a modern desktop. I realize this is a controversial statement, given news of [some ditching](http://linux.slashdot.org/story/11/08/04/0115232/linus-torvalds-ditches-gnome-3-for-xfce) and some [forking](http://www.zdnet.com/blog/open-source/linux-mints-cinnamon-a-gnome-3x-shell-fork) the project. But IMHO when you have a project that can polarize a community that was once united, it means you've got true innovation - not just incremental tweaks.
+IMHO, Gnome 3 is the next best thing when it comes to being a modern desktop. I realize this is a controversial statement, given news of [some ditching](http://linux.slashdot.org/story/11/08/04/0115232/linus-torvalds-ditches-gnome-3-for-xfce) and some [forking](http://www.zdnet.com/blog/open-source/linux-mints-cinnamon-a-gnome-3x-shell-fork) the project. But IMHO when you have a project that can polarize a community that was once united, it means you've got true innovation - not just incremental tweaks.
 
 Having said all that, I've started with Linux [Mint 12](http://blog.linuxmint.com/?p=1889), as the base distro to build my minimilistic desktop even though Mint has many of the traditional Windows like UI elements. Now, I'm sure you could do this with Ubuntu 11.10, the base for Mint 12, but I like Mint due to their focus on usability where most of what I need work out of the box!
 
