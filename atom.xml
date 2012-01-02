@@ -4,7 +4,7 @@
   <title>Geekaholic adventures</title>
   <link href="http://geekaholic.github.com/atom.xml" rel="self"/>
   <link href="http://geekaholic.github.com/"/>
-  <updated>2012-01-01T15:02:51+05:30</updated>
+  <updated>2012-01-02T14:25:49+05:30</updated>
   <id>http://geekaholic.github.com/</id>
   <author>
     <name>Bud</name>
@@ -117,11 +117,37 @@ sudo apt-get install jupiter
 
 &lt;hr /&gt;
 
+&lt;h1&gt;Update (02-Jan-2012)&lt;/h1&gt;
+
+&lt;p&gt;After writing the article I wondered if it was possible to get the Window titlebar to dissapear whereby Apps can run in full screen similar to Lion. Though its not perfect, the following hacks will give you just that!&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;Install window-buttons extension to mirror &lt;code&gt;minimize, maximize, close&lt;/code&gt; buttons in the top menubar&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install gnome-shell-extension-window-buttons
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now enable the extension using &quot;Gnome Advanced Settings&quot; by visiting the &quot;Shell Extensions&quot; section.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Window Buttons Extension -&amp;gt; ON
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;&lt;p&gt;Install maximus daemon to automatically remove the title bar as a window is maximized.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install maximus
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Restary Gnome 3 and your set. You can restore a maximized window using the buttons in the top right corner of the top menu bar.&lt;/p&gt;
+
+&lt;hr /&gt;
+
 &lt;h1&gt;References&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.webupd8.org/2011/11/autohide-top-bar-extension-finally.html&quot;&gt;Gnome 3 auto hide top bar&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.omgubuntu.co.uk/2011/12/ubuntus-overlay-scrollbar-gets-updated-heres-how-to-upgrade/&quot;&gt;Ubuntu's Overlay Scrollbar Get Updated&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.webupd8.org/2011/11/install-gnome-shell-global-menu-in.html&quot;&gt;Gnome 3 global menu&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.webupd8.org/2011/05/how-to-remove-maximized-windows.html&quot;&gt;How to remove maximized window buttons&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.webupd8.org/2011/05/how-to-remove-maximized-windows.html&quot;&gt;Get Unity like window button extension&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.webupd8.org/2011/09/jupiter-applet-finally-available-for.html&quot;&gt;Jupiter Applet finally available for Ubuntu 11.10&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.flickr.com/photos/babytux/tags/screenshots/&quot;&gt;High-Res screenshots over at flickr&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
