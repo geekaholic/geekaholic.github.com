@@ -99,12 +99,34 @@ Ok almost done. The final step I did was to install a nifty applet that is great
 
 And we're done! Enjoy your new desktop this holiday season and Happy 2012!
 
+
+## Update (02-Jan-2012)
+
+After writing the article I wondered if it was possible to get the Window titlebar to dissapear whereby Apps can run in full screen similar to Lion. Though its not perfect, the following hacks will give you just that!
+
+> Install window-buttons extension to mirror `minimize, maximize, close` buttons in the top menubar
+
+	sudo apt-get install gnome-shell-extension-window-buttons
+
+Now enable the extension using "Gnome Advanced Settings" by visiting the "Shell Extensions" section.
+
+	Window Buttons Extension -> ON
+
+> Install maximus daemon to automatically remove the title bar as a window is maximized.
+
+	sudo apt-get install maximus
+
+Restary Gnome 3 and your set. You can restore a maximized window using the buttons in the top right corner of the top menu bar.
+
 ----
 
 # References
 
 * [Gnome 3 auto hide top bar](http://www.webupd8.org/2011/11/autohide-top-bar-extension-finally.html)
 * [Ubuntu's Overlay Scrollbar Get Updated](http://www.omgubuntu.co.uk/2011/12/ubuntus-overlay-scrollbar-gets-updated-heres-how-to-upgrade/)
+* [Gnome 3 global menu](http://www.webupd8.org/2011/11/install-gnome-shell-global-menu-in.html)
+* [How to remove maximized window buttons](http://www.webupd8.org/2011/05/how-to-remove-maximized-windows.html)
+* [Get Unity like window button extension](http://www.webupd8.org/2011/05/how-to-remove-maximized-windows.html)
 * [Jupiter Applet finally available for Ubuntu 11.10](http://www.webupd8.org/2011/09/jupiter-applet-finally-available-for.html) 
 * [High-Res screenshots over at flickr](http://www.flickr.com/photos/babytux/tags/screenshots/)
 
