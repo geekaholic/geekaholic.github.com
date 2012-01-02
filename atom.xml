@@ -4,7 +4,7 @@
   <title>Geekaholic adventures</title>
   <link href="http://geekaholic.github.com/atom.xml" rel="self"/>
   <link href="http://geekaholic.github.com/"/>
-  <updated>2012-01-02T14:25:49+05:30</updated>
+  <updated>2012-01-02T14:26:53+05:30</updated>
   <id>http://geekaholic.github.com/</id>
   <author>
     <name>Bud</name>
@@ -117,7 +117,7 @@ sudo apt-get install jupiter
 
 &lt;hr /&gt;
 
-&lt;h1&gt;Update (02-Jan-2012)&lt;/h1&gt;
+&lt;h2&gt;Update (02-Jan-2012)&lt;/h2&gt;
 
 &lt;p&gt;After writing the article I wondered if it was possible to get the Window titlebar to dissapear whereby Apps can run in full screen similar to Lion. Though its not perfect, the following hacks will give you just that!&lt;/p&gt;
 
