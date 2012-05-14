@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Geekaholic adventures: Peer-to-Peer Collaborative development using GIT</title>
+  <meta name="author" content="Bud">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="canonical" href="http://geekaholic.github.com/blog/2012/05/14/git-on-p2p-development/"/>
+  <link href="/favicon.png" rel="shortcut icon" />
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="http://s3.amazonaws.com/ender-js/jeesh.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Geekaholic adventures" type="application/atom+xml"/>
+  
+
+  
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script src="/javascripts/responsiveslides.min.js"></script>
+<script>
+  $(function () {
+	$("#slides").responsiveSlides({maxwidth:500});
+  });
+</script>
+
+
+</head>
+
+<body  >
+  <header><hgroup>
+  <h1><a href="/">Geekaholic adventures</a></h1>
+  
+    <h2>All things geek with an attitude</h2>
+  
+</hgroup>
+
+</header>
+  <nav role=navigation><ul role=subscription data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<form action="http://google.com/search" method="get">
+  <fieldset role="site-search">
+    <input type="hidden" name="q" value="site:geekaholic.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+<ul role=main-navigation>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/slides">Slides</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry">
+  
+  <header>
+    
+      <h1 class="entry-title">Peer-to-Peer Collaborative Development Using GIT</h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2012-05-14 09:20:00 +0530" pubdate  updated >May 14<span>th</span>, 2012</time>
+
+
+</p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Wow how time flies when you&#8217;re having fun! I first thought of writing this post back in January, when I was on a roll with writing blog posts. But it never materialized beyond notes I collected in preparation. Come several months later with a lot more experience on what I am about to tell you, and you have this post. The notes I&#8217;m reffering to is about a development style that came about as a result of optimizing, how we at <a href="http://thinkcube.com">thinkCube</a> organize and work with source code in a <a href="http://en.wikipedia.org/wiki/Revision_control">revision control system</a>. Considering the wide use of such systems such as SVN and GIT, I thought I&#8217;d share our development experience in the hope it will help you to take another look at your own development style. But before I get into it, I&#8217;d like very briefly touch on some background on the evolution of development styles around version control systems.</p>
+
+<h2>Thou shalt not commit, Yet!</h2>
+
+<p>Back in the days of <a href="http://en.wikipedia.org/wiki/Concurrent_Versions_System">CVS</a>, source code lived centrally on a server called a repository. One had to earn the right to read/write to this repository in order to ensure &#8220;world order&#8221; (others had to submit a patch via <a href="http://bugzilla.org">Bugzilla</a>). While this led to a centrally managed system of Collaborative software development, it also created a new software development style of &#8220;Earn your commitership&#8221;, &#8220;Commit often&#8221; and &#8220;Communicate often&#8221;. Nothing much changed when everyone moved over to <a href="http://subversion.apache.org">SVN</a>, which started out as an improved CVS. This development style didn&#8217;t go down well with Linus Torvalds for his Linux work and so he created GIT instead and <a href="http://www.youtube.com/watch?v=4XpnKHJAok8">hates CVS/SVN</a>.</p>
+
+<h2>Pray-Pull-Push style of development</h2>
+
+<p>We started with CVS back in 2005 and then SVN for managing our development at thinkCube. A little while after git came along when it was stable enough to use and also was usuable by mere mortals, we made the switch. At first we had some trouble wrapping our heads around git and so just used it like SVN where we used to always do <code>commit/pull/push</code> operations as if they were atomic. But after about a week or two, we realized the power of git was in its ability to let you commit locally and push when you were ready to share. And so, yet another development style arose where git acted as a Collaborative Whiteboard for sharing code changes. This also meant developers needed push access to the central repository in the same manner commit access was required with SVN/CVS.</p>
+
+<p>The unfortunate development style this results in is that developers may occasionally push unfinished worked upstream just to share it with the &#8220;Developer next door&#8221;. The consequence of that maybe felt by the poor developer that spent all night working on a feature, pulls in oder to push to find that his code now conflicts for no apparent reason!</p>
+
+<p>Now I know a lot of you may be on this style of development and thinking, &#8220;If our developers do that, we punish them!&#8221; and so they don&#8217;t! Good for you! But my take on this is, if the system is fundamentally broken then it&#8217;s better to fix it than to enforce tough rules. For example, if I may digress for a bit, &#8220;Why are <a href="http://en.wikipedia.org/wiki/Auto_rickshaw">TukTuk</a> drivers and Motor Cyclist so careless?&#8221;. Is it likely that only careless drivers pick up these vehicles or is it more likely the vehicle made them reckless? My advice is if the tool is broken, then fix it! (and ban TukTuks :)</p>
+
+<p>Therefore last year we decided to adopt our current style of development which is as follows.</p>
+
+<h2>Fetch-Merge-Push style of development</h2>
+
+<p><a href="http://en.wikipedia.org/wiki/Yan_Can_Cook">If Linus can do it, then so can you!</a> We didn&#8217;t invent this stuff but we did adapt it in a manner which scales for us. The idea is simple, stop devs from committing upstream as a means of sharing changes but instead get them to share peer to peer by fetching from each other. Our git repos are setup so that everyone has read access to clone the repo but only a couple of devs (usually just one dev) can push to a given repo. That means the dev who has push access usually will not need to <code>pull</code> prior to pushing because no one else can change it. This is what git was designed to do and yet it&#8217;s probably one of the least used features among git converts.</p>
+
+<p>Ok so lets get technical shall we?</p>
+
+<p>First off, I&#8217;m assuming you know git basics and are already using it. If not then <a href="http://digit.lk/09_dec_git">checkout my git article on Digit</a></p>
+
+<h2>Sharing your repo</h2>
+
+<p>Let&#8217;s look at how you can share your git repo with another P2P style. Suppose you have a repo as follows:</p>
+
+<blockquote><p>/home/bud/repos/awesome.repo</p></blockquote>
+
+<p>You can easily share your awesome.repo with anyone on the local networking using git-daemon command by first cd-ing to it&#8217;s parent directory.</p>
+
+<pre><code>$ cd /home/bud/repos
+$ git daemon --export-all --base-path=.
+</code></pre>
+
+<p>The above will share all your git repos under the current directory as read-only for others in the network to fetch. Git daemon will run in the foreground by default and so once you&#8217;re done sharing you can just Ctrl+C it.</p>
+
+<h2>Fetching a shared repo</h2>
+
+<p>In order to fetch from a fellow dev, you will first need to add him/her as a remote. Chances are you cloned the project from upstream in which case you have just one default remote called origin which points to your upstream repo.</p>
+
+<blockquote><p>To add another remote for your friend joe for example</p></blockquote>
+
+<pre><code>$ cd /home/bud/repos/awesome.repo
+$ git remote add joe git://joes-computer.local/awesome.repo
+</code></pre>
+
+<p>From within your repo, you add a remote using the git remote command. The url above uses git&#8217;s special <code>git://</code> protocol that is understood by the git-daemon, while I&#8217;m relying on <a href="http://en.wikipedia.org/wiki/Multicast_DNS">mDNS</a> to resolve joes-computer.local automatically. If your network(or OS) doesn&#8217;t support this, then you can just use the IP address.</p>
+
+<blockquote><p>Finally to fetch joe&#8217;s changes over the network to your machine issue:</p></blockquote>
+
+<pre><code>$ git fetch joe
+</code></pre>
+
+<p>The above command should give you some feedback as to the success of the fetch operation. Remember that fetch is safe since it only &#8220;fetches&#8221; as opposed to <code>pull</code> which fetches and then tries to merge. So while you could&#8217;ve used <code>pull</code> instead of <code>fetch</code>, I wouldn&#8217;t recommend it!</p>
+
+<h2>Merging and deleting</h2>
+
+<p>Now that you have a copy of the remote changes, what you&#8217;d want to do next is to see which branches they were working on. Usually joe will tell you, hey my latest changes are on the <code>new-cool-feature</code> branch.</p>
+
+<pre><code>$ git branch -a
+* master
+experimental
+remotes/joe/master
+remotes/joe/new-cool-feature
+</code></pre>
+
+<p>Git branch will first show your local branches (master, experimental) followed by the remote ones. At this point you should checkout a remote branch you&#8217;re planning to merge and just make sure everything is working.</p>
+
+<pre><code>$ git checkout -b joes-new-cool-feature remotes/joe/new-cool-feature
+</code></pre>
+
+<p>This creates a local branch called &#8220;joes-new-cool-feature&#8221; which tracks the remote branch <code>remotes/joe/new-cool-feature</code> and switches the current HEAD to it. Once your happy then you can switch back to master and merge.</p>
+
+<pre><code>$ git checkout master
+$ git merge joes-new-cool-feature
+</code></pre>
+
+<p>But&#8230; if you have any merge conflicts then you will have to resolve it! If you don&#8217;t then your master will remain in a state of CONFLICT. If that sounds like additional work, then do what I do instead of above.</p>
+
+<pre><code>$ git checkout master
+$ git checkout -b master-merge-joes-new-cool-feature
+$ git merge joes-new-cool-feature
+$ git checkout master
+$ git merge master-merge-joes-new-cool-feature
+$ git branch -d master-merge-joes-new-cool-feature
+</code></pre>
+
+<p>Wow that&#8217;s a handful of commands to type, you say. Trust me, it beats wasting time trying to resolve someone elses conflict! In above, we fork master as <code>master-merge-joes-new-cool-feature</code> in anticipation of a bumpy merge. If things go right, we then merge the merged to master :) The last line is just to delete the temporary branch which we no longer need.</p>
+
+<p>Of course, as you go back and forth merging these micro commits with a dev, you will get into a comfort zone of realizing things won&#8217;t go wrong in which case you could merge the remote directly.</p>
+
+<pre><code>$ git merge remotes/joe/new-cool-feature
+</code></pre>
+
+<p>It all depends on how much you trust the other dev :) and how much of merge conflict resolution you&#8217;re prepared to take on. The branching approach is safer and if you&#8217;re the BOSS and you have a merge conflict you can simply abandon the branch and ask your peer dev to fetch from you and fix the conflict and let you know! (Which is what Linus would generally do)</p>
+
+<p>One particularly useful technique to extract a good commit from a potentially set of conflicting ones is to use <code>Cherry Picking</code>. If you know the commit log&#8217;s SHA1 then you can use that to do a cherry-pick style merge.</p>
+
+<pre><code>$ git cherry-pick 623a3dfb5e86f4da4e043f26b6f075f6e3be77ad
+</code></pre>
+
+<h2>Working remotely </h2>
+
+<p>The issue with git-daemon is that it is more difficult when you&#8217;re not on the same network and masked by a bogus IP. One technique is to get the router to <a href="http://en.wikipedia.org/wiki/Network_address_translation">DNAT</a> the 9418 port. Another option is to setup a VPN. A third option is to use a bit of SSH tunneling magic to get everything to work. I&#8217;ll cover that in a different post, perhaps.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Buddhika Siddhisena</span></span>
+
+      
+
+
+
+
+<time datetime="2012-05-14 09:20:00 +0530" pubdate  updated >May 14<span>th</span>, 2012</time>
+
+
+
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/collaboration/'>collaboration</a>, <a class='category' href='/blog/categories/git/'>git</a>, <a class='category' href='/blog/categories/p2p/'>p2p</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://geekaholic.github.com/blog/2012/05/14/git-on-p2p-development/" data-via="geekaholic" data-counturl="http://geekaholic.github.com/blog/2012/05/14/git-on-p2p-development/" >Tweet</a>
+  
+  
+  <g:plusone size="medium"></g:plusone>
+  
+</div>
+
+    
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread"><div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'geekaholicblog';
+  var disqus_identifier = 'http://geekaholic.github.com/blog/2012/05/14/git-on-p2p-development/';
+  var disqus_url = 'http://geekaholic.github.com/blog/2012/05/14/git-on-p2p-development/';
+  //var disqus_developer = 1;
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside role=sidebar>
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/05/14/git-on-p2p-development/">Peer-to-Peer Collaborative development using GIT</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/01/a-new-desktop-for-new-year/">A new desktop for a new year</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/31/new-year-resolution-iido/">Track your New Year Resolutions with ii.do</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/09/02/getting-down-with-markdown/">Getting Down With Markdown</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("geekaholic", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/geekaholic" class="twitter-follow-button" data-width="208px" data-show-count="false">Follow @geekaholic</a>
+  
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer><p>
+  Copyright &copy; 2012 - Bud -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+</body>
+</html>
