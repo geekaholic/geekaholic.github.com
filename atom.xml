@@ -4,13 +4,34 @@
   <title>Geekaholic adventures</title>
   <link href="http://geekaholic.github.com/atom.xml" rel="self"/>
   <link href="http://geekaholic.github.com/"/>
-  <updated>2012-05-14T10:30:48+05:30</updated>
+  <updated>2012-05-30T20:11:45+05:30</updated>
   <id>http://geekaholic.github.com/</id>
   <author>
     <name>Bud</name>
     
   </author>
 
+  
+  <entry>
+    <title>Why we started ZoomBA</title>
+    <link href="http://geekaholic.github.com/blog/2012/05/30/starting-zoomba/"/>
+    <updated>2012-05-30T16:20:00+05:30</updated>
+    <id>http://geekaholic.github.com/blog/2012/05/30/starting-zoomba</id>
+    <content type="html">&lt;p&gt;Those who follow me on social media might have seen me go on about this &quot;ZoomBA&quot; thing and may have some idea about it. For others, in short, it's our own Cloud &lt;a href=&quot;http://en.wikipedia.org/wiki/Software_as_a_service&quot;&gt;SaaS&lt;/a&gt; meant for Small Businesses (or SMEs as it is called elsewhere). But I thought of sharing the story of ZoomBA (which at this point sounds more like an African folk tale)r. Though we started working on ZoomBA earlier this year, the whole concept actually began quite a while back.&lt;/p&gt;
+
+&lt;p&gt;Once upon a time,  in December 2004, &lt;a href=&quot;http://sanjiva.weerawarana.org&quot;&gt;Sanjiva&lt;/a&gt; rang me up on an idea of building an &quot;Out of the box&quot; appliance for Small Businesses out in the US. By his estimates, majority of them did not have a drop in IT solution which worked. Being a FOSS advocate myself and trying to drive Linux adoption, I immediately connected with the idea of making an IT system that worked for a Small Business. But I wasn't ready to start a company just then and had already committed to &lt;a href=&quot;http://www.virtusa.com&quot;&gt;join another company&lt;/a&gt;, so it had to wait!&lt;/p&gt;
+
+&lt;p&gt;Finally in late 2005, myself and &lt;a href=&quot;https://www.facebook.com/lakmal.warusawithana&quot;&gt;Lakmal&lt;/a&gt; teamed up for the challenge. We didn't have much startup capital and so incubated our project along side &lt;a href=&quot;htt://wso2.com&quot;&gt;Sanjiva's other company&lt;/a&gt;. After a bit of brainstorming we came up with the name THINKCube for the company and the tagline &quot;Out of the box solutions in a box&quot; (&lt;a href=&quot;http://shahani-w.blogspot.com/&quot;&gt;Shahani&lt;/a&gt; was the inspiration for it). Company setup aside, we really started focusing on the key question of &quot;What does it take for a Small Businesses to run their IT system and what's preventing them from doing it&quot;.&lt;/p&gt;
+
+&lt;p&gt;Without going into the details, I will simply state that we realized a lot of Small Businesses didn't want the hassle of hiring an IT department only to loose control to the IT guy. Instead they were very focused on growing their business and IT is seen as something that would be nice to have but not worth the trouble.&lt;/p&gt;
+
+&lt;p&gt;thinkCube's go to market exercise was an interesting learning experience. Like most startups, we had to go through a lot of experimentation in figuring out the product's technology and look &amp;amp; feel. The other challenge was how best to put it in front of our end user. First we tried to build a hardware appliance but later realized that we weren't really equipped to handle the logistics of moving devices around the globe. So we turned to virtualization by creating &lt;a href=&quot;https://solutionexchange.vmware.com/store/category_groups/19&quot;&gt;VMWare bottles&lt;/a&gt; of the product and then &lt;a href=&quot;http://ieeexplore.ieee.org/xpl/articleDetails.jsp?reload=true&amp;amp;arnumber=5745841&quot;&gt;multi-tenant virtualization&lt;/a&gt; running on a Telco's &lt;a href=&quot;http://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29&quot;&gt;Cloud Infrastructure&lt;/a&gt;. In the same manner we did several UI iterations before settling down on our current dynamic shell which offers SAML based SSO, fun dashboard widgets and context sensitive end-to-end help. (You can read more about it on the &lt;a href=&quot;http://zoombacloud.com/blog/2012/05/zoomba-cloud-launched/&quot;&gt;ZoomBA blog.&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;So thats how ZoomBA came about. It's our attempt to really address the core issues that prevent Cloud SaaS adoption among Small Businesses. While I know we haven't addressed all the issues, I am confident we have addressed some of the most fundamental ones.&lt;/p&gt;
+
+&lt;p&gt;The journey so far from the inception of thinkCube to us brainstorming, arguing, building, abandoning, rebuilding has been such a reward. I hope our hard efforts will come through when users finally get their hands on the system once we start sending invites out soon! In the mine time, if you know anyone who could benefit from a service like ZoomBA, please &lt;a href=&quot;http://facebook.com/zoombacloud&quot;&gt;spread the news&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
   
   <entry>
     <title>Peer-to-Peer Collaborative development using GIT</title>
