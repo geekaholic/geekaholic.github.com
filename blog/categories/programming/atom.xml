@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Programming | Geekaholic adventures]]></title>
+  <link href="http://geekaholic.github.com/blog/categories/programming/atom.xml" rel="self"/>
+  <link href="http://geekaholic.github.com/"/>
+  <updated>2014-06-16T10:37:10-05:00</updated>
+  <id>http://geekaholic.github.com/</id>
+  <author>
+    <name><![CDATA[Bud]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[VIM Reloaded]]></title>
+    <link href="http://geekaholic.github.com/blog/2014/06/15/vim-reloaded/"/>
+    <updated>2014-06-15T23:24:12-05:00</updated>
+    <id>http://geekaholic.github.com/blog/2014/06/15/vim-reloaded</id>
+    <content type="html"><![CDATA[<p>It&rsquo;s been a really really long time since I last blogged so bear with me while I try get a little bit of my mojo back :) I&rsquo;ve been busy changing countries, cities, apartments, jobs &ndash; the usual stuff life throws at you. But the one thing I&rsquo;ve tried to change and keep coming back to is my beloved editor &ndash; VIM. This post is on making VIM a little better, like that <a href="http://www.sublimetext.com">other one</a> developers tend to use these days. Don&rsquo;t get me wrong, I&rsquo;m not suggesting VIM is better (or worse). But after having used VIM for so long, I don&rsquo;t want to just give up on it. If you&rsquo;re in the same camp then read on.</p>
+
+<h2>Get me some of that WYSIWYG</h2>
+
+<p>I know what you&rsquo;re thinking &ndash; VIM is awesome because its all terminal. And there is no reason to give that up! I haven&rsquo;t, especially for those quick edits. However when it comes to coding for any length of time, my goto editor has been one where VIM is wrapped in WYSIWYG goodness. I&rsquo;m talking about the likes of gVim alternatives such as vim-gnome (Linux Gnome), vim-gtk (Linux) or macVim (OSX). Pick one depending on the platform. I use gnome-vim on Debian and macVIM on OSX.</p>
+
+<blockquote><p>For Debian based&hellip;</p></blockquote>
+
+<pre><code>$ sudo apt-get install vim-gnome
+</code></pre>
+
+<blockquote><p>For OSX visit <a href="https://code.google.com/p/macvim/">macVIM site</a></p></blockquote>
+
+<p>And so the fun begins! First I&rsquo;ll show you how I got tabs working in a helpful manner where each file you opened from the command line would open up as a new tab within the same session window. This was easily accomplished using a specially crafted alias which was placed in the <code>bash_profile</code> (or <code>bashrc</code>) file.</p>
+
+<pre><code>alias gvi='mvim --servername VIM --remote-tab-silent'
+</code></pre>
+
+<p>Here I use macVIM but one could easily substitute gvim on Linux. Now try opening a file or two and they should open in separate tabs.</p>
+
+<pre><code>gvi /etc/passwd /etc/hosts
+gvi ~/.bash_profile
+</code></pre>
+
+<p>Switching tabs can be performed via the mouse but I prefer using <code>command + shift + ]</code> and <code>command + shift + [</code> key stokes on OSX which work out of the box on macVIM. However on Linux to get a similar functionality, I had to add a special key mapping to <code>~/.gvimrc</code>. Since I wanted to keep the same feel as on OSX, I substituted the <code>alt</code> key in place of <code>command</code> key found on Macs.</p>
+
+<blockquote><p>~/.gvimrc</p></blockquote>
+
+<pre><code>" Map tab switching
+map &lt;A-}&gt; gt
+map &lt;A-{&gt; gT
+</code></pre>
+
+<p>All we are doing is making use of the <code>gt</code> and <code>gT</code> commands to switch between next and previous tab by mapping it to shortcut keys.</p>
+
+<h2>Add some color</h2>
+
+<p>While the default color scheme that comes with vim is pretty straightforward, it lacked the vibrant and cheerful syntax highlighting found in those other editors. Not a problem though, thanks to <a href="http://www.vimninjas.com/2012/08/26/10-vim-color-schemes-you-need-to-own/">Vim Color Schemes</a>. My favorite one, which I ended up using was <a href="https://github.com/tpope/vim-vividchalk">Vividchalk</a>. Simply download the color theme file of your choice (such as vividchalk.vim) to <code>~/.vim/colors/</code> and set it via .gvimrc.</p>
+
+<blockquote><p>~/.gvimrc</p></blockquote>
+
+<pre><code>" Set color scheme
+syntax on
+set background=dark
+colorscheme vividchalk
+" Optionally set font and transparency
+set guifont=Monaco:h13
+" set guifont=Monospace\ Bold\ 10.5
+set transparency=15
+</code></pre>
+
+<h2>Better searching</h2>
+
+<p>Searching is an important part of editing and so there are few things we can do to improve VIMs default search capabilities.</p>
+
+<pre><code>" Search related
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+</code></pre>
+
+<p>First option <code>incsearch</code> makes search incremental so that as you type the search keyword (via /keyword in command mode), VIM will start highlighting and transporting you to that location. <code>hlsearch</code> is useful in that it highlights all keywords matching the search criteria. The last two, <code>ignorecase</code> and <code>smartcase</code> together provide a smarter way to search by making any keyword typed all in lowercase to be a case insensitive search while still retaining case sensitivity for mixed case (e.g /FooBar won&rsquo;t find foobar but /foobar will find bothFoobar and foobar)</p>
+
+<h2>Few more enhancements for coders</h2>
+
+<p>I&rsquo;ll close off with a few more enhancements that can come in handy when writing code. First is to turn on line numbers by default and it looks great with <a href="https://github.com/tpope/vim-vividchalk">my color scheme</a>. I also prefer seeing a vertical guide fixed to 80 characters in order to keep me in check as to the length of my code. Along the same line, its also a good practice to catch those trailing white spaces which can appear ugly when viewed through a visual diff tool. Finally having auto completion turned on may come in handy, especially if you suffer from short term memory like I do :)</p>
+
+<blockquote><p>~/.gvimrc</p></blockquote>
+
+<pre><code>" Show line numbers
+set number
+" Show 80 column guide
+set colorcolumn=80
+" Highlight trailing spaces
+match ErrorMsg '\s\+$'
+" Auto completion
+setlocal omnifunc=syntaxcomplete#Complete
+filetype plugin on
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+" Ruby autocompletion
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+</code></pre>
+
+<p>To activate a language specific auto completion, use <code>Ctrl-X Ctrl-O</code> combination while on the insert mode. Besides using language specific auto completion, vim also supports a smart auto completion which relies on text already found in the document being edited, which can be activated using <code>Ctrl-N</code> after typing part of the word. It is quite useful when you want to retype a previously declared variable or method name.</p>
+
+<p><img src="https://farm4.staticflickr.com/3915/14456394103_f4f5b19677.jpg" alt="VIM screenshot" /></p>
+
+<p>There are a ton of other tips that can make VIM so much better for coders such as <a href="http://vim.wikia.com/wiki/Folding">folding code blocks</a> or visually <a href="https://github.com/vim-scripts/ShowMarks">showing marks made via ma, mb etc.</a>. Chances are, if you can think of a feature you&rsquo;d like to have, there&rsquo;s probably a plugin or built in to make that happen!</p>
+
+<p>I&rsquo;ll leave you with this <a href="http://www.redditmirror.cc/cache/websites/ivanidris.net_7xk05/ivanidris.net/wordpress/index.php/2009/02/03/sharpen-the-vim-saw.html">great post</a> which has few more useful tips.</p>
+
+<p>~Happy VIMing~</p>
+]]></content>
+  </entry>
+  
+</feed>
