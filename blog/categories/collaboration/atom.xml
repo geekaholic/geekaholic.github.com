@@ -1,106 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Peer-to-Peer Collaborative Development Using GIT - Geekaholic adventures</title>
-  <meta name="author" content="Bud">
-
-  
-  <meta name="description" content="Wow how time flies when you&rsquo;re having fun! I first thought of writing this post back in January, when I was on a roll with writing blog posts. &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://geekaholic.github.com/blog/2012/05/14/git-on-p2p-development">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Geekaholic adventures" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
-<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-<script src="/javascripts/responsiveslides.min.js"></script>
-<script>
-  $(function () {
-	$("#slides").responsiveSlides({maxwidth:500});
-  });
-</script>
-
-
-  
-
-</head>
-
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">Geekaholic adventures</a></h1>
-  
-    <h2>All things geek with an attitude</h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:geekaholic.github.com" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul role=main-navigation>
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="/slides">Slides</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
+  <title><![CDATA[Category: Collaboration | Geekaholic adventures]]></title>
+  <link href="http://geekaholic.github.com/blog/categories/collaboration/atom.xml" rel="self"/>
+  <link href="http://geekaholic.github.com/"/>
+  <updated>2014-06-15T23:11:35-05:00</updated>
+  <id>http://geekaholic.github.com/</id>
+  <author>
+    <name><![CDATA[Bud]]></name>
     
-      <h1 class="entry-title">Peer-to-Peer Collaborative Development Using GIT</h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
   
+  <entry>
+    <title type="html"><![CDATA[Why We Started ZoomBA]]></title>
+    <link href="http://geekaholic.github.com/blog/2012/05/30/starting-zoomba/"/>
+    <updated>2012-05-30T16:20:00-05:00</updated>
+    <id>http://geekaholic.github.com/blog/2012/05/30/starting-zoomba</id>
+    <content type="html"><![CDATA[<p>Those who follow me on social media might have seen me go on about this &ldquo;ZoomBA&rdquo; thing and may have some idea about it. For others, in short, it&rsquo;s our own Cloud <a href="http://en.wikipedia.org/wiki/Software_as_a_service">SaaS</a> meant for Small Businesses (or SMEs as it is called elsewhere). But I thought of sharing the story of ZoomBA (which at this point sounds more like an African folk tale)r. Though we started working on ZoomBA earlier this year, the whole concept actually began quite a while back.</p>
 
+<p>Once upon a time,  in December 2004, <a href="http://sanjiva.weerawarana.org">Sanjiva</a> rang me up on an idea of building an &ldquo;Out of the box&rdquo; appliance for Small Businesses out in the US. By his estimates, majority of them did not have a drop in IT solution which worked. Being a FOSS advocate myself and trying to drive Linux adoption, I immediately connected with the idea of making an IT system that worked for a Small Business. But I wasn&rsquo;t ready to start a company just then and had already committed to <a href="http://www.virtusa.com">join another company</a>, so it had to wait!</p>
 
-<time datetime="2012-05-14T09:20:00-05:00" pubdate data-updated="true">May 14<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
+<p>Finally in late 2005, myself and <a href="https://www.facebook.com/lakmal.warusawithana">Lakmal</a> teamed up for the challenge. We didn&rsquo;t have much startup capital and so incubated our project along side <a href="htt://wso2.com">Sanjiva&rsquo;s other company</a>. After a bit of brainstorming we came up with the name THINKCube for the company and the tagline &ldquo;Out of the box solutions in a box&rdquo; (<a href="http://shahani-w.blogspot.com/">Shahani</a> was the inspiration for it). Company setup aside, we really started focusing on the key question of &ldquo;What does it take for a Small Businesses to run their IT system and what&rsquo;s preventing them from doing it&rdquo;.</p>
 
+<p>Without going into the details, I will simply state that we realized a lot of Small Businesses didn&rsquo;t want the hassle of hiring an IT department only to loose control to the IT guy. Instead they were very focused on growing their business and IT is seen as something that would be nice to have but not worth the trouble.</p>
 
-<div class="entry-content"><p>Wow how time flies when you&rsquo;re having fun! I first thought of writing this post back in January, when I was on a roll with writing blog posts. But it never materialized beyond notes I collected in preparation. Come several months later with a lot more experience on what I am about to tell you, and you have this post. The notes I&rsquo;m reffering to is about a development style that came about as a result of optimizing, how we at <a href="http://thinkcube.com">thinkCube</a> organize and work with source code in a <a href="http://en.wikipedia.org/wiki/Revision_control">revision control system</a>. Considering the wide use of such systems such as SVN and GIT, I thought I&rsquo;d share our development experience in the hope it will help you to take another look at your own development style. But before I get into it, I&rsquo;d like very briefly touch on some background on the evolution of development styles around version control systems.</p>
+<p>thinkCube&rsquo;s go to market exercise was an interesting learning experience. Like most startups, we had to go through a lot of experimentation in figuring out the product&rsquo;s technology and look &amp; feel. The other challenge was how best to put it in front of our end user. First we tried to build a hardware appliance but later realized that we weren&rsquo;t really equipped to handle the logistics of moving devices around the globe. So we turned to virtualization by creating <a href="https://solutionexchange.vmware.com/store/category_groups/19">VMWare bottles</a> of the product and then <a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?reload=true&amp;arnumber=5745841">multi-tenant virtualization</a> running on a Telco&rsquo;s <a href="http://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29">Cloud Infrastructure</a>. In the same manner we did several UI iterations before settling down on our current dynamic shell which offers SAML based SSO, fun dashboard widgets and context sensitive end-to-end help. (You can read more about it on the <a href="http://zoombacloud.com/blog/2012/05/zoomba-cloud-launched/">ZoomBA blog.</a>)</p>
+
+<p>So thats how ZoomBA came about. It&rsquo;s our attempt to really address the core issues that prevent Cloud SaaS adoption among Small Businesses. While I know we haven&rsquo;t addressed all the issues, I am confident we have addressed some of the most fundamental ones.</p>
+
+<p>The journey so far from the inception of thinkCube to us brainstorming, arguing, building, abandoning, rebuilding has been such a reward. I hope our hard efforts will come through when users finally get their hands on the system once we start sending invites out soon! In the mine time, if you know anyone who could benefit from a service like ZoomBA, please <a href="http://facebook.com/zoombacloud">spread the news</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Peer-to-Peer Collaborative Development Using GIT]]></title>
+    <link href="http://geekaholic.github.com/blog/2012/05/14/git-on-p2p-development/"/>
+    <updated>2012-05-14T09:20:00-05:00</updated>
+    <id>http://geekaholic.github.com/blog/2012/05/14/git-on-p2p-development</id>
+    <content type="html"><![CDATA[<p>Wow how time flies when you&rsquo;re having fun! I first thought of writing this post back in January, when I was on a roll with writing blog posts. But it never materialized beyond notes I collected in preparation. Come several months later with a lot more experience on what I am about to tell you, and you have this post. The notes I&rsquo;m reffering to is about a development style that came about as a result of optimizing, how we at <a href="http://thinkcube.com">thinkCube</a> organize and work with source code in a <a href="http://en.wikipedia.org/wiki/Revision_control">revision control system</a>. Considering the wide use of such systems such as SVN and GIT, I thought I&rsquo;d share our development experience in the hope it will help you to take another look at your own development style. But before I get into it, I&rsquo;d like very briefly touch on some background on the evolution of development styles around version control systems.</p>
 
 <h2>Thou shalt not commit, Yet!</h2>
 
@@ -206,150 +145,7 @@ $ git branch -d master-merge-joes-new-cool-feature
 <h2>Working remotely </h2>
 
 <p>The issue with git-daemon is that it is more difficult when you&rsquo;re not on the same network and masked by a bogus IP. One technique is to get the router to <a href="http://en.wikipedia.org/wiki/Network_address_translation">DNAT</a> the 9418 port. Another option is to setup a VPN. A third option is to use a bit of SSH tunneling magic to get everything to work. I&rsquo;ll cover that in a different post, perhaps.</p>
-</div>
-
-
-  <footer>
-    <p class="meta">
-      
+]]></content>
+  </entry>
   
-
-<span class="byline author vcard">Posted by <span class="fn">Buddhika Siddhisena</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-14T09:20:00-05:00" pubdate data-updated="true">May 14<span>th</span>, 2012</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/collaboration/'>collaboration</a>, <a class='category' href='/blog/categories/git/'>git</a>, <a class='category' href='/blog/categories/p2p/'>p2p</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://geekaholic.github.com/blog/2012/05/14/git-on-p2p-development/" data-via="geekaholic" data-counturl="http://geekaholic.github.com/blog/2012/05/14/git-on-p2p-development/" >Tweet</a>
-  
-  
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2012/01/01/a-new-desktop-for-new-year/" title="Previous Post: A new desktop for a new year">&laquo; A new desktop for a new year</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2012/05/30/starting-zoomba/" title="Next Post: Why we started ZoomBA">Why we started ZoomBA &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
-
-</div>
-
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2012/05/30/starting-zoomba/">Why We Started ZoomBA</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/05/14/git-on-p2p-development/">Peer-to-Peer Collaborative Development Using GIT</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/01/01/a-new-desktop-for-new-year/">A New Desktop for a New Year</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/12/31/new-year-resolution-iido/">Track Your New Year Resolutions With ii.do</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/09/02/getting-down-with-markdown/">Getting Down With Markdown</a>
-      </li>
-    
-  </ul>
-</section>
-
-
-
-
-
-  
-</aside>
-
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Bud -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-<script type="text/javascript">
-      var disqus_shortname = 'geekaholicblog';
-      
-        
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://geekaholic.github.com/blog/2012/05/14/git-on-p2p-development/';
-        var disqus_url = 'http://geekaholic.github.com/blog/2012/05/14/git-on-p2p-development/';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
-</body>
-</html>
+</feed>

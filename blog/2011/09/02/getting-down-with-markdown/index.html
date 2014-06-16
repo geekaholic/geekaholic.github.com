@@ -5,8 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Geekaholic adventures: Getting Down With Markdown</title>
+  <title>Getting Down With Markdown - Geekaholic adventures</title>
   <meta name="author" content="Bud">
+
+  
+  <meta name="description" content="Recently I&rsquo;ve been looking for an alternative to docbook, which I&rsquo;ve used for most of my tutorial handouts and internal developer &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -15,38 +18,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-
-  <link rel="canonical" href="http://geekaholic.github.com/blog/2011/09/02/getting-down-with-markdown/"/>
-  <link href="/favicon.png" rel="shortcut icon" />
+  <link rel="canonical" href="http://geekaholic.github.com/blog/2011/09/02/getting-down-with-markdown">
+  <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Geekaholic adventures" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="http://s3.amazonaws.com/ender-js/jeesh.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/atom.xml" rel="alternate" title="Geekaholic adventures" type="application/atom+xml"/>
-  
-
-  
-  <script type="text/javascript">
-    (function() {
-      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
-      script.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
-    })();
-  </script>
-
-
-  
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
   <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
 <link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
@@ -59,10 +38,12 @@
 </script>
 
 
+  
+
 </head>
 
-<body  >
-  <header><hgroup>
+<body   >
+  <header role="banner"><hgroup>
   <h1><a href="/">Geekaholic adventures</a></h1>
   
     <h2>All things geek with an attitude</h2>
@@ -70,16 +51,18 @@
 </hgroup>
 
 </header>
-  <nav role=navigation><ul role=subscription data-subscription="rss">
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
   <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
   
 </ul>
+  
 <form action="http://google.com/search" method="get">
-  <fieldset role="site-search">
+  <fieldset role="search">
     <input type="hidden" name="q" value="site:geekaholic.github.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
+  
 <ul role=main-navigation>
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
@@ -90,7 +73,7 @@
   <div id="main">
     <div id="content">
       <div>
-<article class="hentry">
+<article class="hentry" role="article">
   
   <header>
     
@@ -98,27 +81,34 @@
     
     
       <p class="meta">
+        
 
 
 
 
-<time datetime="2011-09-02 10:46:00 +0530" pubdate  updated >Sep 2<span>nd</span>, 2011</time>
 
 
-</p>
+
+
+  
+
+
+<time datetime="2011-09-02T10:46:00-05:00" pubdate data-updated="true">Sep 2<span>nd</span>, 2011</time>
+        
+      </p>
     
   </header>
 
 
-<div class="entry-content"><p>Recently I&#8217;ve been looking for an alternative to  <a href="http://docbook.org">docbook</a>, which I&#8217;ve used for most of my tutorial handouts and internal developer documentation at <a href="http://thinkcube.com">Thinkcube</a>. But the more I used it docbook the more I wanted a simpler solution which didn&#8217;t require me to make sure my XML was in order.</p>
+<div class="entry-content"><p>Recently I&rsquo;ve been looking for an alternative to  <a href="http://docbook.org">docbook</a>, which I&rsquo;ve used for most of my tutorial handouts and internal developer documentation at <a href="http://thinkcube.com">Thinkcube</a>. But the more I used it docbook the more I wanted a simpler solution which didn&rsquo;t require me to make sure my XML was in order.</p>
 
-<p>Naturally, at first I thought I&#8217;d try <a href="http://latex-project.org">Latex</a> since it had a pretty good wrap with geeks and has even <a href="http://openwetware.org/wiki/Word_vs._LaTeX">surpassed usability expectations</a> set forth by some of the mainstream wordprecessors :). What I loved about Latex was you could concentrate on the content first and formatting later. Its legendary ability to output desktop publishing quality documents and  convert to a variety of formats such as html, pdf or odt was a killer.</p>
+<p>Naturally, at first I thought I&rsquo;d try <a href="http://latex-project.org">Latex</a> since it had a pretty good wrap with geeks and has even <a href="http://openwetware.org/wiki/Word_vs._LaTeX">surpassed usability expectations</a> set forth by some of the mainstream wordprecessors :). What I loved about Latex was you could concentrate on the content first and formatting later. Its legendary ability to output desktop publishing quality documents and  convert to a variety of formats such as html, pdf or odt was a killer.</p>
 
-<p>Just as I was about to dive into Latex, <a href="http://twitter.com/chanux">Chanux</a> suggested <a href="http://daringfireball.net/projects/markdown">Markdown</a> as an alternative. Hmm, Markdown, I pondered&#8230; I even liked the sound of it. It turns out Markdown is even better! You could think of it as a simplified wiki syntax but a better description would be to call it a WYSIWYG wiki syntax.</p>
+<p>Just as I was about to dive into Latex, <a href="http://twitter.com/chanux">Chanux</a> suggested <a href="http://daringfireball.net/projects/markdown">Markdown</a> as an alternative. Hmm, Markdown, I pondered&hellip; I even liked the sound of it. It turns out Markdown is even better! You could think of it as a simplified wiki syntax but a better description would be to call it a WYSIWYG wiki syntax.</p>
 
-<p> I&#8217;ve always endorsed the <a href="en.wikipedia.org/wiki/KISS_principle">KISS</a> philosophy. There is nothing more simple and satisfying than to write a text file using <a href="http://vim.org">vim</a> and track its progress via <a href="http://git-scm.com">git</a>. After briefly going through the syntax, I realized this is exactly what I needed. I also realized that I had already used Markdown without actually thinking about it as part of using <a href="http://github.com">github</a> for a pet project. Everything about Markdown was all good and the whole <a href="http://www.zdnet.com/blog/violetblue/when-software-offends-the-pantyshot-package-controversy/509">controversy</a> around Markdown&#8217;s html compiler names were exactly the kind of celebrity gossip it needed to grab attention!</p>
+<p> I&rsquo;ve always endorsed the <a href="en.wikipedia.org/wiki/KISS_principle">KISS</a> philosophy. There is nothing more simple and satisfying than to write a text file using <a href="http://vim.org">vim</a> and track its progress via <a href="http://git-scm.com">git</a>. After briefly going through the syntax, I realized this is exactly what I needed. I also realized that I had already used Markdown without actually thinking about it as part of using <a href="http://github.com">github</a> for a pet project. Everything about Markdown was all good and the whole <a href="http://www.zdnet.com/blog/violetblue/when-software-offends-the-pantyshot-package-controversy/509">controversy</a> around Markdown&rsquo;s html compiler names were exactly the kind of celebrity gossip it needed to grab attention!</p>
 
-<p>It was around this time, I was due to create a note for a tutorial for the <a href="http://www.icter.org/UCSCConf/index.php/icter/ICTer2011/schedConf/workshops">ICTer workshop</a> myself and Dr. Ajantha from UCSC was to deliver. By now, I had decided on Markdown with <a href="https://github.com/chobie/upskirt">upskirt</a> (yes this is one of the controversal names) to create the notes but what about the slides? Could I use Markdown for that as well? After a little looking around, I found a wonderful system called <a href="https://github.com/adamzap/landslide">Landslide</a> which enabled me to compile Markdown syntax into a beautiful html5 slide show presentation. After a little playing around I managed to build slides as well as the note using a single markdown source code! How cool was that? I will write a separate post soon on the HOWTO details but for now enjoy the <a href="http://geekaholic.github.com/slides">slides</a>, if thats your cup of tea. My Markdown adventures don&#8217;t end there. This post too was written using Markdown and converted to html using <a href="http://octopress.org">octopress</a>.</p>
+<p>It was around this time, I was due to create a note for a tutorial for the <a href="http://www.icter.org/UCSCConf/index.php/icter/ICTer2011/schedConf/workshops">ICTer workshop</a> myself and Dr. Ajantha from UCSC was to deliver. By now, I had decided on Markdown with <a href="https://github.com/chobie/upskirt">upskirt</a> (yes this is one of the controversal names) to create the notes but what about the slides? Could I use Markdown for that as well? After a little looking around, I found a wonderful system called <a href="https://github.com/adamzap/landslide">Landslide</a> which enabled me to compile Markdown syntax into a beautiful html5 slide show presentation. After a little playing around I managed to build slides as well as the note using a single markdown source code! How cool was that? I will write a separate post soon on the HOWTO details but for now enjoy the <a href="http://geekaholic.github.com/slides">slides</a>, if thats your cup of tea. My Markdown adventures don&rsquo;t end there. This post too was written using Markdown and converted to html using <a href="http://octopress.org">octopress</a>.</p>
 </div>
 
 
@@ -134,10 +124,14 @@
 
 
 
-<time datetime="2011-09-02 10:46:00 +0530" pubdate  updated >Sep 2<span>nd</span>, 2011</time>
 
 
 
+
+  
+
+
+<time datetime="2011-09-02T10:46:00-05:00" pubdate data-updated="true">Sep 2<span>nd</span>, 2011</time>
       
 
 
@@ -145,57 +139,50 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://geekaholic.github.com/blog/2011/09/02/getting-down-with-markdown/" data-via="geekaholic" data-counturl="http://geekaholic.github.com/blog/2011/09/02/getting-down-with-markdown/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://geekaholic.github.com/blog/2011/09/02/getting-down-with-markdown/" data-via="geekaholic" data-counturl="http://geekaholic.github.com/blog/2011/09/02/getting-down-with-markdown/" >Tweet</a>
   
   
-  <g:plusone size="medium"></g:plusone>
   
 </div>
 
     
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/12/31/new-year-resolution-iido/" title="Next Post: Track your New Year Resolutions with ii.do">Track your New Year Resolutions with ii.do &raquo;</a>
+      
+    </p>
   </footer>
 </article>
 
   <section>
     <h1>Comments</h1>
-    <div id="disqus_thread"><div id="disqus_thread"></div>
-<script type="text/javascript">
-  var disqus_shortname = 'geekaholicblog';
-  var disqus_identifier = 'http://geekaholic.github.com/blog/2011/09/02/getting-down-with-markdown/';
-  var disqus_url = 'http://geekaholic.github.com/blog/2011/09/02/getting-down-with-markdown/';
-  //var disqus_developer = 1;
-  (function() {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
   </section>
 
 </div>
 
-<aside role=sidebar>
+<aside class="sidebar">
   
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2012/05/30/starting-zoomba/">Why we started ZoomBA</a>
+        <a href="/blog/2012/05/30/starting-zoomba/">Why We Started ZoomBA</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/05/14/git-on-p2p-development/">Peer-to-Peer Collaborative development using GIT</a>
+        <a href="/blog/2012/05/14/git-on-p2p-development/">Peer-to-Peer Collaborative Development Using GIT</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/01/01/a-new-desktop-for-new-year/">A new desktop for a new year</a>
+        <a href="/blog/2012/01/01/a-new-desktop-for-new-year/">A New Desktop for a New Year</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2011/12/31/new-year-resolution-iido/">Track your New Year Resolutions with ii.do</a>
+        <a href="/blog/2011/12/31/new-year-resolution-iido/">Track Your New Year Resolutions With ii.do</a>
       </li>
     
       <li class="post">
@@ -205,21 +192,6 @@
   </ul>
 </section>
 
-<section>
-  <h1>Latest Tweets</h1>
-  <ul id="tweets">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
-  <script type="text/javascript">
-    $.domReady(function(){
-      getTwitterFeed("geekaholic", 4, false);
-    });
-  </script>
-  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
-  
-    <a href="http://twitter.com/geekaholic" class="twitter-follow-button" data-width="208px" data-show-count="false">Follow @geekaholic</a>
-  
-</section>
 
 
 
@@ -230,11 +202,49 @@
 
     </div>
   </div>
-  <footer><p>
-  Copyright &copy; 2012 - Bud -
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Bud -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
 </footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'geekaholicblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://geekaholic.github.com/blog/2011/09/02/getting-down-with-markdown/';
+        var disqus_url = 'http://geekaholic.github.com/blog/2011/09/02/getting-down-with-markdown/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
 </body>
 </html>

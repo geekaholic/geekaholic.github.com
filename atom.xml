@@ -1,381 +1,382 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title>Geekaholic adventures</title>
+  <title><![CDATA[Geekaholic adventures]]></title>
   <link href="http://geekaholic.github.com/atom.xml" rel="self"/>
   <link href="http://geekaholic.github.com/"/>
-  <updated>2012-05-30T20:13:01+05:30</updated>
+  <updated>2014-06-15T23:11:35-05:00</updated>
   <id>http://geekaholic.github.com/</id>
   <author>
-    <name>Bud</name>
+    <name><![CDATA[Bud]]></name>
     
   </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
   
   <entry>
-    <title>Why we started ZoomBA</title>
+    <title type="html"><![CDATA[Why We Started ZoomBA]]></title>
     <link href="http://geekaholic.github.com/blog/2012/05/30/starting-zoomba/"/>
-    <updated>2012-05-30T16:20:00+05:30</updated>
+    <updated>2012-05-30T16:20:00-05:00</updated>
     <id>http://geekaholic.github.com/blog/2012/05/30/starting-zoomba</id>
-    <content type="html">&lt;p&gt;Those who follow me on social media might have seen me go on about this &quot;ZoomBA&quot; thing and may have some idea about it. For others, in short, it's our own Cloud &lt;a href=&quot;http://en.wikipedia.org/wiki/Software_as_a_service&quot;&gt;SaaS&lt;/a&gt; meant for Small Businesses (or SMEs as it is called elsewhere). But I thought of sharing the story of ZoomBA (which at this point sounds more like an African folk tale)r. Though we started working on ZoomBA earlier this year, the whole concept actually began quite a while back.&lt;/p&gt;
+    <content type="html"><![CDATA[<p>Those who follow me on social media might have seen me go on about this &ldquo;ZoomBA&rdquo; thing and may have some idea about it. For others, in short, it&rsquo;s our own Cloud <a href="http://en.wikipedia.org/wiki/Software_as_a_service">SaaS</a> meant for Small Businesses (or SMEs as it is called elsewhere). But I thought of sharing the story of ZoomBA (which at this point sounds more like an African folk tale)r. Though we started working on ZoomBA earlier this year, the whole concept actually began quite a while back.</p>
 
-&lt;p&gt;Once upon a time,  in December 2004, &lt;a href=&quot;http://sanjiva.weerawarana.org&quot;&gt;Sanjiva&lt;/a&gt; rang me up on an idea of building an &quot;Out of the box&quot; appliance for Small Businesses out in the US. By his estimates, majority of them did not have a drop in IT solution which worked. Being a FOSS advocate myself and trying to drive Linux adoption, I immediately connected with the idea of making an IT system that worked for a Small Business. But I wasn't ready to start a company just then and had already committed to &lt;a href=&quot;http://www.virtusa.com&quot;&gt;join another company&lt;/a&gt;, so it had to wait!&lt;/p&gt;
+<p>Once upon a time,  in December 2004, <a href="http://sanjiva.weerawarana.org">Sanjiva</a> rang me up on an idea of building an &ldquo;Out of the box&rdquo; appliance for Small Businesses out in the US. By his estimates, majority of them did not have a drop in IT solution which worked. Being a FOSS advocate myself and trying to drive Linux adoption, I immediately connected with the idea of making an IT system that worked for a Small Business. But I wasn&rsquo;t ready to start a company just then and had already committed to <a href="http://www.virtusa.com">join another company</a>, so it had to wait!</p>
 
-&lt;p&gt;Finally in late 2005, myself and &lt;a href=&quot;https://www.facebook.com/lakmal.warusawithana&quot;&gt;Lakmal&lt;/a&gt; teamed up for the challenge. We didn't have much startup capital and so incubated our project along side &lt;a href=&quot;htt://wso2.com&quot;&gt;Sanjiva's other company&lt;/a&gt;. After a bit of brainstorming we came up with the name THINKCube for the company and the tagline &quot;Out of the box solutions in a box&quot; (&lt;a href=&quot;http://shahani-w.blogspot.com/&quot;&gt;Shahani&lt;/a&gt; was the inspiration for it). Company setup aside, we really started focusing on the key question of &quot;What does it take for a Small Businesses to run their IT system and what's preventing them from doing it&quot;.&lt;/p&gt;
+<p>Finally in late 2005, myself and <a href="https://www.facebook.com/lakmal.warusawithana">Lakmal</a> teamed up for the challenge. We didn&rsquo;t have much startup capital and so incubated our project along side <a href="htt://wso2.com">Sanjiva&rsquo;s other company</a>. After a bit of brainstorming we came up with the name THINKCube for the company and the tagline &ldquo;Out of the box solutions in a box&rdquo; (<a href="http://shahani-w.blogspot.com/">Shahani</a> was the inspiration for it). Company setup aside, we really started focusing on the key question of &ldquo;What does it take for a Small Businesses to run their IT system and what&rsquo;s preventing them from doing it&rdquo;.</p>
 
-&lt;p&gt;Without going into the details, I will simply state that we realized a lot of Small Businesses didn't want the hassle of hiring an IT department only to loose control to the IT guy. Instead they were very focused on growing their business and IT is seen as something that would be nice to have but not worth the trouble.&lt;/p&gt;
+<p>Without going into the details, I will simply state that we realized a lot of Small Businesses didn&rsquo;t want the hassle of hiring an IT department only to loose control to the IT guy. Instead they were very focused on growing their business and IT is seen as something that would be nice to have but not worth the trouble.</p>
 
-&lt;p&gt;thinkCube's go to market exercise was an interesting learning experience. Like most startups, we had to go through a lot of experimentation in figuring out the product's technology and look &amp;amp; feel. The other challenge was how best to put it in front of our end user. First we tried to build a hardware appliance but later realized that we weren't really equipped to handle the logistics of moving devices around the globe. So we turned to virtualization by creating &lt;a href=&quot;https://solutionexchange.vmware.com/store/category_groups/19&quot;&gt;VMWare bottles&lt;/a&gt; of the product and then &lt;a href=&quot;http://ieeexplore.ieee.org/xpl/articleDetails.jsp?reload=true&amp;amp;arnumber=5745841&quot;&gt;multi-tenant virtualization&lt;/a&gt; running on a Telco's &lt;a href=&quot;http://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29&quot;&gt;Cloud Infrastructure&lt;/a&gt;. In the same manner we did several UI iterations before settling down on our current dynamic shell which offers SAML based SSO, fun dashboard widgets and context sensitive end-to-end help. (You can read more about it on the &lt;a href=&quot;http://zoombacloud.com/blog/2012/05/zoomba-cloud-launched/&quot;&gt;ZoomBA blog.&lt;/a&gt;)&lt;/p&gt;
+<p>thinkCube&rsquo;s go to market exercise was an interesting learning experience. Like most startups, we had to go through a lot of experimentation in figuring out the product&rsquo;s technology and look &amp; feel. The other challenge was how best to put it in front of our end user. First we tried to build a hardware appliance but later realized that we weren&rsquo;t really equipped to handle the logistics of moving devices around the globe. So we turned to virtualization by creating <a href="https://solutionexchange.vmware.com/store/category_groups/19">VMWare bottles</a> of the product and then <a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?reload=true&amp;arnumber=5745841">multi-tenant virtualization</a> running on a Telco&rsquo;s <a href="http://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29">Cloud Infrastructure</a>. In the same manner we did several UI iterations before settling down on our current dynamic shell which offers SAML based SSO, fun dashboard widgets and context sensitive end-to-end help. (You can read more about it on the <a href="http://zoombacloud.com/blog/2012/05/zoomba-cloud-launched/">ZoomBA blog.</a>)</p>
 
-&lt;p&gt;So thats how ZoomBA came about. It's our attempt to really address the core issues that prevent Cloud SaaS adoption among Small Businesses. While I know we haven't addressed all the issues, I am confident we have addressed some of the most fundamental ones.&lt;/p&gt;
+<p>So thats how ZoomBA came about. It&rsquo;s our attempt to really address the core issues that prevent Cloud SaaS adoption among Small Businesses. While I know we haven&rsquo;t addressed all the issues, I am confident we have addressed some of the most fundamental ones.</p>
 
-&lt;p&gt;The journey so far from the inception of thinkCube to us brainstorming, arguing, building, abandoning, rebuilding has been such a reward. I hope our hard efforts will come through when users finally get their hands on the system once we start sending invites out soon! In the mine time, if you know anyone who could benefit from a service like ZoomBA, please &lt;a href=&quot;http://facebook.com/zoombacloud&quot;&gt;spread the news&lt;/a&gt;.&lt;/p&gt;
-</content>
+<p>The journey so far from the inception of thinkCube to us brainstorming, arguing, building, abandoning, rebuilding has been such a reward. I hope our hard efforts will come through when users finally get their hands on the system once we start sending invites out soon! In the mine time, if you know anyone who could benefit from a service like ZoomBA, please <a href="http://facebook.com/zoombacloud">spread the news</a>.</p>
+]]></content>
   </entry>
   
   <entry>
-    <title>Peer-to-Peer Collaborative development using GIT</title>
+    <title type="html"><![CDATA[Peer-to-Peer Collaborative Development Using GIT]]></title>
     <link href="http://geekaholic.github.com/blog/2012/05/14/git-on-p2p-development/"/>
-    <updated>2012-05-14T09:20:00+05:30</updated>
+    <updated>2012-05-14T09:20:00-05:00</updated>
     <id>http://geekaholic.github.com/blog/2012/05/14/git-on-p2p-development</id>
-    <content type="html">&lt;p&gt;Wow how time flies when you're having fun! I first thought of writing this post back in January, when I was on a roll with writing blog posts. But it never materialized beyond notes I collected in preparation. Come several months later with a lot more experience on what I am about to tell you, and you have this post. The notes I'm reffering to is about a development style that came about as a result of optimizing, how we at &lt;a href=&quot;http://thinkcube.com&quot;&gt;thinkCube&lt;/a&gt; organize and work with source code in a &lt;a href=&quot;http://en.wikipedia.org/wiki/Revision_control&quot;&gt;revision control system&lt;/a&gt;. Considering the wide use of such systems such as SVN and GIT, I thought I'd share our development experience in the hope it will help you to take another look at your own development style. But before I get into it, I'd like very briefly touch on some background on the evolution of development styles around version control systems.&lt;/p&gt;
+    <content type="html"><![CDATA[<p>Wow how time flies when you&rsquo;re having fun! I first thought of writing this post back in January, when I was on a roll with writing blog posts. But it never materialized beyond notes I collected in preparation. Come several months later with a lot more experience on what I am about to tell you, and you have this post. The notes I&rsquo;m reffering to is about a development style that came about as a result of optimizing, how we at <a href="http://thinkcube.com">thinkCube</a> organize and work with source code in a <a href="http://en.wikipedia.org/wiki/Revision_control">revision control system</a>. Considering the wide use of such systems such as SVN and GIT, I thought I&rsquo;d share our development experience in the hope it will help you to take another look at your own development style. But before I get into it, I&rsquo;d like very briefly touch on some background on the evolution of development styles around version control systems.</p>
 
-&lt;h2&gt;Thou shalt not commit, Yet!&lt;/h2&gt;
+<h2>Thou shalt not commit, Yet!</h2>
 
-&lt;p&gt;Back in the days of &lt;a href=&quot;http://en.wikipedia.org/wiki/Concurrent_Versions_System&quot;&gt;CVS&lt;/a&gt;, source code lived centrally on a server called a repository. One had to earn the right to read/write to this repository in order to ensure &quot;world order&quot; (others had to submit a patch via &lt;a href=&quot;http://bugzilla.org&quot;&gt;Bugzilla&lt;/a&gt;). While this led to a centrally managed system of Collaborative software development, it also created a new software development style of &quot;Earn your commitership&quot;, &quot;Commit often&quot; and &quot;Communicate often&quot;. Nothing much changed when everyone moved over to &lt;a href=&quot;http://subversion.apache.org&quot;&gt;SVN&lt;/a&gt;, which started out as an improved CVS. This development style didn't go down well with Linus Torvalds for his Linux work and so he created GIT instead and &lt;a href=&quot;http://www.youtube.com/watch?v=4XpnKHJAok8&quot;&gt;hates CVS/SVN&lt;/a&gt;.&lt;/p&gt;
+<p>Back in the days of <a href="http://en.wikipedia.org/wiki/Concurrent_Versions_System">CVS</a>, source code lived centrally on a server called a repository. One had to earn the right to read/write to this repository in order to ensure &ldquo;world order&rdquo; (others had to submit a patch via <a href="http://bugzilla.org">Bugzilla</a>). While this led to a centrally managed system of Collaborative software development, it also created a new software development style of &ldquo;Earn your commitership&rdquo;, &ldquo;Commit often&rdquo; and &ldquo;Communicate often&rdquo;. Nothing much changed when everyone moved over to <a href="http://subversion.apache.org">SVN</a>, which started out as an improved CVS. This development style didn&rsquo;t go down well with Linus Torvalds for his Linux work and so he created GIT instead and <a href="http://www.youtube.com/watch?v=4XpnKHJAok8">hates CVS/SVN</a>.</p>
 
-&lt;h2&gt;Pray-Pull-Push style of development&lt;/h2&gt;
+<h2>Pray-Pull-Push style of development</h2>
 
-&lt;p&gt;We started with CVS back in 2005 and then SVN for managing our development at thinkCube. A little while after git came along when it was stable enough to use and also was usuable by mere mortals, we made the switch. At first we had some trouble wrapping our heads around git and so just used it like SVN where we used to always do &lt;code&gt;commit/pull/push&lt;/code&gt; operations as if they were atomic. But after about a week or two, we realized the power of git was in its ability to let you commit locally and push when you were ready to share. And so, yet another development style arose where git acted as a Collaborative Whiteboard for sharing code changes. This also meant developers needed push access to the central repository in the same manner commit access was required with SVN/CVS.&lt;/p&gt;
+<p>We started with CVS back in 2005 and then SVN for managing our development at thinkCube. A little while after git came along when it was stable enough to use and also was usuable by mere mortals, we made the switch. At first we had some trouble wrapping our heads around git and so just used it like SVN where we used to always do <code>commit/pull/push</code> operations as if they were atomic. But after about a week or two, we realized the power of git was in its ability to let you commit locally and push when you were ready to share. And so, yet another development style arose where git acted as a Collaborative Whiteboard for sharing code changes. This also meant developers needed push access to the central repository in the same manner commit access was required with SVN/CVS.</p>
 
-&lt;p&gt;The unfortunate development style this results in is that developers may occasionally push unfinished worked upstream just to share it with the &quot;Developer next door&quot;. The consequence of that maybe felt by the poor developer that spent all night working on a feature, pulls in oder to push to find that his code now conflicts for no apparent reason!&lt;/p&gt;
+<p>The unfortunate development style this results in is that developers may occasionally push unfinished worked upstream just to share it with the &ldquo;Developer next door&rdquo;. The consequence of that maybe felt by the poor developer that spent all night working on a feature, pulls in oder to push to find that his code now conflicts for no apparent reason!</p>
 
-&lt;p&gt;Now I know a lot of you may be on this style of development and thinking, &quot;If our developers do that, we punish them!&quot; and so they don't! Good for you! But my take on this is, if the system is fundamentally broken then it's better to fix it than to enforce tough rules. For example, if I may digress for a bit, &quot;Why are &lt;a href=&quot;http://en.wikipedia.org/wiki/Auto_rickshaw&quot;&gt;TukTuk&lt;/a&gt; drivers and Motor Cyclist so careless?&quot;. Is it likely that only careless drivers pick up these vehicles or is it more likely the vehicle made them reckless? My advice is if the tool is broken, then fix it! (and ban TukTuks :)&lt;/p&gt;
+<p>Now I know a lot of you may be on this style of development and thinking, &ldquo;If our developers do that, we punish them!&rdquo; and so they don&rsquo;t! Good for you! But my take on this is, if the system is fundamentally broken then it&rsquo;s better to fix it than to enforce tough rules. For example, if I may digress for a bit, &ldquo;Why are <a href="http://en.wikipedia.org/wiki/Auto_rickshaw">TukTuk</a> drivers and Motor Cyclist so careless?&rdquo;. Is it likely that only careless drivers pick up these vehicles or is it more likely the vehicle made them reckless? My advice is if the tool is broken, then fix it! (and ban TukTuks :)</p>
 
-&lt;p&gt;Therefore last year we decided to adopt our current style of development which is as follows.&lt;/p&gt;
+<p>Therefore last year we decided to adopt our current style of development which is as follows.</p>
 
-&lt;h2&gt;Fetch-Merge-Push style of development&lt;/h2&gt;
+<h2>Fetch-Merge-Push style of development</h2>
 
-&lt;p&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Yan_Can_Cook&quot;&gt;If Linus can do it, then so can you!&lt;/a&gt; We didn't invent this stuff but we did adapt it in a manner which scales for us. The idea is simple, stop devs from committing upstream as a means of sharing changes but instead get them to share peer to peer by fetching from each other. Our git repos are setup so that everyone has read access to clone the repo but only a couple of devs (usually just one dev) can push to a given repo. That means the dev who has push access usually will not need to &lt;code&gt;pull&lt;/code&gt; prior to pushing because no one else can change it. This is what git was designed to do and yet it's probably one of the least used features among git converts.&lt;/p&gt;
+<p><a href="http://en.wikipedia.org/wiki/Yan_Can_Cook">If Linus can do it, then so can you!</a> We didn&rsquo;t invent this stuff but we did adapt it in a manner which scales for us. The idea is simple, stop devs from committing upstream as a means of sharing changes but instead get them to share peer to peer by fetching from each other. Our git repos are setup so that everyone has read access to clone the repo but only a couple of devs (usually just one dev) can push to a given repo. That means the dev who has push access usually will not need to <code>pull</code> prior to pushing because no one else can change it. This is what git was designed to do and yet it&rsquo;s probably one of the least used features among git converts.</p>
 
-&lt;p&gt;Ok so lets get technical shall we?&lt;/p&gt;
+<p>Ok so lets get technical shall we?</p>
 
-&lt;p&gt;First off, I'm assuming you know git basics and are already using it. If not then &lt;a href=&quot;http://digit.lk/09_dec_git&quot;&gt;checkout my git article on Digit&lt;/a&gt;&lt;/p&gt;
+<p>First off, I&rsquo;m assuming you know git basics and are already using it. If not then <a href="http://digit.lk/09_dec_git">checkout my git article on Digit</a></p>
 
-&lt;h2&gt;Sharing your repo&lt;/h2&gt;
+<h2>Sharing your repo</h2>
 
-&lt;p&gt;Let's look at how you can share your git repo with another P2P style. Suppose you have a repo as follows:&lt;/p&gt;
+<p>Let&rsquo;s look at how you can share your git repo with another P2P style. Suppose you have a repo as follows:</p>
 
-&lt;blockquote&gt;&lt;p&gt;/home/bud/repos/awesome.repo&lt;/p&gt;&lt;/blockquote&gt;
+<blockquote><p>/home/bud/repos/awesome.repo</p></blockquote>
 
-&lt;p&gt;You can easily share your awesome.repo with anyone on the local networking using git-daemon command by first cd-ing to it's parent directory.&lt;/p&gt;
+<p>You can easily share your awesome.repo with anyone on the local networking using git-daemon command by first cd-ing to it&rsquo;s parent directory.</p>
 
-&lt;pre&gt;&lt;code&gt;$ cd /home/bud/repos
+<pre><code>$ cd /home/bud/repos
 $ git daemon --export-all --base-path=.
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;The above will share all your git repos under the current directory as read-only for others in the network to fetch. Git daemon will run in the foreground by default and so once you're done sharing you can just Ctrl+C it.&lt;/p&gt;
+<p>The above will share all your git repos under the current directory as read-only for others in the network to fetch. Git daemon will run in the foreground by default and so once you&rsquo;re done sharing you can just Ctrl+C it.</p>
 
-&lt;h2&gt;Fetching a shared repo&lt;/h2&gt;
+<h2>Fetching a shared repo</h2>
 
-&lt;p&gt;In order to fetch from a fellow dev, you will first need to add him/her as a remote. Chances are you cloned the project from upstream in which case you have just one default remote called origin which points to your upstream repo.&lt;/p&gt;
+<p>In order to fetch from a fellow dev, you will first need to add him/her as a remote. Chances are you cloned the project from upstream in which case you have just one default remote called origin which points to your upstream repo.</p>
 
-&lt;blockquote&gt;&lt;p&gt;To add another remote for your friend joe for example&lt;/p&gt;&lt;/blockquote&gt;
+<blockquote><p>To add another remote for your friend joe for example</p></blockquote>
 
-&lt;pre&gt;&lt;code&gt;$ cd /home/bud/repos/awesome.repo
+<pre><code>$ cd /home/bud/repos/awesome.repo
 $ git remote add joe git://joes-computer.local/awesome.repo
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;From within your repo, you add a remote using the git remote command. The url above uses git's special &lt;code&gt;git://&lt;/code&gt; protocol that is understood by the git-daemon, while I'm relying on &lt;a href=&quot;http://en.wikipedia.org/wiki/Multicast_DNS&quot;&gt;mDNS&lt;/a&gt; to resolve joes-computer.local automatically. If your network(or OS) doesn't support this, then you can just use the IP address.&lt;/p&gt;
+<p>From within your repo, you add a remote using the git remote command. The url above uses git&rsquo;s special <code>git://</code> protocol that is understood by the git-daemon, while I&rsquo;m relying on <a href="http://en.wikipedia.org/wiki/Multicast_DNS">mDNS</a> to resolve joes-computer.local automatically. If your network(or OS) doesn&rsquo;t support this, then you can just use the IP address.</p>
 
-&lt;blockquote&gt;&lt;p&gt;Finally to fetch joe's changes over the network to your machine issue:&lt;/p&gt;&lt;/blockquote&gt;
+<blockquote><p>Finally to fetch joe&rsquo;s changes over the network to your machine issue:</p></blockquote>
 
-&lt;pre&gt;&lt;code&gt;$ git fetch joe
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>$ git fetch joe
+</code></pre>
 
-&lt;p&gt;The above command should give you some feedback as to the success of the fetch operation. Remember that fetch is safe since it only &quot;fetches&quot; as opposed to &lt;code&gt;pull&lt;/code&gt; which fetches and then tries to merge. So while you could've used &lt;code&gt;pull&lt;/code&gt; instead of &lt;code&gt;fetch&lt;/code&gt;, I wouldn't recommend it!&lt;/p&gt;
+<p>The above command should give you some feedback as to the success of the fetch operation. Remember that fetch is safe since it only &ldquo;fetches&rdquo; as opposed to <code>pull</code> which fetches and then tries to merge. So while you could&rsquo;ve used <code>pull</code> instead of <code>fetch</code>, I wouldn&rsquo;t recommend it!</p>
 
-&lt;h2&gt;Merging and deleting&lt;/h2&gt;
+<h2>Merging and deleting</h2>
 
-&lt;p&gt;Now that you have a copy of the remote changes, what you'd want to do next is to see which branches they were working on. Usually joe will tell you, hey my latest changes are on the &lt;code&gt;new-cool-feature&lt;/code&gt; branch.&lt;/p&gt;
+<p>Now that you have a copy of the remote changes, what you&rsquo;d want to do next is to see which branches they were working on. Usually joe will tell you, hey my latest changes are on the <code>new-cool-feature</code> branch.</p>
 
-&lt;pre&gt;&lt;code&gt;$ git branch -a
+<pre><code>$ git branch -a
 * master
 experimental
 remotes/joe/master
 remotes/joe/new-cool-feature
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Git branch will first show your local branches (master, experimental) followed by the remote ones. At this point you should checkout a remote branch you're planning to merge and just make sure everything is working.&lt;/p&gt;
+<p>Git branch will first show your local branches (master, experimental) followed by the remote ones. At this point you should checkout a remote branch you&rsquo;re planning to merge and just make sure everything is working.</p>
 
-&lt;pre&gt;&lt;code&gt;$ git checkout -b joes-new-cool-feature remotes/joe/new-cool-feature
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>$ git checkout -b joes-new-cool-feature remotes/joe/new-cool-feature
+</code></pre>
 
-&lt;p&gt;This creates a local branch called &quot;joes-new-cool-feature&quot; which tracks the remote branch &lt;code&gt;remotes/joe/new-cool-feature&lt;/code&gt; and switches the current HEAD to it. Once your happy then you can switch back to master and merge.&lt;/p&gt;
+<p>This creates a local branch called &ldquo;joes-new-cool-feature&rdquo; which tracks the remote branch <code>remotes/joe/new-cool-feature</code> and switches the current HEAD to it. Once your happy then you can switch back to master and merge.</p>
 
-&lt;pre&gt;&lt;code&gt;$ git checkout master
+<pre><code>$ git checkout master
 $ git merge joes-new-cool-feature
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;But... if you have any merge conflicts then you will have to resolve it! If you don't then your master will remain in a state of CONFLICT. If that sounds like additional work, then do what I do instead of above.&lt;/p&gt;
+<p>But&hellip; if you have any merge conflicts then you will have to resolve it! If you don&rsquo;t then your master will remain in a state of CONFLICT. If that sounds like additional work, then do what I do instead of above.</p>
 
-&lt;pre&gt;&lt;code&gt;$ git checkout master
+<pre><code>$ git checkout master
 $ git checkout -b master-merge-joes-new-cool-feature
 $ git merge joes-new-cool-feature
 $ git checkout master
 $ git merge master-merge-joes-new-cool-feature
 $ git branch -d master-merge-joes-new-cool-feature
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Wow that's a handful of commands to type, you say. Trust me, it beats wasting time trying to resolve someone elses conflict! In above, we fork master as &lt;code&gt;master-merge-joes-new-cool-feature&lt;/code&gt; in anticipation of a bumpy merge. If things go right, we then merge the merged to master :) The last line is just to delete the temporary branch which we no longer need.&lt;/p&gt;
+<p>Wow that&rsquo;s a handful of commands to type, you say. Trust me, it beats wasting time trying to resolve someone elses conflict! In above, we fork master as <code>master-merge-joes-new-cool-feature</code> in anticipation of a bumpy merge. If things go right, we then merge the merged to master :) The last line is just to delete the temporary branch which we no longer need.</p>
 
-&lt;p&gt;Of course, as you go back and forth merging these micro commits with a dev, you will get into a comfort zone of realizing things won't go wrong in which case you could merge the remote directly.&lt;/p&gt;
+<p>Of course, as you go back and forth merging these micro commits with a dev, you will get into a comfort zone of realizing things won&rsquo;t go wrong in which case you could merge the remote directly.</p>
 
-&lt;pre&gt;&lt;code&gt;$ git merge remotes/joe/new-cool-feature
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>$ git merge remotes/joe/new-cool-feature
+</code></pre>
 
-&lt;p&gt;It all depends on how much you trust the other dev :) and how much of merge conflict resolution you're prepared to take on. The branching approach is safer and if you're the BOSS and you have a merge conflict you can simply abandon the branch and ask your peer dev to fetch from you and fix the conflict and let you know! (Which is what Linus would generally do)&lt;/p&gt;
+<p>It all depends on how much you trust the other dev :) and how much of merge conflict resolution you&rsquo;re prepared to take on. The branching approach is safer and if you&rsquo;re the BOSS and you have a merge conflict you can simply abandon the branch and ask your peer dev to fetch from you and fix the conflict and let you know! (Which is what Linus would generally do)</p>
 
-&lt;p&gt;One particularly useful technique to extract a good commit from a potentially set of conflicting ones is to use &lt;code&gt;Cherry Picking&lt;/code&gt;. If you know the commit log's SHA1 then you can use that to do a cherry-pick style merge.&lt;/p&gt;
+<p>One particularly useful technique to extract a good commit from a potentially set of conflicting ones is to use <code>Cherry Picking</code>. If you know the commit log&rsquo;s SHA1 then you can use that to do a cherry-pick style merge.</p>
 
-&lt;pre&gt;&lt;code&gt;$ git cherry-pick 623a3dfb5e86f4da4e043f26b6f075f6e3be77ad
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>$ git cherry-pick 623a3dfb5e86f4da4e043f26b6f075f6e3be77ad
+</code></pre>
 
-&lt;h2&gt;Working remotely &lt;/h2&gt;
+<h2>Working remotely </h2>
 
-&lt;p&gt;The issue with git-daemon is that it is more difficult when you're not on the same network and masked by a bogus IP. One technique is to get the router to &lt;a href=&quot;http://en.wikipedia.org/wiki/Network_address_translation&quot;&gt;DNAT&lt;/a&gt; the 9418 port. Another option is to setup a VPN. A third option is to use a bit of SSH tunneling magic to get everything to work. I'll cover that in a different post, perhaps.&lt;/p&gt;
-</content>
+<p>The issue with git-daemon is that it is more difficult when you&rsquo;re not on the same network and masked by a bogus IP. One technique is to get the router to <a href="http://en.wikipedia.org/wiki/Network_address_translation">DNAT</a> the 9418 port. Another option is to setup a VPN. A third option is to use a bit of SSH tunneling magic to get everything to work. I&rsquo;ll cover that in a different post, perhaps.</p>
+]]></content>
   </entry>
   
   <entry>
-    <title>A new desktop for a new year</title>
+    <title type="html"><![CDATA[A New Desktop for a New Year]]></title>
     <link href="http://geekaholic.github.com/blog/2012/01/01/a-new-desktop-for-new-year/"/>
-    <updated>2012-01-01T11:50:00+05:30</updated>
+    <updated>2012-01-01T11:50:00-06:00</updated>
     <id>http://geekaholic.github.com/blog/2012/01/01/a-new-desktop-for-new-year</id>
-    <content type="html">&lt;div id=&quot;slides&quot;&gt;
-  &lt;img src=&quot;http://farm8.staticflickr.com/7011/6610804679_62d58a3e30.jpg&quot; alt=&quot;Simple, minimilistic Mint desktop&quot; /&gt;
-  &lt;img src=&quot;http://farm8.staticflickr.com/7142/6610808595_cce80f4911.jpg&quot; alt=&quot;Applications list&quot; /&gt;
-  &lt;img src=&quot;http://farm8.staticflickr.com/7034/6610807425_909f80bff3.jpg&quot; alt=&quot;Window select&quot; /&gt;
-  &lt;img src=&quot;http://farm8.staticflickr.com/7013/6610806003_c4c8b40cfe.jpg&quot; alt=&quot;Global Menu&quot; /&gt;
-&lt;/div&gt;
+    <content type="html"><![CDATA[<div id="slides">
+  <img src="http://farm8.staticflickr.com/7011/6610804679_62d58a3e30.jpg" alt="Simple, minimilistic Mint desktop" />
+  <img src="http://farm8.staticflickr.com/7142/6610808595_cce80f4911.jpg" alt="Applications list" />
+  <img src="http://farm8.staticflickr.com/7034/6610807425_909f80bff3.jpg" alt="Window select" />
+  <img src="http://farm8.staticflickr.com/7013/6610806003_c4c8b40cfe.jpg" alt="Global Menu" />
+</div>
 
 
-&lt;p&gt;Compared to other new years where I would spend some time cleaning up my room or &lt;a href=&quot;http://www.geekaholic.org/2007/12/christmas-came-early-for-me-this-year.html&quot;&gt;upgrading my gear&lt;/a&gt;, this year I did none of that! Instead I invested some time cleaning up my online space starting with a brand new distro. I'm a &lt;a href=&quot;http://www.geekaholic.org/2011/08/theres-something-about-lion.html&quot;&gt;big fan of MacOSX's Lion desktop&lt;/a&gt; and wanted to bring some of that minimilistic simplicity to the Linux desktop. So if the above screenshot looks appealing, then read on to see how you too can get a modern desktop that is simple and elegant. Unlike some of my previous desktop customization article, I'll keep this one to the bare minimum so that you can implement it fairly quickly.&lt;/p&gt;
+<p>Compared to other new years where I would spend some time cleaning up my room or <a href="http://www.geekaholic.org/2007/12/christmas-came-early-for-me-this-year.html">upgrading my gear</a>, this year I did none of that! Instead I invested some time cleaning up my online space starting with a brand new distro. I&rsquo;m a <a href="http://www.geekaholic.org/2011/08/theres-something-about-lion.html">big fan of MacOSX&rsquo;s Lion desktop</a> and wanted to bring some of that minimilistic simplicity to the Linux desktop. So if the above screenshot looks appealing, then read on to see how you too can get a modern desktop that is simple and elegant. Unlike some of my previous desktop customization article, I&rsquo;ll keep this one to the bare minimum so that you can implement it fairly quickly.</p>
 
-&lt;h2&gt;Installing the base OS&lt;/h2&gt;
+<h2>Installing the base OS</h2>
 
-&lt;p&gt;IMHO, Gnome 3 is the next best thing when it comes to being a modern desktop. I realize this is a controversial statement, given news of &lt;a href=&quot;http://linux.slashdot.org/story/11/08/04/0115232/linus-torvalds-ditches-gnome-3-for-xfce&quot;&gt;some ditching&lt;/a&gt; and some &lt;a href=&quot;http://www.zdnet.com/blog/open-source/linux-mints-cinnamon-a-gnome-3x-shell-fork&quot;&gt;forking&lt;/a&gt; the project. But IMHO when you have a project that can polarize a community that was once united, it means you've got true innovation - not just incremental tweaks.&lt;/p&gt;
+<p>IMHO, Gnome 3 is the next best thing when it comes to being a modern desktop. I realize this is a controversial statement, given news of <a href="http://linux.slashdot.org/story/11/08/04/0115232/linus-torvalds-ditches-gnome-3-for-xfce">some ditching</a> and some <a href="http://www.zdnet.com/blog/open-source/linux-mints-cinnamon-a-gnome-3x-shell-fork">forking</a> the project. But IMHO when you have a project that can polarize a community that was once united, it means you&rsquo;ve got true innovation &ndash; not just incremental tweaks.</p>
 
-&lt;p&gt;Having said all that, I've started with Linux &lt;a href=&quot;http://blog.linuxmint.com/?p=1889&quot;&gt;Mint 12&lt;/a&gt;, as the base distro to build my minimilistic desktop even though Mint has many of the traditional Windows like UI elements. Now, I'm sure you could do this with Ubuntu 11.10, the base for Mint 12, but I like Mint due to their focus on usability where most of what I need work out of the box!&lt;/p&gt;
+<p>Having said all that, I&rsquo;ve started with Linux <a href="http://blog.linuxmint.com/?p=1889">Mint 12</a>, as the base distro to build my minimilistic desktop even though Mint has many of the traditional Windows like UI elements. Now, I&rsquo;m sure you could do this with Ubuntu 11.10, the base for Mint 12, but I like Mint due to their focus on usability where most of what I need work out of the box!</p>
 
-&lt;h2&gt;Let the tweaking begin!&lt;/h2&gt;
+<h2>Let the tweaking begin!</h2>
 
-&lt;p&gt;Don't worry I'll keep it to a minimum! The first thing I did was to get rid of the bottom taskbar completely, because its soo Windows 95 like! Fortunately, Gnome 3 comes with an &quot;Advanced Settings App&quot; (&lt;code&gt;gnome-tweak-tool&lt;/code&gt; in CMD line) which uses the same iPhone like on-off toggles to do the job.&lt;/p&gt;
+<p>Don&rsquo;t worry I&rsquo;ll keep it to a minimum! The first thing I did was to get rid of the bottom taskbar completely, because its soo Windows 95 like! Fortunately, Gnome 3 comes with an &ldquo;Advanced Settings App&rdquo; (<code>gnome-tweak-tool</code> in CMD line) which uses the same iPhone like on-off toggles to do the job.</p>
 
-&lt;p&gt;&lt;img src=&quot;http://farm8.staticflickr.com/7160/6610969247_67299031a2_m.jpg&quot; alt=&quot;Gnome 3 Advanced Settings App aka Gnome tweak tool&quot; /&gt;&lt;/p&gt;
+<p><img src="http://farm8.staticflickr.com/7160/6610969247_67299031a2_m.jpg" alt="Gnome 3 Advanced Settings App aka Gnome tweak tool" /></p>
 
-&lt;blockquote&gt;&lt;p&gt;Goto Desktop section within Advanced Settings App.&lt;/p&gt;&lt;/blockquote&gt;
+<blockquote><p>Goto Desktop section within Advanced Settings App.</p></blockquote>
 
-&lt;pre&gt;&lt;code&gt;Have file manager handle the desktop -&amp;gt; ON
-Computer icon visible on desktop -&amp;gt; OFF
-Home icon visible on desktop -&amp;gt; OFF
-Network Servers icon visible on desktop -&amp;gt; OFF
-Trash icon visible on desktop -&amp;gt; ON
-Show mounted volumes on the desktop -&amp;gt; ON
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>Have file manager handle the desktop -&gt; ON
+Computer icon visible on desktop -&gt; OFF
+Home icon visible on desktop -&gt; OFF
+Network Servers icon visible on desktop -&gt; OFF
+Trash icon visible on desktop -&gt; ON
+Show mounted volumes on the desktop -&gt; ON
+</code></pre>
 
-&lt;p&gt;From the above list if you decide you want to see the Computer and Home icons or perhaps not have any icons then go right ahead. I have my reasons for the above :)&lt;/p&gt;
+<p>From the above list if you decide you want to see the Computer and Home icons or perhaps not have any icons then go right ahead. I have my reasons for the above :)</p>
 
-&lt;blockquote&gt;&lt;p&gt;Goto Shell section and make sure every toggle is OFF&lt;/p&gt;
+<blockquote><p>Goto Shell section and make sure every toggle is OFF</p>
 
-&lt;p&gt;Goto Shell Extensions&lt;/p&gt;&lt;/blockquote&gt;
+<p>Goto Shell Extensions</p></blockquote>
 
-&lt;p&gt;This is where we do most of the customizations. We will come back to this but for now:&lt;/p&gt;
+<p>This is where we do most of the customizations. We will come back to this but for now:</p>
 
-&lt;pre&gt;&lt;code&gt;Menu Extension -&amp;gt; OFF
-Media Player Extension -&amp;gt; ON
-Smart Overview Extension -&amp;gt; ON
-Monitor Status Extension -&amp;gt; OFF
-Bottom Panel Extension -&amp;gt; OFF
-User Themes Extension -&amp;gt; ON
-noa11y Extension -&amp;gt; ON
-Alt Tab Extension -&amp;gt; ON
-Notification Extension -&amp;gt; ON
-Shutdown Menu Extension -&amp;gt; ON
-Window List Extension -&amp;gt; OFF
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>Menu Extension -&gt; OFF
+Media Player Extension -&gt; ON
+Smart Overview Extension -&gt; ON
+Monitor Status Extension -&gt; OFF
+Bottom Panel Extension -&gt; OFF
+User Themes Extension -&gt; ON
+noa11y Extension -&gt; ON
+Alt Tab Extension -&gt; ON
+Notification Extension -&gt; ON
+Shutdown Menu Extension -&gt; ON
+Window List Extension -&gt; OFF
+</code></pre>
 
-&lt;blockquote&gt;&lt;p&gt;Goto Theme section and select Mint-Z-Dark as the Shell theme&lt;/p&gt;&lt;/blockquote&gt;
+<blockquote><p>Goto Theme section and select Mint-Z-Dark as the Shell theme</p></blockquote>
 
-&lt;h2&gt;Installing tweaks&lt;/h2&gt;
+<h2>Installing tweaks</h2>
 
-&lt;p&gt;As I'm running this distro on a 10&quot; netbook, I wanted all the screen real-estate I can get. Besides running apps in full screen mode is all the rage these days! The other tweak that comes from the same repository, is to overlay an icon when viewing all open windows in the &lt;a href=&quot;http://en.wikipedia.org/wiki/Exposé_(Mac_OS_X)&quot;&gt;Exposé view&lt;/a&gt;. This makes it a lot easier to figure out which window preview is for which App.&lt;/p&gt;
+<p>As I&rsquo;m running this distro on a 10&#8221; netbook, I wanted all the screen real-estate I can get. Besides running apps in full screen mode is all the rage these days! The other tweak that comes from the same repository, is to overlay an icon when viewing all open windows in the <a href="http://en.wikipedia.org/wiki/Expos%C3%A9_(Mac_OS_X)">Exposé view</a>. This makes it a lot easier to figure out which window preview is for which App.</p>
 
-&lt;blockquote&gt;&lt;p&gt;Install PPA repository and plugins&lt;/p&gt;&lt;/blockquote&gt;
+<blockquote><p>Install PPA repository and plugins</p></blockquote>
 
-&lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:webupd8team/gnome3
+<pre><code>sudo add-apt-repository ppa:webupd8team/gnome3
 sudo apt-get update
 sudo apt-get install gnome-shell-extensions-autohidetopbar
 sudo apt-get install gnome-shell-extensions-windowoverlay-icons
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;After logging out and back logging back in (or Alt+F2 followed by r), head over to the &quot;Advanced Settings App&quot;&lt;/p&gt;
+<p>After logging out and back logging back in (or Alt+F2 followed by r), head over to the &ldquo;Advanced Settings App&rdquo;</p>
 
-&lt;blockquote&gt;&lt;p&gt;Next to the &quot;Shell Extensions&quot; section you should find new toggles&lt;/p&gt;&lt;/blockquote&gt;
+<blockquote><p>Next to the &ldquo;Shell Extensions&rdquo; section you should find new toggles</p></blockquote>
 
-&lt;pre&gt;&lt;code&gt;Smart Overview Extension -&amp;gt; ON
-Auto Hide Top Panel Extension -&amp;gt; ON
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>Smart Overview Extension -&gt; ON
+Auto Hide Top Panel Extension -&gt; ON
+</code></pre>
 
-&lt;p&gt;In order to get more space and simplify the window, I wanted to get rid of the menubar by integrating it as a global menubar. Unlike MacOSX's global menubar which is horizontal, this one is vertical and works perfectly with my limited screen width.&lt;/p&gt;
+<p>In order to get more space and simplify the window, I wanted to get rid of the menubar by integrating it as a global menubar. Unlike MacOSX&rsquo;s global menubar which is horizontal, this one is vertical and works perfectly with my limited screen width.</p>
 
-&lt;pre&gt;&lt;code&gt;sudo apt-get install gnome3-globalmenu
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>sudo apt-get install gnome3-globalmenu
+</code></pre>
 
-&lt;blockquote&gt;&lt;p&gt;Next I wanted get rid of the scrollbar, similar to how it is with Ubuntu. I used an updated verion of it from another PPA.&lt;/p&gt;&lt;/blockquote&gt;
+<blockquote><p>Next I wanted get rid of the scrollbar, similar to how it is with Ubuntu. I used an updated verion of it from another PPA.</p></blockquote>
 
-&lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:ayatana-scrollbar-team/release
+<pre><code>sudo add-apt-repository ppa:ayatana-scrollbar-team/release
 sudo apt-get update
 sudo apt-get install overlay-scrollbar  
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Ok almost done. The final step I did was to install a nifty applet that is great for laptops to manage power settings and screen resolutions, especially when you want to project. It adds itself right to the top menubar for easy access.&lt;/p&gt;
+<p>Ok almost done. The final step I did was to install a nifty applet that is great for laptops to manage power settings and screen resolutions, especially when you want to project. It adds itself right to the top menubar for easy access.</p>
 
-&lt;blockquote&gt;&lt;p&gt;Install Jupiter&lt;/p&gt;&lt;/blockquote&gt;
+<blockquote><p>Install Jupiter</p></blockquote>
 
-&lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:webupd8team/jupiter
+<pre><code>sudo add-apt-repository ppa:webupd8team/jupiter
 sudo apt-get update
 sudo apt-get install jupiter
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;And we're done! Enjoy your new desktop this holiday season and Happy 2012!&lt;/p&gt;
+<p>And we&rsquo;re done! Enjoy your new desktop this holiday season and Happy 2012!</p>
 
-&lt;h2&gt;Update (02-Jan-2012)&lt;/h2&gt;
+<h2>Update (02-Jan-2012)</h2>
 
-&lt;p&gt;After writing the article I wondered if it was possible to get the Window titlebar to dissapear whereby Apps can run in full screen similar to Lion. Though its not perfect, the following hacks will give you just that!&lt;/p&gt;
+<p>After writing the article I wondered if it was possible to get the Window titlebar to dissapear whereby Apps can run in full screen similar to Lion. Though its not perfect, the following hacks will give you just that!</p>
 
-&lt;blockquote&gt;&lt;p&gt;Install window-buttons extension to mirror &lt;code&gt;minimize, maximize, close&lt;/code&gt; buttons in the top menubar&lt;/p&gt;&lt;/blockquote&gt;
+<blockquote><p>Install window-buttons extension to mirror <code>minimize, maximize, close</code> buttons in the top menubar</p></blockquote>
 
-&lt;pre&gt;&lt;code&gt;sudo apt-get install gnome-shell-extension-window-buttons
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>sudo apt-get install gnome-shell-extension-window-buttons
+</code></pre>
 
-&lt;p&gt;Now enable the extension using &quot;Gnome Advanced Settings&quot; by visiting the &quot;Shell Extensions&quot; section.&lt;/p&gt;
+<p>Now enable the extension using &ldquo;Gnome Advanced Settings&rdquo; by visiting the &ldquo;Shell Extensions&rdquo; section.</p>
 
-&lt;pre&gt;&lt;code&gt;Window Buttons Extension -&amp;gt; ON
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>Window Buttons Extension -&gt; ON
+</code></pre>
 
-&lt;blockquote&gt;&lt;p&gt;Install maximus daemon to automatically remove the title bar as a window is maximized.&lt;/p&gt;&lt;/blockquote&gt;
+<blockquote><p>Install maximus daemon to automatically remove the title bar as a window is maximized.</p></blockquote>
 
-&lt;pre&gt;&lt;code&gt;sudo apt-get install maximus
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>sudo apt-get install maximus
+</code></pre>
 
-&lt;p&gt;Restary Gnome 3 and your set. You can restore a maximized window using the buttons in the top right corner of the top menu bar.&lt;/p&gt;
+<p>Restary Gnome 3 and your set. You can restore a maximized window using the buttons in the top right corner of the top menu bar.</p>
 
-&lt;hr /&gt;
+<hr />
 
-&lt;h1&gt;References&lt;/h1&gt;
+<h1>References</h1>
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.webupd8.org/2011/11/autohide-top-bar-extension-finally.html&quot;&gt;Gnome 3 auto hide top bar&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.omgubuntu.co.uk/2011/12/ubuntus-overlay-scrollbar-gets-updated-heres-how-to-upgrade/&quot;&gt;Ubuntu's Overlay Scrollbar Get Updated&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.webupd8.org/2011/11/install-gnome-shell-global-menu-in.html&quot;&gt;Gnome 3 global menu&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.webupd8.org/2011/05/how-to-remove-maximized-windows.html&quot;&gt;How to remove maximized window buttons&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.webupd8.org/2011/05/how-to-remove-maximized-windows.html&quot;&gt;Get Unity like window button extension&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.webupd8.org/2011/09/jupiter-applet-finally-available-for.html&quot;&gt;Jupiter Applet finally available for Ubuntu 11.10&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.flickr.com/photos/babytux/tags/screenshots/&quot;&gt;High-Res screenshots over at flickr&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+<li><a href="http://www.webupd8.org/2011/11/autohide-top-bar-extension-finally.html">Gnome 3 auto hide top bar</a></li>
+<li><a href="http://www.omgubuntu.co.uk/2011/12/ubuntus-overlay-scrollbar-gets-updated-heres-how-to-upgrade/">Ubuntu&rsquo;s Overlay Scrollbar Get Updated</a></li>
+<li><a href="http://www.webupd8.org/2011/11/install-gnome-shell-global-menu-in.html">Gnome 3 global menu</a></li>
+<li><a href="http://www.webupd8.org/2011/05/how-to-remove-maximized-windows.html">How to remove maximized window buttons</a></li>
+<li><a href="http://www.webupd8.org/2011/05/how-to-remove-maximized-windows.html">Get Unity like window button extension</a></li>
+<li><a href="http://www.webupd8.org/2011/09/jupiter-applet-finally-available-for.html">Jupiter Applet finally available for Ubuntu 11.10</a></li>
+<li><a href="http://www.flickr.com/photos/babytux/tags/screenshots/">High-Res screenshots over at flickr</a></li>
+</ul>
 
-</content>
+]]></content>
   </entry>
   
   <entry>
-    <title>Track your New Year Resolutions with ii.do</title>
+    <title type="html"><![CDATA[Track Your New Year Resolutions With ii.do]]></title>
     <link href="http://geekaholic.github.com/blog/2011/12/31/new-year-resolution-iido/"/>
-    <updated>2011-12-31T21:30:00+05:30</updated>
+    <updated>2011-12-31T21:30:00-06:00</updated>
     <id>http://geekaholic.github.com/blog/2011/12/31/new-year-resolution-iido</id>
-    <content type="html">&lt;p&gt;I know, I know, it's a bit of a cheesy title to promote my Open Source project but here me out - it really does work. Though I didn't really write it to track my new year resolutions (I've never found them effective beyond a week), I did write it out of constant frustration with not finding a TODO productivity tool that stuck with me.&lt;/p&gt;
+    <content type="html"><![CDATA[<p>I know, I know, it&rsquo;s a bit of a cheesy title to promote my Open Source project but here me out &ndash; it really does work. Though I didn&rsquo;t really write it to track my new year resolutions (I&rsquo;ve never found them effective beyond a week), I did write it out of constant frustration with not finding a TODO productivity tool that stuck with me.</p>
 
-&lt;p&gt;Let me explain... I've tried EVERYTHING!&lt;/p&gt;
+<p>Let me explain&hellip; I&rsquo;ve tried EVERYTHING!</p>
 
-&lt;ul&gt;
-&lt;li&gt;Google Calendar &amp;amp; tasks&lt;/li&gt;
-&lt;li&gt;Sending myself Emails&lt;/li&gt;
-&lt;li&gt;Wiki (Dokuwiki, Mediwiki, Twiki etc.)&lt;/li&gt;
-&lt;li&gt;Tomboy&lt;/li&gt;
-&lt;li&gt;Tomboy with UbuntuOne &amp;amp; Android App&lt;/li&gt;
-&lt;li&gt;EverNote&lt;/li&gt;
-&lt;li&gt;Remember the Milk&lt;/li&gt;
-&lt;li&gt;Gedit notes on my desktop&lt;/li&gt;
-&lt;li&gt;Post-it notes widget&lt;/li&gt;
-&lt;li&gt;Actual Post-it notes&lt;/li&gt;
-&lt;li&gt;Old-skool diary&lt;/li&gt;
-&lt;li&gt;Pieces of left over paper from payment receipts&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;p&gt;From the above list, if anything came remotely to sticking as a habit, then it'd be the sticky notes &amp;amp; pieces of paper. I'm not suggesting the other methods suck, but I wouldn't use it beyond a couple of weeks.&lt;/p&gt;
-
-&lt;p&gt;Why was it that despite me spending hours on a computer, the best thing that had a chance of remotely working was old-skool pen &amp;amp; paper? And then it hit me. A good todo App should be:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;In your face!&lt;/li&gt;
-&lt;li&gt;Really simple to use (like pen &amp;amp; paper)&lt;/li&gt;
-&lt;li&gt;Did I mention in your face?&lt;/li&gt;
-&lt;/ol&gt;
+<ul>
+<li>Google Calendar &amp; tasks</li>
+<li>Sending myself Emails</li>
+<li>Wiki (Dokuwiki, Mediwiki, Twiki etc.)</li>
+<li>Tomboy</li>
+<li>Tomboy with UbuntuOne &amp; Android App</li>
+<li>EverNote</li>
+<li>Remember the Milk</li>
+<li>Gedit notes on my desktop</li>
+<li>Post-it notes widget</li>
+<li>Actual Post-it notes</li>
+<li>Old-skool diary</li>
+<li>Pieces of left over paper from payment receipts</li>
+</ul>
 
 
-&lt;p&gt;Now my solution isn't for everyone. At this moment, it is intended ONLY for fellow geeks who spent a lot of time in the command line (GNU &amp;amp; UNIX only), and I call it ii.do.&lt;/p&gt;
+<p>From the above list, if anything came remotely to sticking as a habit, then it&rsquo;d be the sticky notes &amp; pieces of paper. I&rsquo;m not suggesting the other methods suck, but I wouldn&rsquo;t use it beyond a couple of weeks.</p>
 
-&lt;h2&gt;What is ii.do&lt;/h2&gt;
+<p>Why was it that despite me spending hours on a computer, the best thing that had a chance of remotely working was old-skool pen &amp; paper? And then it hit me. A good todo App should be:</p>
 
-&lt;p&gt;ii.do, pronounced &quot;I do&quot;, but really a roman play on 2.do, is a command line todo list manager that uses a simple text file and simple &lt;a href=&quot;http://daringfireball.net/projects/markdown/syntax&quot;&gt;MarkDown syntax&lt;/a&gt; to track your todo tasks. The beauty of using MarkDown syntax is in it's resemblance to the natural way we jolt down text on a piece of paper.&lt;/p&gt;
-
-&lt;p&gt;ii.do is optimized around querying tasks as opposed to updating tasks. For entering and updating tasks, it uses a plain old vim text editor, which has syntax highlighting for Markdown built-in. If vi is not your thing, then it's relatively easy to configure another editor by exporting the shell $EDITOR variable.&lt;/p&gt;
-
-&lt;p&gt;The other main design goal I had was to make it into a standalone shell script which could stand (mostly) on its own. Except for standard shell commands like sed, grep and bash itself, it doesn't demand much.&lt;/p&gt;
-
-&lt;p&gt;But the main power of ii.do comes ONLY (and I repeat ONLY), if you modify your shell to :&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Define an easy alias (such as t) which can be used to summon ii.do from anywhere within the shell&lt;/li&gt;
-&lt;li&gt;Modify your $PS1 shell prompt to update it with the number of pending tasks (this is the in your face bit)&lt;/li&gt;
-&lt;/ol&gt;
+<ol>
+<li>In your face!</li>
+<li>Really simple to use (like pen &amp; paper)</li>
+<li>Did I mention in your face?</li>
+</ol>
 
 
-&lt;p&gt;The second point above is &lt;em&gt;really important&lt;/em&gt;, if you actually plan on using it productively, for there is nothing like an App stalking you with a reminder of how many things you have left todo.&lt;/p&gt;
+<p>Now my solution isn&rsquo;t for everyone. At this moment, it is intended ONLY for fellow geeks who spent a lot of time in the command line (GNU &amp; UNIX only), and I call it ii.do.</p>
 
-&lt;h2&gt;Installing ii.do&lt;/h2&gt;
+<h2>What is ii.do</h2>
 
-&lt;p&gt;You can download a tarbar ball of ii.do from &lt;a href=&quot;https://github.com/geekaholic/ii.do/downloads&quot;&gt;github&lt;/a&gt;. Then just extract it to your home directory, make the shell script executable (just in case) and finally copy the sample todo.markdown to your $HOME&lt;/p&gt;
+<p>ii.do, pronounced &ldquo;I do&rdquo;, but really a roman play on 2.do, is a command line todo list manager that uses a simple text file and simple <a href="http://daringfireball.net/projects/markdown/syntax">MarkDown syntax</a> to track your todo tasks. The beauty of using MarkDown syntax is in it&rsquo;s resemblance to the natural way we jolt down text on a piece of paper.</p>
 
-&lt;pre&gt;&lt;code&gt; $ tar zxf geekaholic-ii.do-iido-xxx.tgz
+<p>ii.do is optimized around querying tasks as opposed to updating tasks. For entering and updating tasks, it uses a plain old vim text editor, which has syntax highlighting for Markdown built-in. If vi is not your thing, then it&rsquo;s relatively easy to configure another editor by exporting the shell $EDITOR variable.</p>
+
+<p>The other main design goal I had was to make it into a standalone shell script which could stand (mostly) on its own. Except for standard shell commands like sed, grep and bash itself, it doesn&rsquo;t demand much.</p>
+
+<p>But the main power of ii.do comes ONLY (and I repeat ONLY), if you modify your shell to :</p>
+
+<ol>
+<li>Define an easy alias (such as t) which can be used to summon ii.do from anywhere within the shell</li>
+<li>Modify your $PS1 shell prompt to update it with the number of pending tasks (this is the in your face bit)</li>
+</ol>
+
+
+<p>The second point above is <em>really important</em>, if you actually plan on using it productively, for there is nothing like an App stalking you with a reminder of how many things you have left todo.</p>
+
+<h2>Installing ii.do</h2>
+
+<p>You can download a tarbar ball of ii.do from <a href="https://github.com/geekaholic/ii.do/downloads">github</a>. Then just extract it to your home directory, make the shell script executable (just in case) and finally copy the sample todo.markdown to your $HOME</p>
+
+<pre><code> $ tar zxf geekaholic-ii.do-iido-xxx.tgz
  mv geekaholic-ii.do-\* ~/ii.do
  chmod +x ~/ii.do/ii.do
  cp ~/ii.do/todo.markdown ~
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Though ii.do is now usable, you should create an alias in order to make it more accessible and add it to ~/.bash_profile or ~/.bashrc&lt;/p&gt;
+<p>Though ii.do is now usable, you should create an alias in order to make it more accessible and add it to ~/.bash_profile or ~/.bashrc</p>
 
-&lt;pre&gt;&lt;code&gt; echo &quot;alias t='$HOME/ii.do'&quot; &amp;gt;&amp;gt; ~/.bashrc
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code> echo "alias t='$HOME/ii.do'" &gt;&gt; ~/.bashrc
+</code></pre>
 
-&lt;p&gt;Finally the &lt;em&gt;most important&lt;/em&gt; step of adding a counter to your SHELL prompt is semi-automated via ii.do!&lt;/p&gt;
+<p>Finally the <em>most important</em> step of adding a counter to your SHELL prompt is semi-automated via ii.do!</p>
 
-&lt;pre&gt;&lt;code&gt; ~/ii.do/ii.do -S &quot;$PS1&quot; &amp;gt;&amp;gt; ~/.bashrc
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code> ~/ii.do/ii.do -S "$PS1" &gt;&gt; ~/.bashrc
+</code></pre>
 
-&lt;p&gt;Your all set! You might want to logout and login or do a source ~/.bashrc&lt;/p&gt;
+<p>Your all set! You might want to logout and login or do a source ~/.bashrc</p>
 
-&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; if you would rather relocate the todo.markdown, for instance in your Dropbox folder then use the -f option.&lt;/p&gt;
+<p><em>Note:</em> if you would rather relocate the todo.markdown, for instance in your Dropbox folder then use the -f option.</p>
 
-&lt;pre&gt;&lt;code&gt; echo &quot;alias t='$HOME/ii.do -f $HOME/Dropbox/todo.markdown'&quot; &amp;gt;&amp;gt; ~/.bashrc
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code> echo "alias t='$HOME/ii.do -f $HOME/Dropbox/todo.markdown'" &gt;&gt; ~/.bashrc
+</code></pre>
 
-&lt;h2&gt;Using ii.do&lt;/h2&gt;
+<h2>Using ii.do</h2>
 
-&lt;p&gt;Now the fun begins! Lets start with the most basic.&lt;/p&gt;
+<p>Now the fun begins! Lets start with the most basic.</p>
 
-&lt;pre&gt;&lt;code&gt; t -h
+<pre><code> t -h
 
     Version: 0.6.1
 
@@ -390,41 +391,41 @@ sudo apt-get install jupiter
      -t          Filter to show only topics with topic_number
      -C          Don't colorize output (useful for piping)
      -H          HTMLize the output
-     -S &quot;$PS1&quot;   Will return modified PS1 prompt to contain pending task count
+     -S "$PS1"   Will return modified PS1 prompt to contain pending task count
      -h          Show this help screen
 
     By default, we expect a ~/todo.markdown to be in your $HOME if not overridden 
     by the -f option. Refer to http://github.com/geekaholic/ii.do for examples of 
     creating this file.
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;hr /&gt;
+<hr />
 
-&lt;p&gt;To edit a file using vi or $EDITOR&lt;/p&gt;
+<p>To edit a file using vi or $EDITOR</p>
 
-&lt;pre&gt;&lt;code&gt; t -e
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code> t -e
+</code></pre>
 
-&lt;p&gt;Using markdown syntax to maintain todo.markdown is simple. You start out with a main heading called a topic.&lt;/p&gt;
+<p>Using markdown syntax to maintain todo.markdown is simple. You start out with a main heading called a topic.</p>
 
-&lt;pre&gt;&lt;code&gt;  # Weekly Activities
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>  # Weekly Activities
+</code></pre>
 
-&lt;p&gt;or using the alternate style&lt;/p&gt;
+<p>or using the alternate style</p>
 
-&lt;pre&gt;&lt;code&gt;Weekly Activities
+<pre><code>Weekly Activities
 =================
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Next you start your list of tasks as a bullet &lt;code&gt;*&lt;/code&gt; list&lt;/p&gt;
+<p>Next you start your list of tasks as a bullet <code>*</code> list</p>
 
-&lt;pre&gt;&lt;code&gt;* Come up with a BIG idea
+<pre><code>* Come up with a BIG idea
 * Implement BIG idea and be awesome
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;You could further break up your topic into subtopics as follows:&lt;/p&gt;
+<p>You could further break up your topic into subtopics as follows:</p>
 
-&lt;pre&gt;&lt;code&gt;# Weekly Activities
+<pre><code># Weekly Activities
 
 ## Entertainment
 
@@ -436,32 +437,32 @@ Excercise
 
 * Go to gym at least 3 days a week
 * Play some wii sports
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;As you might have guessed the &lt;code&gt;---&lt;/code&gt; are the alternate form for a sub level topic. This way you have have multiple top level topics followed by sublevel topics, having tasks at each level.&lt;/p&gt;
+<p>As you might have guessed the <code>---</code> are the alternate form for a sub level topic. This way you have have multiple top level topics followed by sublevel topics, having tasks at each level.</p>
 
-&lt;hr /&gt;
+<hr />
 
-&lt;p&gt;Now we got the data entry part sorted, lets see how we can query the task list.&lt;/p&gt;
+<p>Now we got the data entry part sorted, lets see how we can query the task list.</p>
 
-&lt;pre&gt;&lt;code&gt; t
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code> t
+</code></pre>
 
-&lt;p&gt;&lt;img src=&quot;http://farm8.staticflickr.com/7008/6606634025_e29d008501.jpg&quot; alt=&quot;ii.do output&quot; /&gt;&lt;/p&gt;
+<p><img src="http://farm8.staticflickr.com/7008/6606634025_e29d008501.jpg" alt="ii.do output" /></p>
 
-&lt;p&gt;Will show all your tasks using terminal colors.&lt;/p&gt;
+<p>Will show all your tasks using terminal colors.</p>
 
-&lt;hr /&gt;
+<hr />
 
-&lt;p&gt;To filter tasks to show &lt;code&gt;only pending&lt;/code&gt; or &lt;code&gt;only completed&lt;/code&gt; ones:&lt;/p&gt;
+<p>To filter tasks to show <code>only pending</code> or <code>only completed</code> ones:</p>
 
-&lt;pre&gt;&lt;code&gt; t -X
+<pre><code> t -X
  t -x
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;To filter by topic, so that it only shows tasks belonging to one topic including it's sub topic:&lt;/p&gt;
+<p>To filter by topic, so that it only shows tasks belonging to one topic including it&rsquo;s sub topic:</p>
 
-&lt;pre&gt;&lt;code&gt;t -t
+<pre><code>t -t
 
 1: # Weekly Activities
 2: ## Entertainment
@@ -469,86 +470,86 @@ Excercise
 4: # Home Work
 
 t -T 1
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;The above will show everything up to topic 4 (Home Work)&lt;/p&gt;
+<p>The above will show everything up to topic 4 (Home Work)</p>
 
-&lt;hr /&gt;
+<hr />
 
-&lt;p&gt;To count the number of pending and competed tasks&lt;/p&gt;
+<p>To count the number of pending and competed tasks</p>
 
-&lt;pre&gt;&lt;code&gt; t -X -n
+<pre><code> t -X -n
  t -x -n
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;hr /&gt;
+<hr />
 
-&lt;p&gt;To update the task to mark it as complete, place an x in front of the task&lt;/p&gt;
+<p>To update the task to mark it as complete, place an x in front of the task</p>
 
-&lt;pre&gt;&lt;code&gt;* x Take out the trash
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>* x Take out the trash
+</code></pre>
 
-&lt;p&gt;To mark a task as important, place an &lt;code&gt;! mark&lt;/code&gt; in front of it&lt;/p&gt;
+<p>To mark a task as important, place an <code>! mark</code> in front of it</p>
 
-&lt;pre&gt;&lt;code&gt;* ! Go to gym at least 3 days a week
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>* ! Go to gym at least 3 days a week
+</code></pre>
 
-&lt;p&gt;To mark a task with a high priority, place the priority number in front of the task&lt;/p&gt;
+<p>To mark a task with a high priority, place the priority number in front of the task</p>
 
-&lt;pre&gt;&lt;code&gt;* (1) Finish history essay
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>* (1) Finish history essay
+</code></pre>
 
-&lt;hr /&gt;
+<hr />
 
-&lt;p&gt;Finally, ii.do has two options that customize the output. The first option is to turn off color which is handy when you want to pipe the output of ii.do with more unix commands.&lt;/p&gt;
+<p>Finally, ii.do has two options that customize the output. The first option is to turn off color which is handy when you want to pipe the output of ii.do with more unix commands.</p>
 
-&lt;pre&gt;&lt;code&gt;t -C | grep '^*'
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>t -C | grep '^*'
+</code></pre>
 
-&lt;p&gt;The other option is to export the todo list as html&lt;/p&gt;
+<p>The other option is to export the todo list as html</p>
 
-&lt;pre&gt;&lt;code&gt;t -H &amp;gt; ~/todo.html
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>t -H &gt; ~/todo.html
+</code></pre>
 
-&lt;p&gt;&lt;img src=&quot;http://farm8.staticflickr.com/7145/6606925889_c86b0fc9a8.jpg&quot; alt=&quot;ii.do html output&quot; /&gt;&lt;/p&gt;
+<p><img src="http://farm8.staticflickr.com/7145/6606925889_c86b0fc9a8.jpg" alt="ii.do html output" /></p>
 
-&lt;h2&gt;Other Uses&lt;/h2&gt;
+<h2>Other Uses</h2>
 
-&lt;p&gt;Besides tracking my todo list on a daily basis, I've recently found another use for ii.do - track my bookmarks. I know, your probably thinking of delicious or firefox/chrome bookmark syncing but for me those solutions just don't cut it. For one, I use about 3 browsers and finding old bookmarks can be a real pain. So now I just use an alias with a custom bookmarks.mdown&lt;/p&gt;
+<p>Besides tracking my todo list on a daily basis, I&rsquo;ve recently found another use for ii.do &ndash; track my bookmarks. I know, your probably thinking of delicious or firefox/chrome bookmark syncing but for me those solutions just don&rsquo;t cut it. For one, I use about 3 browsers and finding old bookmarks can be a real pain. So now I just use an alias with a custom bookmarks.mdown</p>
 
-&lt;pre&gt;&lt;code&gt;alias bm=&quot;$HOME/ii.do/ii.do -f $HOME/Dropbox/bookmarks.mdown&quot;
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>alias bm="$HOME/ii.do/ii.do -f $HOME/Dropbox/bookmarks.mdown"
+</code></pre>
 
-&lt;p&gt;Another use was to keep track of lecture topics by marking them off as I taught them over a period of two months. I also use it to keep track of some interesting quotes I come across, just for inspiration.&lt;/p&gt;
+<p>Another use was to keep track of lecture topics by marking them off as I taught them over a period of two months. I also use it to keep track of some interesting quotes I come across, just for inspiration.</p>
 
-&lt;hr /&gt;
+<hr />
 
-&lt;h2&gt;See also&lt;/h2&gt;
+<h2>See also</h2>
 
-&lt;p&gt;Watch a talk I gave to introduce ii.do at &lt;a href=&quot;http://www.refreshcolombo.org&quot;&gt;RefreshColombo&lt;/a&gt;&lt;/p&gt;
+<p>Watch a talk I gave to introduce ii.do at <a href="http://www.refreshcolombo.org">RefreshColombo</a></p>
 
-&lt;iframe width=&quot;300&quot; height=&quot;315&quot; src=&quot;http://www.youtube.com/embed/9GrFj5gUMAI&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+<iframe width="300" height="315" src="http://www.youtube.com/embed/9GrFj5gUMAI" frameborder="0" allowfullscreen></iframe>
 
 
 
-</content>
+]]></content>
   </entry>
   
   <entry>
-    <title>Getting Down With Markdown</title>
+    <title type="html"><![CDATA[Getting Down With Markdown]]></title>
     <link href="http://geekaholic.github.com/blog/2011/09/02/getting-down-with-markdown/"/>
-    <updated>2011-09-02T10:46:00+05:30</updated>
+    <updated>2011-09-02T10:46:00-05:00</updated>
     <id>http://geekaholic.github.com/blog/2011/09/02/getting-down-with-markdown</id>
-    <content type="html">&lt;p&gt;Recently I've been looking for an alternative to  &lt;a href=&quot;http://docbook.org&quot;&gt;docbook&lt;/a&gt;, which I've used for most of my tutorial handouts and internal developer documentation at &lt;a href=&quot;http://thinkcube.com&quot;&gt;Thinkcube&lt;/a&gt;. But the more I used it docbook the more I wanted a simpler solution which didn't require me to make sure my XML was in order.&lt;/p&gt;
+    <content type="html"><![CDATA[<p>Recently I&rsquo;ve been looking for an alternative to  <a href="http://docbook.org">docbook</a>, which I&rsquo;ve used for most of my tutorial handouts and internal developer documentation at <a href="http://thinkcube.com">Thinkcube</a>. But the more I used it docbook the more I wanted a simpler solution which didn&rsquo;t require me to make sure my XML was in order.</p>
 
-&lt;p&gt;Naturally, at first I thought I'd try &lt;a href=&quot;http://latex-project.org&quot;&gt;Latex&lt;/a&gt; since it had a pretty good wrap with geeks and has even &lt;a href=&quot;http://openwetware.org/wiki/Word_vs._LaTeX&quot;&gt;surpassed usability expectations&lt;/a&gt; set forth by some of the mainstream wordprecessors :). What I loved about Latex was you could concentrate on the content first and formatting later. Its legendary ability to output desktop publishing quality documents and  convert to a variety of formats such as html, pdf or odt was a killer.&lt;/p&gt;
+<p>Naturally, at first I thought I&rsquo;d try <a href="http://latex-project.org">Latex</a> since it had a pretty good wrap with geeks and has even <a href="http://openwetware.org/wiki/Word_vs._LaTeX">surpassed usability expectations</a> set forth by some of the mainstream wordprecessors :). What I loved about Latex was you could concentrate on the content first and formatting later. Its legendary ability to output desktop publishing quality documents and  convert to a variety of formats such as html, pdf or odt was a killer.</p>
 
-&lt;p&gt;Just as I was about to dive into Latex, &lt;a href=&quot;http://twitter.com/chanux&quot;&gt;Chanux&lt;/a&gt; suggested &lt;a href=&quot;http://daringfireball.net/projects/markdown&quot;&gt;Markdown&lt;/a&gt; as an alternative. Hmm, Markdown, I pondered... I even liked the sound of it. It turns out Markdown is even better! You could think of it as a simplified wiki syntax but a better description would be to call it a WYSIWYG wiki syntax.&lt;/p&gt;
+<p>Just as I was about to dive into Latex, <a href="http://twitter.com/chanux">Chanux</a> suggested <a href="http://daringfireball.net/projects/markdown">Markdown</a> as an alternative. Hmm, Markdown, I pondered&hellip; I even liked the sound of it. It turns out Markdown is even better! You could think of it as a simplified wiki syntax but a better description would be to call it a WYSIWYG wiki syntax.</p>
 
-&lt;p&gt; I've always endorsed the &lt;a href=&quot;en.wikipedia.org/wiki/KISS_principle&quot;&gt;KISS&lt;/a&gt; philosophy. There is nothing more simple and satisfying than to write a text file using &lt;a href=&quot;http://vim.org&quot;&gt;vim&lt;/a&gt; and track its progress via &lt;a href=&quot;http://git-scm.com&quot;&gt;git&lt;/a&gt;. After briefly going through the syntax, I realized this is exactly what I needed. I also realized that I had already used Markdown without actually thinking about it as part of using &lt;a href=&quot;http://github.com&quot;&gt;github&lt;/a&gt; for a pet project. Everything about Markdown was all good and the whole &lt;a href=&quot;http://www.zdnet.com/blog/violetblue/when-software-offends-the-pantyshot-package-controversy/509&quot;&gt;controversy&lt;/a&gt; around Markdown's html compiler names were exactly the kind of celebrity gossip it needed to grab attention!&lt;/p&gt;
+<p> I&rsquo;ve always endorsed the <a href="en.wikipedia.org/wiki/KISS_principle">KISS</a> philosophy. There is nothing more simple and satisfying than to write a text file using <a href="http://vim.org">vim</a> and track its progress via <a href="http://git-scm.com">git</a>. After briefly going through the syntax, I realized this is exactly what I needed. I also realized that I had already used Markdown without actually thinking about it as part of using <a href="http://github.com">github</a> for a pet project. Everything about Markdown was all good and the whole <a href="http://www.zdnet.com/blog/violetblue/when-software-offends-the-pantyshot-package-controversy/509">controversy</a> around Markdown&rsquo;s html compiler names were exactly the kind of celebrity gossip it needed to grab attention!</p>
 
-&lt;p&gt;It was around this time, I was due to create a note for a tutorial for the &lt;a href=&quot;http://www.icter.org/UCSCConf/index.php/icter/ICTer2011/schedConf/workshops&quot;&gt;ICTer workshop&lt;/a&gt; myself and Dr. Ajantha from UCSC was to deliver. By now, I had decided on Markdown with &lt;a href=&quot;https://github.com/chobie/upskirt&quot;&gt;upskirt&lt;/a&gt; (yes this is one of the controversal names) to create the notes but what about the slides? Could I use Markdown for that as well? After a little looking around, I found a wonderful system called &lt;a href=&quot;https://github.com/adamzap/landslide&quot;&gt;Landslide&lt;/a&gt; which enabled me to compile Markdown syntax into a beautiful html5 slide show presentation. After a little playing around I managed to build slides as well as the note using a single markdown source code! How cool was that? I will write a separate post soon on the HOWTO details but for now enjoy the &lt;a href=&quot;http://geekaholic.github.com/slides&quot;&gt;slides&lt;/a&gt;, if thats your cup of tea. My Markdown adventures don't end there. This post too was written using Markdown and converted to html using &lt;a href=&quot;http://octopress.org&quot;&gt;octopress&lt;/a&gt;.&lt;/p&gt;
-</content>
+<p>It was around this time, I was due to create a note for a tutorial for the <a href="http://www.icter.org/UCSCConf/index.php/icter/ICTer2011/schedConf/workshops">ICTer workshop</a> myself and Dr. Ajantha from UCSC was to deliver. By now, I had decided on Markdown with <a href="https://github.com/chobie/upskirt">upskirt</a> (yes this is one of the controversal names) to create the notes but what about the slides? Could I use Markdown for that as well? After a little looking around, I found a wonderful system called <a href="https://github.com/adamzap/landslide">Landslide</a> which enabled me to compile Markdown syntax into a beautiful html5 slide show presentation. After a little playing around I managed to build slides as well as the note using a single markdown source code! How cool was that? I will write a separate post soon on the HOWTO details but for now enjoy the <a href="http://geekaholic.github.com/slides">slides</a>, if thats your cup of tea. My Markdown adventures don&rsquo;t end there. This post too was written using Markdown and converted to html using <a href="http://octopress.org">octopress</a>.</p>
+]]></content>
   </entry>
   
 </feed>
